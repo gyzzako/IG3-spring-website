@@ -2,7 +2,7 @@
 
 Website URL: http://localhost:8082/
 
-#Setup
+# Setup
 - Edit configuration
 - "+"
 - Maven
