@@ -23,8 +23,8 @@
     </div>
 </header>
 
-<div class="d-flex flex-row bd-highlight mb-3" style="height: 750px;">
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; height: 800px;">
+<div class="d-flex flex-row bd-highlight mb-3" style="height: auto;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; height: auto;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"></svg>
             <span class="fs-4">Categories</span>
@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<footer class="my-4">
+<footer style="margin-top:auto;">
     <ul class="nav justify-content-center border-bottom mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
