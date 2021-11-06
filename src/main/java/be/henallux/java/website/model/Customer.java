@@ -39,13 +39,13 @@ public class Customer {
     //-----At least one empty constructor---------------
 
     public Customer(Integer customer_id, String email,String password, String lastname,String firstname,String phone_number,String address){
-        this.address = address;
         this.customer_id = customer_id;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone_number = phone_number;
         this.address = address;
+        this.password = password;
     }
     public Customer(){}
 
