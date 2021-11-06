@@ -13,6 +13,7 @@
            modelAttribute="customerLogin">
 
     <h2 class="text-center">Se connecter</h2>
+    <br><br>
     <div class="form-group">
         <form:label path="email">Email</form:label>
         <form:input path="email" class="form-control"></form:input>
