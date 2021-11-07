@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
     <link type="text/css" href="<spring:url value='/css/bootstrap.css' />" rel="stylesheet">
+    <link href=/css/customStyle.css rel="stylesheet"/>
     <title>${title}</title>
 </head>
 <body>
