@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
                 <div class="card p-2 productCard" style="width: 20rem;">
@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
                 <div class="card p-2 productCard" style="width: 20rem;">
@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
                 <div class="card p-2 productCard" style="width: 20rem;">
@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
                 <div class="card p-2 productCard" style="width: 20rem;">
@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
                 <div class="card p-2 productCard" style="width: 20rem;">
@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
                 <div class="card p-2 productCard" style="width: 20rem;">
@@ -63,7 +63,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
