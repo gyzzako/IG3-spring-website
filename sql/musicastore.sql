@@ -97,5 +97,6 @@ CREATE TABLE `musicastore`.`translation`(
 
 
 
+
 set @@global.time_zone = '+00:00';
 set @@session.time_zone = '+00:00';
