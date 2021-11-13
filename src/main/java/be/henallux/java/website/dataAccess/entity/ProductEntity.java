@@ -30,7 +30,7 @@ public class ProductEntity {
     @Column(name = "price")
     private Float price;
 
-    //---Getter
+    //---Getters
     public Integer getProduct_id() {
         return product_id;
     }
