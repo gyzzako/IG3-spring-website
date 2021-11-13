@@ -86,7 +86,7 @@ CREATE TABLE `musicastore`.`language`(
 
 CREATE TABLE `musicastore`.`translation`(
                                             `translation_id` int NOT NULL AUTO_INCREMENT,
-                                            `lable` varchar(50) NOT NULL,
+                                            `label` varchar(50) NOT NULL,
                                             `language_fk` int NOT NULL,
                                             `category_fk` int NOT NULL,
                                             PRIMARY KEY(`translation_id`),
