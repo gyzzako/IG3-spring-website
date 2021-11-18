@@ -32,7 +32,7 @@ public class CustomerEntity {
     private String address;
 
     @Column(name = "gender")
-    private Boolean isMale;
+    private String gender;
     //endregion
 
     public CustomerEntity(){
@@ -65,8 +65,8 @@ public class CustomerEntity {
     public String getAddress(){
         return  this.address;
     }
-    public Boolean getIsMale(){
-        return this.isMale;
+    public String getGender(){
+        return this.gender;
     }
     //endregion
 
@@ -94,8 +94,8 @@ public class CustomerEntity {
     public void setAddress(String address){
         this.address = address;
     }
-    public void setIsMale(Boolean isMale){
-        this.isMale = isMale;
+    public void setGender(String gender){
+        this.gender = gender;
     }
     //endregion
 }

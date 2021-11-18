@@ -55,7 +55,7 @@ public class ProviderConverter {
             customerToModify.setPhone_number(customerWithData.getPhone_number());
             customerToModify.setAddress(customerWithData.getAddress());
             customerToModify.setPassword(customerWithData.getPassword());
-            customerToModify.setIsMale(customerWithData.getIsMale());
+            customerToModify.setGender(customerWithData.getGender());
         }
     }
     //endregion

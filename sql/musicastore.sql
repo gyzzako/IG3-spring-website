@@ -20,6 +20,7 @@ CREATE TABLE `musicastore`.`customer`(
                                          `firstname` varchar(50) NOT NULL,
                                          `phone_number` varchar(10) DEFAULT NULL,
                                          `address` varchar(50) NOT NULL,
+                                         `gender` varchar(10) NOT NULL
                                          PRIMARY KEY(`customer_id`),
                                          UNIQUE KEY(`email`),
                                          CONSTRAINT phone_number_check CHECK(phone_number !='')

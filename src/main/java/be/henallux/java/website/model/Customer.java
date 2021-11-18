@@ -37,12 +37,13 @@ public class Customer {
     private String address;
 
     @NotNull
-    private Boolean isMale;
+    @Size(min = 4, max = 10)
+    private String gender;
     //endregion
 
 
     //region Constructors
-    public Customer(Integer customer_id, String email, String password, String lastname, String firstname, String phone_number, String address, Boolean isMale){
+    public Customer(Integer customer_id, String email, String password, String lastname, String firstname, String phone_number, String address, String gender){
         setCustomer_id(customer_id);
         setEmail(email);
         setFirstname(firstname);
@@ -50,7 +51,7 @@ public class Customer {
         setPhone_number(phone_number);
         setAddress(address);
         setPassword(password);
-        setIsMale(isMale);
+        setGender(gender);
     }
     public Customer(){
         this(null, null, null, null, null, null, null, null);
@@ -81,8 +82,8 @@ public class Customer {
     public String getAddress(){
         return this.address;
     }
-    public Boolean getIsMale(){
-        return this.isMale;
+    public String getGender(){
+        return this.gender;
     }
     //endregion
 
@@ -109,8 +110,8 @@ public class Customer {
     public void setAddress(String address){
         this.address = address;
     }
-    public void setIsMale(Boolean isMale){
-        this.isMale = isMale;
+    public void setGender(String gender){
+        this.gender = gender;
     }
     //endregion
 
