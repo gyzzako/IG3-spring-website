@@ -3,7 +3,7 @@ package be.henallux.java.website.model;
 import javax.validation.constraints.*;
 
 public class Customer {
-
+    //region Attributs
     @NotNull
     @Min(value = 1)
     private Integer customer_id;
@@ -22,12 +22,12 @@ public class Customer {
     @NotNull
     @Size(min = 5, max = 50)
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
-    private String lastname;
+    private String firstname;
 
     @NotNull
     @Size(min = 5, max = 50)
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
-    private String firstname;
+    private String lastname;
 
     @Max(value = 10)
     private String phone_number;
@@ -36,20 +36,29 @@ public class Customer {
     @Size(min = 5, max = 50)
     private String address;
 
-    //-----At least one empty constructor---------------
+    @NotNull
+    private Boolean isMale;
+    //endregion
 
-    public Customer(Integer customer_id, String email,String password, String lastname,String firstname,String phone_number,String address){
-        this.customer_id = customer_id;
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone_number = phone_number;
-        this.address = address;
-        this.password = password;
+
+    //region Constructors
+    public Customer(Integer customer_id, String email, String password, String lastname, String firstname, String phone_number, String address, Boolean isMale){
+        setCustomer_id(customer_id);
+        setEmail(email);
+        setFirstname(firstname);
+        setLastname(lastname);
+        setPhone_number(phone_number);
+        setAddress(address);
+        setPassword(password);
+        setIsMale(isMale);
     }
-    public Customer(){}
+    public Customer(){
+        this(null, null, null, null, null, null, null, null);
+    }
+    //endregion
 
-    //-----------Getters----------
+
+    //region GETTERS
     public Integer getCustomer_id(){
         return this.customer_id;
     }
@@ -72,8 +81,13 @@ public class Customer {
     public String getAddress(){
         return this.address;
     }
+    public Boolean getIsMale(){
+        return this.isMale;
+    }
+    //endregion
 
-    //----------------Setters-------
+
+    //region SETTERS
     public void setCustomer_id(Integer customer_id){
         this.customer_id = customer_id;
     }
@@ -95,5 +109,9 @@ public class Customer {
     public void setAddress(String address){
         this.address = address;
     }
+    public void setIsMale(Boolean isMale){
+        this.isMale = isMale;
+    }
+    //endregion
 
 }

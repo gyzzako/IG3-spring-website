@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product")
 public class ProductEntity {
-
+    //region Attributs
     @Id
     @Column(name = "product_id")
     private Integer product_id;
@@ -29,8 +29,13 @@ public class ProductEntity {
 
     @Column(name = "price")
     private Float price;
+    //endregion
 
-    //---Getters
+    public ProductEntity(){
+
+    }
+
+    //region GETTERS
     public Integer getProduct_id() {
         return product_id;
     }
@@ -54,11 +59,14 @@ public class ProductEntity {
     public CategoryEntity getCategory_fk() {
         return category_fk;
     }
+
     public Float getPrice() {
         return price;
     }
-    //---Setters
+    //endregion
 
+
+    //region SETTERS
     public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
     }
@@ -67,28 +75,24 @@ public class ProductEntity {
         this.product_name = product_name;
     }
 
-
     public void setDescription(String description) {
         this.description = description;
     }
-
 
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
-
     public void setDiscount_fk(DiscountEntity discount_fk) {
         this.discount_fk = discount_fk;
     }
-
 
     public void setCategory_fk(CategoryEntity category_fk) {
         this.category_fk = category_fk;
     }
 
-
     public void setPrice(Float price) {
         this.price = price;
     }
+    //endregion
 }

@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class Discount {
-
+    //region Attributs
     @NotNull
     @Min(value = 1)
     private Integer discount_id;
@@ -13,18 +13,26 @@ public class Discount {
     @NotNull
     @Min(value = 1)
     private Float percentage_off;
+
     private Date start_date;
     private Date end_date;
+    //endregion
 
+
+    //region Constructors
     public Discount(Integer discount_id,Float percentage_off,Date start_date, Date end_date){
-        this.discount_id = discount_id;
-        this.end_date = end_date;
-        this.start_date = start_date;
-        this.percentage_off = percentage_off;
+        setDiscount_id(discount_id);
+        setEnd_date(end_date);
+        setStart_date(start_date);
+        setPercentage_off(percentage_off);
     }
-    public Discount(){}
+    public Discount(){
+        this(null, null, null, null);
+    }
+    //endregion
 
-    //--------Getters-----
+
+    //region GETTERS
     public Integer getDiscount_id(){
         return this.discount_id;
     }
@@ -38,8 +46,10 @@ public class Discount {
     public Date getEnd_date(){
         return this.end_date;
     }
+    //endregion
 
-    //------Setters-----------
+
+    //region SETTERS
     public void setDiscount_id(Integer discount_id){
         this.discount_id = discount_id;
     }
@@ -52,4 +62,5 @@ public class Discount {
     public void setEnd_date(Date end_date){
         this.end_date = end_date;
     }
+    //endregion
 }

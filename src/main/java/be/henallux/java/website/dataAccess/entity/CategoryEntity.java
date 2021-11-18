@@ -8,18 +8,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "category")
 public class CategoryEntity {
-
+    //region Attributs
     @Id
     @Column(name = "category_id")
     private Integer category_id;
+    //endregion
 
-    //---Getter
-    public Integer getCategory_id(Integer category_id){
-        return this.category_id = category_id;
+    public CategoryEntity(){
+
     }
-    //--Setter
+
+    //region GETTERS AND SETTERS
+    public Integer getCategory_id(){
+        return this.category_id;
+    }
+
     public void setCategory_id(Integer category_id){
         this.category_id = category_id;
     }
-
+    //endregion
 }

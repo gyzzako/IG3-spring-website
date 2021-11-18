@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
-
+    //region Attributs
     @Id
     @Column(name = "customer_id")
     private Integer customer_id;
@@ -31,7 +31,15 @@ public class CustomerEntity {
     @Column(name = "address")
     private String address;
 
-    //-------------Getters---------
+    @Column(name = "gender")
+    private Boolean isMale;
+    //endregion
+
+    public CustomerEntity(){
+
+    }
+
+    //region GETTERS
     public Integer getCustomer_id(){
         return this.customer_id;
     }
@@ -57,8 +65,14 @@ public class CustomerEntity {
     public String getAddress(){
         return  this.address;
     }
+    public Boolean getIsMale(){
+        return this.isMale;
+    }
+    //endregion
 
-    //----Setters--
+
+
+    //region SETTERS
     public void setCustomer_id(Integer customer_id){
         this.customer_id = customer_id;
     }
@@ -80,4 +94,8 @@ public class CustomerEntity {
     public void setAddress(String address){
         this.address = address;
     }
+    public void setIsMale(Boolean isMale){
+        this.isMale = isMale;
+    }
+    //endregion
 }

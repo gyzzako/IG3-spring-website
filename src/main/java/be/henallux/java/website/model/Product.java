@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Product {
-
+    //region Attributs
     @NotNull
     @Min(value = 1)
     private Integer product_id;
@@ -27,21 +27,29 @@ public class Product {
     private Category category_fk;
 
     @NotNull
-    @Min(value = 1)
+    @Min(value = 1) //TODO: prix de 0.99 ?
     private Float price;
+    //endregion
 
+
+    //region Constructors
     public Product(Integer product_id, String product_name, String description, String brand, Discount discount_fk, Category category_fk, Float price){
-        this.brand = brand;
-        this.product_name = product_name;
-        this.description = description;
-        this.category_fk = category_fk;
-        this.product_id = product_id;
-        this.price = price;
+        setProduct_id(product_id);
+        setProduct_name(product_name);
+        setDescription(description);
+        setBrand(brand);
+        setDiscount_fk(discount_fk);
+        setCategory_fk(category_fk);
+        setPrice(price);
     }
 
-    public Product(){}
+    public Product(){
+        this(null, null, null, null, null, null, null);
+    }
+    //endregion
 
-    //---------Getters------------
+
+    //region GETTERS
     public Integer getProduct_id(){
         return this.product_id;
     }
@@ -63,8 +71,10 @@ public class Product {
     public Float getPrice(){
         return this.price;
     }
+    //endregion
 
-    //----------------Setters-------------------
+
+    //region SETTERS
     public void setProduct_id(Integer product_id){
         this.product_id = product_id;
     }
@@ -86,4 +96,5 @@ public class Product {
     public void setPrice(Float price){
         this.price= price;
     }
+    //endregion
 }
