@@ -9,6 +9,9 @@ public class Category {
     @NotNull
     @Min(value = 1)
     private Integer category_id;
+
+    @NotNull
+    private String name;
     //endregion
 
 
@@ -25,8 +28,9 @@ public class Category {
 
     //region GETTERS
     public Integer getCategory_id() {
-        return category_id;
+        return this.category_id;
     }
+    public String getName(){return this.name;}
     //endregion
 
 
@@ -34,5 +38,6 @@ public class Category {
     public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
     }
+    public void setName(String name){this.name = name;}
     //endregion
 }

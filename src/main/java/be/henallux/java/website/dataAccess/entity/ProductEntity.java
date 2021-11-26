@@ -29,6 +29,9 @@ public class ProductEntity {
 
     @Column(name = "price")
     private Float price;
+
+    @Column(name = "image")
+    private String imageName;
     //endregion
 
     public ProductEntity(){
@@ -63,6 +66,10 @@ public class ProductEntity {
     public Float getPrice() {
         return price;
     }
+
+    public String getImageName() {
+        return imageName;
+    }
     //endregion
 
 
@@ -93,6 +100,10 @@ public class ProductEntity {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
     //endregion
 }

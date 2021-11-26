@@ -29,6 +29,9 @@ public class Product {
     @NotNull
     @Min(value = 1) //TODO: prix de 0.99 ?
     private Float price;
+
+    @NotNull
+    private String imageName;
     //endregion
 
 
@@ -71,6 +74,9 @@ public class Product {
     public Float getPrice(){
         return this.price;
     }
+    public String getImageName() {
+        return imageName;
+    }
     //endregion
 
 
@@ -95,6 +101,9 @@ public class Product {
     }
     public void setPrice(Float price){
         this.price= price;
+    }
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
     //endregion
 }

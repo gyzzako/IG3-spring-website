@@ -8,63 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="include/importTags.jsp"%>
 
+
         <div class="container text-center">
             <div class="row">
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-1.png"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-2.jpg"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-3.png"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-4.jpg"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-5.jpg"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-6.jpg"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
-                <div class="card p-2 productCard" style="width: 20rem;">
-                    <img class="card-img-top" height="250px" src='<spring:url value="/images/guitares/guitare-7.jpg"/>' alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
-                    </div>
-                </div>
+                <c:forEach items="${ products }" var="product">
+                        <div class="card p-2 productCard" style="width: 20rem;">
+                            <a style="color: black; text-decoration: none;" href="<spring:url value="/product/${product.getProduct_id()}"/>">
+                                <img class="card-img-top" height="250px" src='<spring:url value="/images/${product.getImageName()}"/>' alt="Card image cap"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">${ product.getProduct_name()}</h5>
+                                    <p class="card-text">${ product.getDescription()}</p>
+                                </div>
+                            </a>
+                        </div>
+                </c:forEach>
             </div>
         </div>

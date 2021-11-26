@@ -10,14 +10,15 @@
 
         <div class="container d-flex justify-content-center" style="height: 73vh; width: 80%;">
             <div class="card border-0 " style="width: 18rem">
-                <img src='<spring:url value="/images/guitares/guitare-1.png"/>' class="card-img-top" alt="...">
+                <img src='<spring:url value="/images/${product.getImageName()}"/>' class="card-img-top" alt="music instrument">
                 <div class="card-body">
-                    <h5 class="card-title">NAllME</h5>
-                    <p class="card-text">DESCRIPTION</p>
+                    <h5 class="card-title">${product.getProduct_name()}</h5>
+                    <p class="card-text">${product.getDescription()}</p>
+                    <p class="card-text">Marque: ${product.getBrand()}</p>
                 </div>
             </div>
             <div class="productDetails">
-                <h2>9,99 €</h2>
-                <button type="button" class="btn btn-primary">Ajouter au panier</button>
+                <h2>${product.getPrice()} €</h2>
+                <button type="button" class="btn btn-primary">Ajouter au panier (A voir pour faire avec un "form" pour send les infos</button>
             </div>
         </div>

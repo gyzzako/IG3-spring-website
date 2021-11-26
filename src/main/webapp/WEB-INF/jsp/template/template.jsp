@@ -7,16 +7,15 @@
     <link type="text/css" href="<spring:url value='/css/bootstrap.css' />" rel="stylesheet">
     <link href=/css/customStyle.css rel="stylesheet"/>
     <title>${title}</title>
+
+    <spring:url var="localeEn" value="">
+        <spring:param name="locale" value="en" />
+    </spring:url>
 </head>
 <body>
 
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 mb-4 border-bottom">
-    <img class="ms-4" style="height: 100px; width: 150px;" alt="logo" src="<spring:url value='/images/logo.png'/>"/>
-
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-    </ul>
+    <a href="<spring:url value='/'/>"><img class="ms-4" style="height: 100px; width: 150px;" alt="logo" src="<spring:url value='/images/logo.png'/>"/></a>
 
     <div class="text-md-center me-4">
         <button type="button" class="btn btn-outline-primary me-2">Se connecter</button>
@@ -32,36 +31,14 @@
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16"></svg>
-                    Guitare
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"></svg>
-                    Piano
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"></svg>
-                    Flute
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"></svg>
-                    Violont
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16"></svg>
-                    Batterie
-                </a>
-            </li>
+            <c:forEach items="${ categories }" var="category">
+                <li class="nav-item">
+                    <a href="<spring:url value="/?category=${category.getName()}"/>" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16"></svg>
+                        ${category.getName()}
+                    </a>
+                </li>
+            </c:forEach>
         </ul>
         <hr>
     </div>
