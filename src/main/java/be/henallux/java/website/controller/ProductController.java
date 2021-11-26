@@ -29,6 +29,4 @@ public class ProductController {
         return "integrated:product";
     }
 
-    @RequestMapping(value="/send", method=RequestMethod.POST)
-    public String getFormData(Model model, @ModelAttribute(value="AddToCartForm") MagicKeyForm form)
 }

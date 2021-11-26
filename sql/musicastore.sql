@@ -51,6 +51,7 @@ CREATE TABLE `musicastore`.`product`(
                                         `discount_fk` int DEFAULT NULL,
                                         `category_fk` int NOT NULL,
                                         `price` float NOT NULL,
+                                        `image` varchar(50) NOT NULL,
                                         PRIMARY KEY(`product_id`),
                                         FOREIGN KEY(`discount_fk`) REFERENCES `discount` (`discount_id`),
                                         FOREIGN KEY(`category_fk`) REFERENCES `category` (`category_id`)
