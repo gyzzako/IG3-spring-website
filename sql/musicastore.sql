@@ -20,7 +20,7 @@ CREATE TABLE `musicastore`.`customer`(
                                          `firstname` varchar(50) NOT NULL,
                                          `phone_number` varchar(10) DEFAULT NULL,
                                          `address` varchar(50) NOT NULL,
-                                         `gender` varchar(10) NOT NULL
+                                         `gender` varchar(10) NOT NULL,
                                          PRIMARY KEY(`customer_id`),
                                          UNIQUE KEY(`email`),
                                          CONSTRAINT phone_number_check CHECK(phone_number !='')
@@ -29,13 +29,14 @@ CREATE TABLE `musicastore`.`customer`(
 
 CREATE TABLE `musicastore`.`category`(
                                          `category_id` int NOT NULL AUTO_INCREMENT,
+                                         `name` varchar(50) NOT NULL,
                                          PRIMARY KEY(`category_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `musicastore`.`discount`(
                                          `discount_id` int NOT NULL AUTO_INCREMENT,
-                                         `perfentage_off` float NOT NULL,
+                                         `percentage_off` float NOT NULL,
                                          `start_date` date NOT NULL,
                                          `end_date` date NOT NULL,
                                          PRIMARY KEY(`discount_id`)
