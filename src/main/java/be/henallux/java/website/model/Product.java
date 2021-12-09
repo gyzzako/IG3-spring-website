@@ -21,13 +21,14 @@ public class Product {
     @NotNull
     @Size(min = 5, max = 60)
     private String brand;
+
     private Discount discount_fk;
 
     @NotNull
     private Category category_fk;
 
     @NotNull
-    @Min(value = 1) //TODO: prix de 0.99 ?
+    @Min(value = 0)
     private Float price;
 
     @NotNull

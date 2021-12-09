@@ -56,10 +56,12 @@ public class ProviderConverter {
     //region Discount converter
     public Discount discountEntityToDiscountModel(DiscountEntity discountEntity){
         Discount discount = new Discount();
-        discount.setDiscount_id(discountEntity.getDiscount_id());
-        discount.setPercentage_off(discountEntity.getPercentage_off());
-        discount.setStart_date(discountEntity.getStart_date());
-        discount.setEnd_date(discountEntity.getEnd_date());
+        if(discountEntity != null){
+            discount.setDiscount_id(discountEntity.getDiscount_id());
+            discount.setPercentage_off(discountEntity.getPercentage_off());
+            discount.setStart_date(discountEntity.getStart_date());
+            discount.setEnd_date(discountEntity.getEnd_date());
+        }
         return discount;
     }
 
