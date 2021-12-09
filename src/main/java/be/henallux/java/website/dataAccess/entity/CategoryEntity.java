@@ -12,9 +12,6 @@ public class CategoryEntity {
     @Id
     @Column(name = "category_id")
     private Integer category_id;
-
-    @Column(name = "name")
-    private String name;
     //endregion
 
     public CategoryEntity(){
@@ -25,11 +22,9 @@ public class CategoryEntity {
     public Integer getCategory_id(){
         return this.category_id;
     }
-    public String getName(){return this.name;}
 
     public void setCategory_id(Integer category_id){
         this.category_id = category_id;
     }
-    public void setName(String name){this.name = name;}
     //endregion
 }

@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface TranslationDataAccess {
     ArrayList<Translation> getAllTranslations();
+    ArrayList<Translation> getCategoryTranslationByLanguage(Integer languageFK);
 }

@@ -32,8 +32,8 @@ public class ProductDAO implements ProductDataAccess{
         return products;
     }
 
-    public ArrayList<Product> getAllProductByCategory(String categoryName){
-        List<ProductEntity> productEntities = productRepository.findByCategory_fkName(categoryName);
+    public ArrayList<Product> getAllProductByCategoryId(Integer categoryId){
+        List<ProductEntity> productEntities = productRepository.findByCategory_fkCategory_id(categoryId);
         ArrayList<Product> products = new ArrayList<>();
         for (ProductEntity entity : productEntities) {
             Product product = providerConverter.productEntityToProductModel(entity);

@@ -30,4 +30,14 @@ public class TranslationDAO implements TranslationDataAccess{
         }
         return translations;
     }
+
+    public ArrayList<Translation> getCategoryTranslationByLanguage(Integer languageFK){
+        List<TranslationEntity> translationEntities = translationRepository.findByLanguage_fk(languageFK);
+        ArrayList<Translation> translations = new ArrayList<>();
+        for (TranslationEntity entity : translationEntities) {
+            Translation translation = providerConverter.translationEntityToTranslationModel(entity);
+            translations.add(translation);
+        }
+        return translations;
+    }
 }

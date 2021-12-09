@@ -12,14 +12,12 @@ public class ProviderConverter {
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
         Category category = new Category();
         category.setCategory_id(categoryEntity.getCategory_id());
-        category.setName(categoryEntity.getName());
         return category;
     }
 
     public CategoryEntity categoryModelToCategoryEntity(Category category){
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setCategory_id(category.getCategory_id());
-        categoryEntity.setName(category.getName());
         return categoryEntity;
     }
     //endregion

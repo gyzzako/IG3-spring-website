@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public interface ProductDataAccess {
     ArrayList<Product> getAllProducts();
-    ArrayList<Product> getAllProductByCategory(String categoryName);
+    public ArrayList<Product> getAllProductByCategoryId(Integer categoryId);
     Product getProductById(Integer id);
 }

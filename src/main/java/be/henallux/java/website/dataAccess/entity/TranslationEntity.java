@@ -15,7 +15,7 @@ public class TranslationEntity {
 
     @JoinColumn(name = "language_fk", referencedColumnName = "language_id")
     @ManyToOne
-    private LanguageEntity language_fk;
+    private LanguageEntity language_fk; //TODO: j'ai entendu la prof dire qu'il faut juste mettre language et non language_fk comme nom de variable. pareil pour les autres
 
     @JoinColumn(name = "category_fk", referencedColumnName = "category_id")
     @ManyToOne

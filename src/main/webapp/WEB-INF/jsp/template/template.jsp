@@ -8,14 +8,24 @@
     <link href=/css/customStyle.css rel="stylesheet"/>
     <title>${title}</title>
 
+    <spring:url var="localeFr" value="">
+        <spring:param name="locale" value="fr" />
+    </spring:url>
+
     <spring:url var="localeEn" value="">
         <spring:param name="locale" value="en" />
     </spring:url>
+</head>
 </head>
 <body>
 
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 mb-4 border-bottom">
     <a href="<spring:url value='/'/>"><img class="ms-4" style="height: 100px; width: 150px;" alt="logo" src="<spring:url value='/images/logo.png'/>"/></a>
+
+    <ul>
+        <li><a href="${localeFr}"><p>Français</p></a></li>
+        <li><a href="${localeEn}"><p>English</p></a></li>
+    </ul>
 
     <div class="text-md-center me-4">
         <button type="button" class="btn btn-outline-primary me-2">Se connecter</button>
@@ -33,9 +43,9 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <c:forEach items="${ categories }" var="category">
                 <li class="nav-item">
-                    <a href="<spring:url value="/?category=${category.getName()}"/>" class="nav-link link-dark">
+                    <a href="<spring:url value="/?category=${category.getCategory().getCategory_id()}"/>" class="nav-link link-dark">
                         <svg class="bi me-2" width="16" height="16"></svg>
-                        ${category.getName()}
+                        ${category.getLabel()}
                     </a>
                 </li>
             </c:forEach>
