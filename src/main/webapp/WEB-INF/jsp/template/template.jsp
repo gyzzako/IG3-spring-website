@@ -34,25 +34,6 @@
 </header>
 
 <div class="d-flex flex-row bd-highlight mb-3" style="height: auto;">
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; height: auto;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"></svg>
-            <span class="fs-4">Categories</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <c:forEach items="${ categories }" var="category">
-                <li class="nav-item">
-                    <a href="<spring:url value="/?category=${category.getCategory().getCategory_id()}"/>" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16"></svg>
-                        ${category.getLabel()}
-                    </a>
-                </li>
-            </c:forEach>
-        </ul>
-        <hr>
-    </div>
-
     <div class="container-fluid mx-4" style="width: 90%;">
         <tiles:insertAttribute name="main-content" />
     </div>

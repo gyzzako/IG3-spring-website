@@ -7,20 +7,21 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="include/importTags.jsp"%>
-
-
-        <div class="container text-center">
-            <div class="row">
-                <c:forEach items="${ products }" var="product">
-                        <div class="card p-2 productCard" style="width: 20rem;">
-                            <a style="color: black; text-decoration: none;" href="<spring:url value="/product/${product.getProduct_id()}"/>">
-                                <img class="card-img-top" height="250px" src='<spring:url value="/images/${product.getImageName()}"/>' alt="Card image cap"/>
-                                <div class="card-body">
-                                    <h5 class="card-title">${ product.getProduct_name()}</h5>
-                                    <p class="card-text">${ product.getDescription()}</p>
-                                </div>
-                            </a>
-                        </div>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; height: auto;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"></svg>
+                <span class="fs-4">Categories</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <c:forEach items="${ categories }" var="category">
+                    <li class="nav-item">
+                        <a href="<spring:url value="/category/${category.getCategory().getCategory_id()}"/>" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16"></svg>
+                                ${category.getLabel()}
+                        </a>
+                    </li>
                 </c:forEach>
-            </div>
+            </ul>
+            <hr>
         </div>
