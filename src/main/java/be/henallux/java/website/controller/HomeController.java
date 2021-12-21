@@ -1,9 +1,7 @@
 package be.henallux.java.website.controller;
 
-import be.henallux.java.website.dataAccess.dao.CategoryDataAccess;
-import be.henallux.java.website.dataAccess.dao.ProductDataAccess;
 import be.henallux.java.website.dataAccess.dao.TranslationDataAccess;
-import be.henallux.java.website.model.Category;
+
 import be.henallux.java.website.model.Translation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,14 +16,10 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping(value="/")
 public class HomeController {
-    private ProductDataAccess productDAO;
-    private CategoryDataAccess categoryDAO;
     private TranslationDataAccess translationDAO;
 
     @Autowired
-    public HomeController(ProductDataAccess productDAO, CategoryDataAccess categoryDAO, TranslationDataAccess translationDAO){
-        this.productDAO = productDAO;
-        this.categoryDAO = categoryDAO;
+    public HomeController(TranslationDataAccess translationDAO){
         this.translationDAO = translationDAO;
     }
 

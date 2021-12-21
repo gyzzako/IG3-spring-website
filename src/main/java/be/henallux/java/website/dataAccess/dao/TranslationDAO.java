@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class TranslationDAO implements TranslationDataAccess{
+public class TranslationDAO implements TranslationDataAccess {
     private TranslationRepository translationRepository;
     private ProviderConverter providerConverter;
 
