@@ -8,6 +8,9 @@ public class Language {
     @NotNull
     @Min(value = 1)
     private Integer language_id;
+
+    @NotNull
+    private String locale;
     //endregion
 
 
@@ -26,12 +29,20 @@ public class Language {
     public Integer getLanguage_id() {
         return language_id;
     }
+    public String getLocale() {
+        return locale;
+    }
+
+
     //endregion
 
 
     //region SETTERS
     public void setLanguage_id(Integer language_id) {
         this.language_id = language_id;
+    }
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
     //endregion
 }

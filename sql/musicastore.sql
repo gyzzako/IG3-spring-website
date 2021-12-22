@@ -29,7 +29,6 @@ CREATE TABLE `musicastore`.`customer`(
 
 CREATE TABLE `musicastore`.`category`(
                                          `category_id` int NOT NULL AUTO_INCREMENT,
-                                         `name` varchar(50) NOT NULL,
                                          PRIMARY KEY(`category_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -84,6 +83,7 @@ CREATE TABLE `musicastore`.`order_line`(
 
 CREATE TABLE `musicastore`.`language`(
                                          `language_id` int NOT NULL AUTO_INCREMENT,
+                                         `locale` varchar(10) NOT NULL,
                                          PRIMARY KEY(`language_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -97,8 +97,13 @@ CREATE TABLE `musicastore`.`translation`(
                                             FOREIGN KEY(`language_fk`) REFERENCES `language`(`language_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
+INSERT INTO `musicastore`.`category` VALUES (1),(2),(3),(4),(5);
+INSERT INTO `musicastore`.`discount` VALUES (1,20,STR_TO_DATE('27,11,2021','%d,%m,%Y'),STR_TO_DATE('30,11,2021','%d,%m,%Y'));
+INSERT INTO `musicastore`.`language` VALUES (1, 'fr'), (2,'en');
+INSERT INTO `musicastore`.`product` VALUES (1,'Guitare1', 'Belle guitare', 'Ibanez',1,1,20.6,'products/guitares/guitare-7.jpg'),(2,'Guitare2', 'Superbe guitare', 'Ibanez',1,1,40.6,'products/guitares/guitare-6.jpg'),
+                                           (3,'Guitare3', 'Magnifique guitare', 'Ibanez',1,1,206,'products/guitares/guitare-5.jpg'),(4,'Guitare4', 'Guitare de rock', 'Ibanez',1,1,27,'products/guitares/guitare-4.jpg'),
+                                           (5,'Piano1', 'Magnifique piano', 'Yamaha',1,2,800,'products/pianos/piano-1.jpg'),(6,'Violon', 'Violon en bois', 'Stentor',1,3,250,'products/violons/violon-1.jpg');
+INSERT INTO `musicastore`.`translation` VALUES (1,'Guitare',1,1), (2,'Guitar',2,1), (3,'Piano',1,2), (4,'Piano',2,2),(5,'Violon',1,3),(6,'Violin',2,3);
 
 
 set @@global.time_zone = '+00:00';

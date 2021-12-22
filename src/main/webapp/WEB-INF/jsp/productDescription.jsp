@@ -19,6 +19,8 @@
             </div>
             <div class="productDetails">
                 <h2>${product.getPrice()} €</h2>
-                <button type="button" class="btn btn-primary">Ajouter au panier (A voir pour faire avec un "form" pour send les infos</button>
+                <label for="itemNumber"><spring:message code="productNumber"/>:</label>
+                <input type="number" id="itemNumber" name="itemNumber" min="1" max="99">
+                <button type="button" class="btn btn-primary"><spring:message code="addToCart"/></button> <!--(A voir pour faire avec un "form" pour send les infos-->
             </div>
         </div>

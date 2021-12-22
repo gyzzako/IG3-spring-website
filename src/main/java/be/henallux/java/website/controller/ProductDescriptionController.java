@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Locale;
+
 @Controller
 @RequestMapping(value = "/product/{id}")
 public class ProductDescriptionController {
@@ -18,7 +20,7 @@ public class ProductDescriptionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String userRegistration(Model model, @PathVariable Integer id){
+    public String userRegistration(Model model, Locale locale, @PathVariable Integer id){
         model.addAttribute("product", productDAO.getProductById(id));
         return "integrated:productDescription";
     }

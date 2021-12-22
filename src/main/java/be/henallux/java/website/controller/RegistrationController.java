@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Locale;
+
 @Controller
 @RequestMapping(value = "/registration")
 public class RegistrationController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String userRegistration(Model model){
+    public String userRegistration(Model model, Locale locale){
         model.addAttribute("registrationForm",new Customer());
         return "integrated:registration";
     }

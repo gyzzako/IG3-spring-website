@@ -17,6 +17,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${ product.getProduct_name()}</h5>
                                 <p class="card-text">${ product.getDescription()}</p>
+                                <p class="card-text">${ product.getPrice()}€</p>
                             </div>
                         </a>
                     </div>

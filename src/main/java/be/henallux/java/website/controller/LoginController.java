@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Locale;
+
 @Controller
 @RequestMapping(value = "/login")
 public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String login(Model model){
+    public String login(Model model, Locale locale){
         model.addAttribute("customerLogin",new Customer());
         return "integrated:login";
     }

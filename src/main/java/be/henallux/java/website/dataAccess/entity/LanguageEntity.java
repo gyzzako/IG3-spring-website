@@ -12,6 +12,9 @@ public class LanguageEntity {
     @Id
     @Column(name = "language_id")
     private Integer language_id;
+
+    @Column(name = "locale")
+    private String locale;
     //endregion
 
     public LanguageEntity(){
@@ -26,5 +29,14 @@ public class LanguageEntity {
     public void setLanguage_id(Integer language_id) {
         this.language_id = language_id;
     }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
     //endregion
 }

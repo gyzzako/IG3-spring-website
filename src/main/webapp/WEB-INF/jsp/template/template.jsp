@@ -22,14 +22,16 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 mb-4 border-bottom">
     <a href="<spring:url value='/'/>"><img class="ms-4" style="height: 100px; width: 150px;" alt="logo" src="<spring:url value='/images/logo.png'/>"/></a>
 
-    <ul>
-        <li><a href="${localeFr}"><p>Français</p></a></li>
-        <li><a href="${localeEn}"><p>English</p></a></li>
+    <a href="<spring:url value='/'/>"><spring:message code="category"/></a>
+
+    <ul style="list-style-type: none; display: flex;">
+        <li><a href="${localeFr}"><img class="ms-4" style="height: 40px; width: 40px;" alt="logo" src="<spring:url value='/images/countriesFlag/fr.png'/>"/></a></li>
+        <li><a href="${localeEn}"><img class="ms-4" style="height: 40px; width: 40px;" alt="logo" src="<spring:url value='/images/countriesFlag/en.jpg'/>"/></a></li>
     </ul>
 
     <div class="text-md-center me-4">
-        <button type="button" class="btn btn-outline-primary me-2">Se connecter</button>
-        <button type="button" class="btn btn-primary">S'inscrire</button>
+        <button type="button" class="btn btn-outline-primary me-2"><spring:message code="login"/></button>
+        <button type="button" class="btn btn-primary"><spring:message code="signup"/></button>
     </div>
 </header>
 
@@ -40,10 +42,6 @@
 </div>
 
 <footer style="margin-top:auto;">
-    <ul class="nav justify-content-center border-bottom mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
     <p class="text-center text-muted">&copy; 2021 Company, Inc</p>
 </footer>
 </body>
