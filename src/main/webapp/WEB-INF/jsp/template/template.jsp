@@ -30,8 +30,8 @@
     </ul>
 
     <div class="text-md-center me-4">
-        <button type="button" class="btn btn-outline-primary me-2"><spring:message code="login"/></button>
-        <button type="button" class="btn btn-primary"><spring:message code="signup"/></button>
+        <a href="<spring:url value='/login/'/>"><button type="button" class="btn btn-outline-primary me-2"><spring:message code="login"/></button></a>
+        <a href="<spring:url value='/registration/'/>"><button type="button" class="btn btn-primary"><spring:message code="signup"/></button></a>
     </div>
 </header>
 
