@@ -33,6 +33,21 @@ public class CustomerEntity {
 
     @Column(name = "gender")
     private String gender;
+
+    @Column(name="authorities")
+    private String authorities;
+
+    @Column(name = "credentials_non_expired")
+    private Boolean credentials_non_expired;
+
+    @Column(name = "account_non_expired")
+    private Boolean account_non_expired;
+
+    @Column(name = "enabled")
+    private Boolean enabled;
+
+    @Column(name = "non_locked")
+    private Boolean non_locked;
     //endregion
 
     public CustomerEntity(){

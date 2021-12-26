@@ -39,6 +39,12 @@ public class Customer {
     @NotNull
     @Size(min = 4, max = 10)
     private String gender;
+
+    private String athorities;
+    private Boolean credentials_non_expired;
+    private Boolean enabled;
+    private Boolean non_locked;
+    private Boolean account_non_expired;
     //endregion
 
 
@@ -112,6 +118,22 @@ public class Customer {
     }
     public void setGender(String gender){
         this.gender = gender;
+    }
+
+    public String getAthorities(){
+        return this.athorities;
+    }
+    public Boolean getCredentials_non_expired(){
+        return this.credentials_non_expired;
+    }
+    public Boolean getEnabled(){
+        return this.enabled;
+    }
+    public Boolean getNon_locked(){
+        return this.non_locked;
+    }
+    public Boolean getAccount_non_expired(){
+        return this.account_non_expired;
     }
     //endregion
 

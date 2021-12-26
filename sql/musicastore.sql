@@ -11,16 +11,20 @@ DROP TABLE IF EXISTS `musicastore`.`translation` CASCADE;
 
 CREATE SCHEMA `musicastore`;
 
-
 CREATE TABLE `musicastore`.`customer`(
                                          `customer_id` int NOT NULL AUTO_INCREMENT,
                                          `email` varchar(50) NOT NULL,
-                                         `password` varchar(50) NOT NULL,
+                                         `password` varchar(100) NOT NULL,
                                          `lastname` varchar(50) NOT NULL,
                                          `firstname` varchar(50) NOT NULL,
                                          `phone_number` varchar(10) DEFAULT NULL,
                                          `address` varchar(50) NOT NULL,
                                          `gender` varchar(10) NOT NULL,
+                                         `authorities` varchar(10) default 'ROLE_USER',
+                                         `credentials_non_expired` tinyint default 1,
+                                         `enabled` tinyint default 1,
+                                         `non_locked` tinyint default 1,
+                                         `account_non_expired` tinyint default 1,
                                          PRIMARY KEY(`customer_id`),
                                          UNIQUE KEY(`email`),
                                          CONSTRAINT phone_number_check CHECK(phone_number !='')
@@ -104,6 +108,16 @@ INSERT INTO `musicastore`.`product` VALUES (1,'Guitare1', 'Belle guitare', 'Iban
                                            (3,'Guitare3', 'Magnifique guitare', 'Ibanez',1,1,206,'products/guitares/guitare-5.jpg'),(4,'Guitare4', 'Guitare de rock', 'Ibanez',1,1,27,'products/guitares/guitare-4.jpg'),
                                            (5,'Piano1', 'Magnifique piano', 'Yamaha',1,2,800,'products/pianos/piano-1.jpg'),(6,'Violon', 'Violon en bois', 'Stentor',1,3,250,'products/violons/violon-1.jpg');
 INSERT INTO `musicastore`.`translation` VALUES (1,'Guitare',1,1), (2,'Guitar',2,1), (3,'Piano',1,2), (4,'Piano',2,2),(5,'Violon',1,3),(6,'Violin',2,3);
+
+/*-- INSERTION CUSTOMER--*/
+INSERT INTO `musicastore`.`customer`
+VALUES (1,'arnaud@gmail.com','$2a$10$c/MdR9VXxqo2dAM/1j/A6eMsIkIJe49Q5Wz90cuB130.KFo1QQc/y','arnaud','berg','049999999','Namur henallux','homme','ROLE_ADMIN',1,1,1,1),
+       (2,'donnydsm@gmail.com','$2a$10$GPwfRGxMnm1oKOd7fm/vdOlT41htlEfatFUdanTxDGUFNH0s3MG8m','mboma','donny','047878798','Flandre occidentale','homme','ROLE_ADMIN',1,1,1,1),
+       (3,'richarg@gmail.com',' $2a$10$SmqG1AsNgF2Z8QGyWjdSOe.rLxzBwt8FIq4wwZKGk7Y7u017dnUW6','fontaine','richard','048969665','Namur namen','homme','ROLE_USER',1,1,1,1),
+       (4,'louis_hermant@gmail.com','$2a$10$RA1J6qNuAZiyLqE/yE4hD.x9Bj.zPA0pqFg1Rf.Ei/HCWvOjvRLWm','hermant','louis','0465656565','Bruxelles Schumann','homme','ROLE_USER',1,1,1,1),
+       (5,'armel_vially','$2a$10$D2YnEChTmJIC/Ta4mXFDHeDwWAmyB4ldV7kNG2GCtIikx7ekG02ia','vially','armel','0444444444','Namur','homme','ROLE_USER',1,1,1,1),
+       (6,'cycyzush@yahoo.fr','$2a$10$5KO/Esqjrfn5ZrFy.3hhVOM9obVROgYtqn0W61LuZJ4SedBb8Ocoi','zush','cynthia',null,'Wemmel','femme','ROLE_USER',1,1,1,1),
+       (7,'dubisy@henallux.be','$2a$10$u0RE67ioREeOvWsLwAfmiOGzpbek0sDzZPYtoEpecr0AWnBkRsYV6','dubisy','francoise',null,'Namur-Liège','femme','ROLE_ADMIN',1,1,1,1);
 
 
 set @@global.time_zone = '+00:00';
