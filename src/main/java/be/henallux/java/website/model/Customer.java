@@ -1,12 +1,24 @@
 package be.henallux.java.website.model;
 
-import javax.validation.constraints.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class Customer {
+import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class Customer implements UserDetails {
     //region Attributs
     @NotNull
     @Min(value = 1)
     private Integer customer_id;
+
+    @NotNull
+    @Size(min = 5, max = 45)
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    private String username;
 
     @NotNull
     @Size(min = 10, max = 50)
@@ -40,10 +52,10 @@ public class Customer {
     @Size(min = 4, max = 10)
     private String gender;
 
-    private String athorities;
+    private String authorities;
     private Boolean credentials_non_expired;
     private Boolean enabled;
-    private Boolean non_locked;
+    private Boolean account_non_locked;
     private Boolean account_non_expired;
     //endregion
 
@@ -71,10 +83,6 @@ public class Customer {
     }
     public String getEmail(){
         return this.email;
-    }
-
-    public String getPassword(){
-        return this.password;
     }
     public String getLastname(){
         return this.lastname;
@@ -120,21 +128,51 @@ public class Customer {
         this.gender = gender;
     }
 
-    public String getAthorities(){
-        return this.athorities;
+    //endregion
+
+    // ------méthodes implementées de l'interface UserDetails de spring. -> voir labo 7
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        if(authorities != null && !authorities.isEmpty()){
+            String[] authoritiesArray = authorities.split(",");
+
+            for(String authority : authoritiesArray){
+                if(authority != null && !authorities.isEmpty()){
+                    grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+                }
+            }
+        }
+        return grantedAuthorities;
     }
-    public Boolean getCredentials_non_expired(){
-        return this.credentials_non_expired;
+
+    public String getPassword(){
+        return this.password;
     }
-    public Boolean getEnabled(){
-        return this.enabled;
+
+    @Override
+    public String getUsername() {
+        return this.username;
     }
-    public Boolean getNon_locked(){
-        return this.non_locked;
-    }
-    public Boolean getAccount_non_expired(){
+
+    @Override
+    public boolean isAccountNonExpired() {
         return this.account_non_expired;
     }
-    //endregion
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return this.account_non_locked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return this.credentials_non_expired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.enabled;
+    }
 
 }
