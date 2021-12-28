@@ -16,16 +16,9 @@ public class Customer implements UserDetails {
     private Integer customer_id;
 
     @NotNull
-    @Size(min = 5, max = 45)
+    @Size(min = 5, max = 50)
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String username;
-
-    @NotNull
-    @Size(min = 10, max = 50)
-    @Pattern(regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@" +
-            "(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+" +
-            "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
-    private String email;
 
     @NotNull
     @Size(min = 8, max = 50)
@@ -61,16 +54,16 @@ public class Customer implements UserDetails {
 
 
     //region Constructors
-    public Customer(Integer customer_id, String email, String password, String lastname, String firstname, String phone_number, String address, String gender,String authorities,
+    public Customer(Integer customer_id, String username, String password, String lastname, String firstname, String phone_number, String address, String gender,String authorities,
                     Boolean credentials_non_expired,Boolean enabled,Boolean account_non_expired,Boolean account_non_locked){
         setCustomer_id(customer_id);
-        setEmail(email);
         setFirstname(firstname);
         setLastname(lastname);
         setPhone_number(phone_number);
         setAddress(address);
         setPassword(password);
         setGender(gender);
+        setUsername(username);
         this.enabled = enabled;
         this.authorities = authorities;
         this.account_non_expired = account_non_expired;
@@ -88,9 +81,6 @@ public class Customer implements UserDetails {
     //region GETTERS
     public Integer getCustomer_id(){
         return this.customer_id;
-    }
-    public String getEmail(){
-        return this.email;
     }
     public String getLastname(){
         return this.lastname;
@@ -158,9 +148,6 @@ public class Customer implements UserDetails {
     //region SETTERS
     public void setCustomer_id(Integer customer_id){
         this.customer_id = customer_id;
-    }
-    public void setEmail(String email){
-        this.email = email;
     }
     public void setPassword(String password){
         this.password = password;

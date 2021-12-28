@@ -25,8 +25,10 @@ public class ProviderConverter {
     //region Category converter
     public CustomerEntity customerModelToCustomerEntity(Customer customer){
         CustomerEntity customerEntity = new CustomerEntity();
+        customerEntity.setPassword(customer.getPassword()); //--> dejà crypté dans le WebSecurity.
         customerEntity.setCustomer_id(customer.getCustomer_id());
-        customerEntity.setEmail(customer.getEmail());
+        //customerEntity.setEmail(customer.getEmail()); --> remplacé par username
+        customerEntity.setUsername(customer.getUsername());
         customerEntity.setFirstname(customer.getFirstname());
         customerEntity.setLastname(customer.getLastname());
         customerEntity.setPhoneNumber(customer.getPhone_number());
@@ -44,7 +46,8 @@ public class ProviderConverter {
     public Customer customerEntityToCustomerModel(CustomerEntity customerEntity){
         Customer customer = new Customer();
         customer.setCustomer_id(customerEntity.getCustomer_id());
-        customer.setEmail(customerEntity.getEmail());
+        //customer.setEmail(customerEntity.getEmail());
+        customer.setUsername(customerEntity.getUsername());
         customer.setFirstname(customerEntity.getFirstname());
         customer.setLastname(customerEntity.getLastname());
         customer.setPhone_number(customerEntity.getPhoneNumber());

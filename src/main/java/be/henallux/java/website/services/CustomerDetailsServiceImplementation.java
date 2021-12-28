@@ -19,9 +19,12 @@ public class CustomerDetailsServiceImplementation implements UserDetailsService 
         this.customerDAO = customerDAO;
     }
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Customer customer = customerDAO.findByEmail(s);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Customer customer = customerDAO.findByUsername(username);
         if(customer != null){
+            System.out.println("----------DAO----------------");
+            System.out.println("Username dao :"+customer.getUsername());
+            System.out.println("customer dao password :"+customer.getPassword());
             return customer;
         }
         throw new UsernameNotFoundException("Customer not found bicth !");

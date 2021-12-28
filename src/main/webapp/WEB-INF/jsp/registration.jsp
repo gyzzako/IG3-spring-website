@@ -11,14 +11,15 @@
 
 <h1 class="text-center">Inscription</h1>
 <br> <br>
+<%--@elvariable id="registrationForm" type="java"--%>
 <form:form id="registration"
            method="post"
            modelAttribute="registrationForm">
 
     <div class="form-group row">
-        <form:label path="email" class="col-sm-4 col-form-label">Email</form:label>
+        <form:label path="username" class="col-sm-4 col-form-label">Email</form:label>
         <div class="col-sm-8">
-            <form:input path="email" class="form-control"></form:input>
+            <form:input path="username" class="form-control"></form:input>
         </div>
     </div>
     <br>

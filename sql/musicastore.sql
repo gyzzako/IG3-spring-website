@@ -13,7 +13,7 @@ CREATE SCHEMA `musicastore`;
 
 CREATE TABLE `musicastore`.`customer`(
                                          `customer_id` int NOT NULL AUTO_INCREMENT,
-                                         `email` varchar(50) NOT NULL,
+                                         `username` varchar(50) NOT NULL,
                                          `password` varchar(100) NOT NULL,
                                          `lastname` varchar(50) NOT NULL,
                                          `firstname` varchar(50) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE `musicastore`.`customer`(
                                          `non_locked` tinyint default 1,
                                          `account_non_expired` tinyint default 1,
                                          PRIMARY KEY(`customer_id`),
-                                         UNIQUE KEY(`email`),
+                                         UNIQUE KEY(`username`),
                                          CONSTRAINT phone_number_check CHECK(phone_number !='')
     )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

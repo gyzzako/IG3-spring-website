@@ -13,8 +13,9 @@ public class CustomerEntity {
     @Column(name = "customer_id")
     private Integer customer_id;
 
-    @Column(name = "email")
-    private String email;
+
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -59,9 +60,10 @@ public class CustomerEntity {
         return this.customer_id;
     }
 
-    public String getEmail(){
-        return this.email;
+    public String getUsername(){
+        return this.username;
     }
+
     public String getPassword(){
         return this.password;
     }
@@ -106,8 +108,8 @@ public class CustomerEntity {
     public void setCustomer_id(Integer customer_id){
         this.customer_id = customer_id;
     }
-    public void setEmail(String email){
-        this.email = email;
+    public void setUsername(String username){
+        this.username = username;
     }
     public void setPassword(String password){
         this.password = password;
