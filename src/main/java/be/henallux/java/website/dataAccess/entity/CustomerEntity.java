@@ -83,6 +83,21 @@ public class CustomerEntity {
     public String getGender(){
         return this.gender;
     }
+
+    public String getAuthorities() {
+        return authorities;
+    }
+
+    public Boolean getCredentials_non_expired() {
+        return credentials_non_expired;
+    }
+    public Boolean getEnabled() {
+        return enabled;
+    }
+    public Boolean getNon_locked() {
+        return non_locked;
+    }
+
     //endregion
 
 
@@ -112,5 +127,33 @@ public class CustomerEntity {
     public void setGender(String gender){
         this.gender = gender;
     }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setCredentials_non_expired(Boolean credentials_non_expired) {
+        this.credentials_non_expired = credentials_non_expired;
+    }
+
+    public Boolean getAccount_non_expired() {
+        return account_non_expired;
+    }
+
+    public void setAccount_non_expired(Boolean account_non_expired) {
+        this.account_non_expired = account_non_expired;
+    }
+
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setNon_locked(Boolean non_locked) {
+        this.non_locked = non_locked;
+    }
     //endregion
+
+
+
 }

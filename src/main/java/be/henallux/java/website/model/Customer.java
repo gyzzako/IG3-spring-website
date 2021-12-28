@@ -61,7 +61,8 @@ public class Customer implements UserDetails {
 
 
     //region Constructors
-    public Customer(Integer customer_id, String email, String password, String lastname, String firstname, String phone_number, String address, String gender){
+    public Customer(Integer customer_id, String email, String password, String lastname, String firstname, String phone_number, String address, String gender,String authorities,
+                    Boolean credentials_non_expired,Boolean enabled,Boolean account_non_expired,Boolean account_non_locked){
         setCustomer_id(customer_id);
         setEmail(email);
         setFirstname(firstname);
@@ -70,9 +71,16 @@ public class Customer implements UserDetails {
         setAddress(address);
         setPassword(password);
         setGender(gender);
+        this.enabled = enabled;
+        this.authorities = authorities;
+        this.account_non_expired = account_non_expired;
+        this.account_non_locked = account_non_locked;
+        this.credentials_non_expired = credentials_non_expired;
+
     }
+
+    // il nous faut au moins un constructeur vide.
     public Customer(){
-        this(null, null, null, null, null, null, null, null);
     }
     //endregion
 
@@ -99,38 +107,8 @@ public class Customer implements UserDetails {
     public String getGender(){
         return this.gender;
     }
-    //endregion
 
-
-    //region SETTERS
-    public void setCustomer_id(Integer customer_id){
-        this.customer_id = customer_id;
-    }
-    public void setEmail(String email){
-        this.email = email;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public void setLastname(String lastname){
-        this.lastname = lastname;
-    }
-    public void setFirstname(String firstname){
-        this.firstname = firstname;
-    }
-    public void setPhone_number(String phone_number){
-        this.phone_number = phone_number;
-    }
-    public void setAddress(String address){
-        this.address = address;
-    }
-    public void setGender(String gender){
-        this.gender = gender;
-    }
-
-    //endregion
-
-    // ------méthodes implementées de l'interface UserDetails de spring. -> voir labo 7
+    // -- session informations
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
@@ -174,5 +152,60 @@ public class Customer implements UserDetails {
     public boolean isEnabled() {
         return this.enabled;
     }
+    //endregion
+
+
+    //region SETTERS
+    public void setCustomer_id(Integer customer_id){
+        this.customer_id = customer_id;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
+    public void setLastname(String lastname){
+        this.lastname = lastname;
+    }
+    public void setFirstname(String firstname){
+        this.firstname = firstname;
+    }
+    public void setPhone_number(String phone_number){
+        this.phone_number = phone_number;
+    }
+    public void setAddress(String address){
+        this.address = address;
+    }
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setCredentials_non_expired(Boolean credentials_non_expired) {
+        this.credentials_non_expired = credentials_non_expired;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setAccount_non_locked(Boolean account_non_locked) {
+        this.account_non_locked = account_non_locked;
+    }
+
+    public void setAccount_non_expired(Boolean account_non_expired) {
+        this.account_non_expired = account_non_expired;
+    }
+
+    //endregion
+
 
 }

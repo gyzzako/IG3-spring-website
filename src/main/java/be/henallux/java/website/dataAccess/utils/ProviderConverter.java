@@ -33,6 +33,11 @@ public class ProviderConverter {
         customerEntity.setAddress(customer.getAddress());
         customerEntity.setPassword(customer.getPassword());
         customerEntity.setGender(customer.getGender());
+        //customerEntity.setAuthorities(customer.getAuthorities());
+        customerEntity.setEnabled(customer.isEnabled());
+        customerEntity.setNon_locked(customer.isAccountNonLocked());
+        customerEntity.setAccount_non_expired(customer.isAccountNonExpired());
+        customerEntity.setCredentials_non_expired(customer.isCredentialsNonExpired());
         return customerEntity;
     }
 
@@ -46,6 +51,12 @@ public class ProviderConverter {
         customer.setAddress(customerEntity.getAddress());
         customer.setPassword(customerEntity.getPassword());
         customer.setGender(customerEntity.getGender());
+
+        customer.setEnabled(customerEntity.getEnabled());
+        customer.setAuthorities(customerEntity.getAuthorities());
+        customer.setCredentials_non_expired(customerEntity.getCredentials_non_expired());
+        customer.setAccount_non_locked(customerEntity.getNon_locked());
+        customer.setAccount_non_expired(customerEntity.getAccount_non_expired());
         return customer;
     }
     //endregion
