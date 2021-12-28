@@ -25,8 +25,8 @@ public class CustomerEntity {
     @Column(name = "firstname")
     private String firstname;
 
-    @Column(name = "phone_numnber")
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @Column(name = "address")
     private String address;
@@ -74,8 +74,8 @@ public class CustomerEntity {
         return this.firstname;
     }
 
-    public String getPhone_number(){
-        return this.phone_number;
+    public String getPhoneNumber(){
+        return this.phoneNumber;
     }
     public String getAddress(){
         return  this.address;
@@ -118,8 +118,8 @@ public class CustomerEntity {
     public void setFirstname(String firstname){
         this.firstname = firstname;
     }
-    public void setPhone_number(String phone_number){
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phone_number){
+        this.phoneNumber = phone_number;
     }
     public void setAddress(String address){
         this.address = address;

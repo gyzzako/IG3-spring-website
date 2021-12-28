@@ -18,14 +18,20 @@ public class CustomerDAO implements CustomerDataAccess{
         this.providerConverter = providerConverter;
     }
 
-    public Customer getCustomer(String email, String password){
+    /*public Customer getCustomer(String email, String password){
         CustomerEntity customerEntity = customerRepository.findByEmailAndPassword(email, password);
         return providerConverter.customerEntityToCustomerModel(customerEntity);
-    }
+    }*/
 
     public Customer save(Customer customer){
         CustomerEntity customerEntity = providerConverter.customerModelToCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
+        return providerConverter.customerEntityToCustomerModel(customerEntity);
+    }
+
+    @Override
+    public Customer findByEmail(String email) {
+        CustomerEntity customerEntity = customerRepository.findByEmail(email);
         return providerConverter.customerEntityToCustomerModel(customerEntity);
     }
 }

@@ -14,6 +14,7 @@ public class RegistrationController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String userRegistration(Model model, Locale locale){
+        System.out.println("je suis dans le controller");
         model.addAttribute("registrationForm",new Customer());
         return "integrated:registration";
     }

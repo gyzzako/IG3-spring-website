@@ -29,7 +29,7 @@ public class ProviderConverter {
         customerEntity.setEmail(customer.getEmail());
         customerEntity.setFirstname(customer.getFirstname());
         customerEntity.setLastname(customer.getLastname());
-        customerEntity.setPhone_number(customer.getPhone_number());
+        customerEntity.setPhoneNumber(customer.getPhone_number());
         customerEntity.setAddress(customer.getAddress());
         customerEntity.setPassword(customer.getPassword());
         customerEntity.setGender(customer.getGender());
@@ -47,7 +47,7 @@ public class ProviderConverter {
         customer.setEmail(customerEntity.getEmail());
         customer.setFirstname(customerEntity.getFirstname());
         customer.setLastname(customerEntity.getLastname());
-        customer.setPhone_number(customerEntity.getPhone_number());
+        customer.setPhone_number(customerEntity.getPhoneNumber());
         customer.setAddress(customerEntity.getAddress());
         customer.setPassword(customerEntity.getPassword());
         customer.setGender(customerEntity.getGender());

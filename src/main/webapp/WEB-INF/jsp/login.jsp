@@ -12,7 +12,7 @@
     <div class="row">
 
         <form:form id="loginForm"
-                   method="post"
+                   method="POST"
                    modelAttribute="customerLogin">
 
             <h2 class="text-center">Se connecter</h2>
