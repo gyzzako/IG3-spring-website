@@ -11,12 +11,12 @@
 <div class="container">
     <div class="container-fluid connexionForm">
 
-        <h1 class="text-center">Inscription</h1>
+        <h1 class="text-center"> ${title} </h1>
         <br> <br>
         <%--@elvariable id="currentUser" type="java"--%>
         <form:form id="registration"
                    method="post"
-                   action="/website/registration/send"
+                   action="/website/registration"
                    modelAttribute="currentUser">
 
             <div class="form-group row textInput">

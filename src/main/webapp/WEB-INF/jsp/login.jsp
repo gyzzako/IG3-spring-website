@@ -16,7 +16,7 @@
                        method="POST"
                        modelAttribute="customerLogin">
 
-                <h2 class="text-center">Se connecter</h2>
+                <h2 class="text-center">${title}</h2>
                 <br><br>
                 <div class="form-group textInput">
                     <form:label path="username">email</form:label>

@@ -20,6 +20,7 @@ public class LoginController {
         if(error != null){
             model.addAttribute("badCredentials","mot de passe ou email non valide !");
         }
+        model.addAttribute("title","Se connecter");
         model.addAttribute("customerLogin",new Customer());
         return "integrated:login";
     }

@@ -22,7 +22,7 @@ public class CustomerDetailsServiceImplementation implements UserDetailsService 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Customer customer = customerDAO.findByUsername(username);
         if(customer != null){
-            System.out.println("----------DAO----------------");
+            System.out.println("----------DAO----------------"); //juste pour tester.
             System.out.println("Username dao :"+customer.getUsername());
             System.out.println("customer dao password :"+customer.getPassword());
             return customer;

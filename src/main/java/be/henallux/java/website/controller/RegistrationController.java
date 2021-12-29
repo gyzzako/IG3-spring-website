@@ -36,10 +36,11 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.GET)
     public String userRegistration(Model model, Locale locale){
         model.addAttribute("registrationForm",new Customer());
+        model.addAttribute("title","Inscription");
         return "integrated:registration";
     }
 
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String getUserFormData(Model model, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors){
 
         //checker si l'utilisateur qu'on veut inscrire existe dejà dans la bd, si oui alors on renvoie une erreur/message.

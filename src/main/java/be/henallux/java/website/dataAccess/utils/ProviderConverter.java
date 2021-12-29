@@ -27,7 +27,6 @@ public class ProviderConverter {
         CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setPassword(customer.getPassword()); //--> dejà crypté dans le WebSecurity.
         customerEntity.setCustomer_id(customer.getCustomer_id());
-        //customerEntity.setEmail(customer.getEmail()); --> remplacé par username
         customerEntity.setUsername(customer.getUsername());
         customerEntity.setFirstname(customer.getFirstname());
         customerEntity.setLastname(customer.getLastname());
@@ -35,7 +34,7 @@ public class ProviderConverter {
         customerEntity.setAddress(customer.getAddress());
         customerEntity.setPassword(customer.getPassword());
         customerEntity.setGender(customer.getGender());
-        //customerEntity.setAuthorities(customer.getAuthorities());
+
         customerEntity.setEnabled(customer.isEnabled());
         customerEntity.setNon_locked(customer.isAccountNonLocked());
         customerEntity.setAccount_non_expired(customer.isAccountNonExpired());
