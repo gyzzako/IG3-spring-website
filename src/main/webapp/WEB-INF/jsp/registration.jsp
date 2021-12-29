@@ -16,11 +16,11 @@
         <%--@elvariable id="currentUser" type="java"--%>
         <form:form id="registration"
                    method="post"
-                   action="/website/registration"
+                   action="/registration"
                    modelAttribute="currentUser">
 
             <div class="form-group row textInput">
-                <form:label path="username" class="col-sm-4 col-form-label">Email</form:label>
+                <form:label path="username" class="col-sm-4 col-form-label"><spring:message code="username"/></form:label>
                 <div class="col-sm-8">
                     <form:input path="username" class="form-control"></form:input>
                 </div>
@@ -29,7 +29,7 @@
             </div>
             <br>
             <div class="form-group row textInput">
-                <form:label path="password" class="col-sm-4 col-form-label">Mot de passe</form:label>
+                <form:label path="password" class="col-sm-4 col-form-label"><spring:message code="password"/></form:label>
                 <div class="col-sm-8">
                     <form:input type="password" path="password" class="form-control"></form:input>
                 </div>
@@ -37,7 +37,7 @@
             <form:errors path="password" class="connexionError" />
             <br>
             <div class="form-group row textInput">
-                <form:label path="firstname" class="col-sm-4 col-form-label">Prénom</form:label>
+                <form:label path="firstname" class="col-sm-4 col-form-label"><spring:message code="firstname"/></form:label>
                 <div class="col-sm-8">
                     <form:input path="firstname" class="form-control"></form:input>
                 </div>
@@ -45,7 +45,7 @@
             <form:errors path="firstname" class="connexionError" />
             <br>
             <div class="form-group row textInput">
-                <form:label path="lastname" class="col-sm-4 col-form-label">Nom</form:label>
+                <form:label path="lastname" class="col-sm-4 col-form-label"><spring:message code="lastname"/></form:label>
                 <div class="col-sm-8">
                     <form:input path="lastname" class="form-control"></form:input>
                 </div>
@@ -53,7 +53,7 @@
             <form:errors path="lastname" class="connexionError" />
             <br>
             <div class="form-group row textInput">
-                <form:label path="phone_number" class="col-sm-4 col-form-label">Téléphone</form:label>
+                <form:label path="phone_number" class="col-sm-4 col-form-label"><spring:message code="phoneNumber"/></form:label>
                 <div class="col-sm-8">
                     <form:input path="phone_number" class="form-control"></form:input>
                 </div>
@@ -61,7 +61,7 @@
             <form:errors path="phone_number" class="connexionError" />
             <br>
             <div class="form-group row textInput">
-                <form:label path="address" class="col-sm-4 col-form-label">Adresse</form:label>
+                <form:label path="address" class="col-sm-4 col-form-label"><spring:message code="address"/></form:label>
                 <div class="col-sm-8">
                     <form:input path="address" class="form-control"></form:input>
                 </div>
@@ -70,13 +70,16 @@
             <br>
 
             <div class="form-group row textInput">
-                <form:label path="gender" class="col-sm-4 col-form-label">Genre</form:label>
+                <form:label path="gender" class="col-sm-4 col-form-label"><spring:message code="gender"/></form:label>
                 <div class="col-sm-8">
                     <form:input path="gender" class="form-control"></form:input>
                 </div>
             </div>
-            <br> <br>
-            <form:button class="btn btn-primary text-center connexionBtn">s'inscrire</></form:button>
+            <br>
+            <form:errors path="gender" class="connexionError" />
+            <br>
+            <p>${customerExists}</p>
+            <form:button class="btn btn-primary text-center connexionBtn"><spring:message code="signup"/></></form:button>
         </form:form>
     </div>
 </div>

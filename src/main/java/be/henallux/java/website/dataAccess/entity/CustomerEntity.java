@@ -1,15 +1,13 @@
 package be.henallux.java.website.dataAccess.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
     //region Attributs
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private Integer customer_id;
 

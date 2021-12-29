@@ -31,11 +31,17 @@
     </ul>
 
     <div class="text-md-center me-4 buttons">
-        <a href="<spring:url value='/cart'/>" class="cart-icon" >cart <span class="iconify" data-icon="ion:cart-outline"> </span></a>
-        <a href="<spring:url value='/login'/>"><button type="button" class="btn btn-outline-primary me-2"><spring:message code="login"/></button></a>
-        <a href="<spring:url value='/registration'/>"  class="btn btn-primary" ><spring:message code="signup"/></a>
+        <a href="<spring:url value='/cart'/>"><button type="button" class="btn btn-outline-primary me-2"><spring:message code="cart"/><span class="iconify" data-icon="ion:cart-outline"> </span></button></a>
+        <sec:authorize access="isAuthenticated()">
+            <p><spring:message code="welcome"/> ${pageContext.request.userPrincipal.principal.username}</p>
+            <a href="<spring:url value='/logout'/>"><spring:message code="logout"/></a>
+        </sec:authorize>
 
-    </div>
+        <sec:authorize access="!isAuthenticated()">
+            <a href="<spring:url value='/login'/>"><button type="button" class="btn btn-outline-primary me-2"><spring:message code="login"/></button></a>
+            <a href="<spring:url value='/registration'/>"  class="btn btn-primary" ><spring:message code="signup"/></a>
+        </sec:authorize>
+        </div>
 </header>
 
 <div class="d-flex flex-row bd-highlight mb-3" style="height: auto;">

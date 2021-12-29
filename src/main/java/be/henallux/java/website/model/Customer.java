@@ -11,13 +11,11 @@ import java.util.List;
 
 public class Customer implements UserDetails {
     //region Attributs
-    @NotNull
     @Min(value = 1)
     private Integer customer_id;
 
     @NotNull
     @Size(min = 5, max = 50)
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String username;
 
     @NotNull(message = "le mot de passe est obligatoire !")
@@ -110,6 +108,10 @@ public class Customer implements UserDetails {
             }
         }
         return grantedAuthorities;
+    }
+
+    public String getAuthoritiesInString(){
+        return authorities;
     }
 
     public String getPassword(){
