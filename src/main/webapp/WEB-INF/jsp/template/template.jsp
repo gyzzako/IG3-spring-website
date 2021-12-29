@@ -15,6 +15,7 @@
     <spring:url var="localeEn" value="">
         <spring:param name="locale" value="en" />
     </spring:url>
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 </head>
 </head>
 <body>
@@ -29,9 +30,11 @@
         <li><a href="${localeEn}"><img class="ms-4" style="height: 40px; width: 40px;" alt="logo" src="<spring:url value='/images/countriesFlag/en.jpg'/>"/></a></li>
     </ul>
 
-    <div class="text-md-center me-4">
+    <div class="text-md-center me-4 buttons">
+        <a href="<spring:url value='/cart'/>" class="cart-icon" >cart <span class="iconify" data-icon="ion:cart-outline"> </span></a>
         <a href="<spring:url value='/login'/>"><button type="button" class="btn btn-outline-primary me-2"><spring:message code="login"/></button></a>
         <a href="<spring:url value='/registration'/>"  class="btn btn-primary" ><spring:message code="signup"/></a>
+
     </div>
 </header>
 

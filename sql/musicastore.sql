@@ -104,9 +104,24 @@ CREATE TABLE `musicastore`.`translation`(
 INSERT INTO `musicastore`.`category` VALUES (1),(2),(3),(4),(5);
 INSERT INTO `musicastore`.`discount` VALUES (1,20,STR_TO_DATE('27,11,2021','%d,%m,%Y'),STR_TO_DATE('30,11,2021','%d,%m,%Y'));
 INSERT INTO `musicastore`.`language` VALUES (1, 'fr'), (2,'en');
-INSERT INTO `musicastore`.`product` VALUES (1,'Guitare1', 'Belle guitare', 'Ibanez',1,1,20.6,'products/guitares/guitare-7.jpg'),(2,'Guitare2', 'Superbe guitare', 'Ibanez',1,1,40.6,'products/guitares/guitare-6.jpg'),
-                                           (3,'Guitare3', 'Magnifique guitare', 'Ibanez',1,1,206,'products/guitares/guitare-5.jpg'),(4,'Guitare4', 'Guitare de rock', 'Ibanez',1,1,27,'products/guitares/guitare-4.jpg'),
-                                           (5,'Piano1', 'Magnifique piano', 'Yamaha',1,2,800,'products/pianos/piano-1.jpg'),(6,'Violon', 'Violon en bois', 'Stentor',1,3,250,'products/violons/violon-1.jpg');
+
+INSERT INTO `musicastore`.`product` VALUES (1,'Ibanez PF1512 NT 12 Natural', 'Guitare acoustique, dreadnought, cutaway à 12 cordes, corps laminé et finition brillante', 'Ibanez',1,1,239.88,'products/guitares/guitare-7.jpg'),
+                                           (2,'Sigma Guitars DM12E', 'Avec le DM12E+, Sigma est une guitare acoustique à 12 cordes peu couteuse qui offre un son etonnamment puissant', 'Ibanez',1,1,304.00,'products/guitares/guitare-6.jpg'),
+                                           (3,'Red Hill AF-8', 'Magnifique guitare à 12 cordes, finition brillante, corps en sapin laminé et touches en laurier', 'Ibanez',1,1,131.20,'products/guitares/guitare-5.jpg'),
+                                           (4,'Fender CD-140SCE-12', 'Cuirassé electro-acoustique à 12 cordes, étui inclu, idéal pour les auteurs-compositeurs & interpretes', 'Ibanez',1,1,385.99,'products/guitares/guitare-4.jpg'),
+                                           (5,'YAMAHA U3 – NOIR POLI', 'Le summum de la série U, haut de ses 131cm, le U3 permet une palette de sons plus large qui donnera plus de profondeur et de puissance.', 'Yamaha',1,2,12800,'products/pianos/piano-1.jpg'),
+                                           (6,'Violon', 'Violon en bois', 'Stentor',1,3,250,'products/violons/violon-1.jpg'),
+                                           (7,'YAMAHA CLP 725 BLANC SATINÉ','Ce modèle CLP-725 possède déjà toutes les qualités minimales requises pour un premier piano.','Yamaha',1,2,1500.99,'products/pianos/piano-scene-2.jpg'),
+                                           (8,'YAMAHA B1 – BLANC POLI','ce modèle au rapport qualité/prix exceptionnel convient parfaitement pour l apprentissage du piano','Yamaha',1,2,580.99,'products/pianos/piano-scene-3.jpg'),
+                                           (9,'YAMAHA YDP 164 NOIR SATINÉ PACK','Toute l authenticité d un piano acoustique avec ce clavier GH3, agrémentée des avantages du numérique.','Yamaha',1,2,1210.00,'products/pianos/piano-numerique-2.jpg'),
+                                           (10,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d\’un superbe piano à queue et propose en plus d\’incomparables fonctions','Yamaha',1,2,100.99,'products/pianos/piano-numerique-3.jpg'),
+                                           (11,'YAMAHA GB1 SILENT SC2 – NOIR POLI','Ce modèle est très populaire grâce à sa taille compacte associée à une excellente qualité et un prix très attractif. Egalement disponible en location-achat. Ici avec système Silent','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-2.jpg'),
+                                           (12,'YAMAHA GC1','Ce modèle est très populaire grâce à sa taille compacte associée à une excellente qualité et un prix très attractif. Egalement disponible en location-achat','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-3.jpg'),
+                                           (13,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d’un superbe piano à queue et propose en plus d’incomparables fonctions','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-1.jpg'),
+                                           (14,'Violon Gliga Gems 2 Gloria ', 'Ce violon Gliga Gems 2 Gloria de très bonne qualité conviendra parfaitement aux musiciens de plus de 12 ans, en cours d apprentissage ou débutant en école de musique ou conservatoire.', 'Stentor',1,3,650,'products/violons/violon-2.jpg'),
+                                           (15,'Violoncelle Gliga Genial 1 ', 'Fait à la main, le violoncelle Genial 1 est idéal pour débuter l apprentissage de cet instrument. Fabriqué à partir de bois sélectionnés, sa table est en épicéa massif des Carpates.', 'Stentor',1,3,1650,'products/violons/violoncelle.jpg');
+
+
 INSERT INTO `musicastore`.`translation` VALUES (1,'Guitare',1,1), (2,'Guitar',2,1), (3,'Piano',1,2), (4,'Piano',2,2),(5,'Violon',1,3),(6,'Violin',2,3);
 
 /*-- INSERTION CUSTOMER--*/

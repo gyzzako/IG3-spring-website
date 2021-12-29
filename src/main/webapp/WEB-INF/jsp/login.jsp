@@ -22,14 +22,21 @@
                     <form:label path="username">email</form:label>
                     <form:input path="username" class="form-control"></form:input>
                 </div>
+                <form:errors path="username"  class="connexionError"/>
                 <br>
                 <div class="form-group textInput">
                     <form:label path="password">Mot de passe</form:label>
                     <form:input path="password" type="password" class="form-control"></form:input>
                     <br>
-                    <div class="mb-2 connexionBtn">
-                        <form:button class="btn btn-primary" >Connexion</form:button>
-                    </div>
+                    <form:errors path="password"  class="connexionError"/>
+                </div>
+                <br>
+                <div class="connexionError">
+                    <span> <spring:message code="${badCredentials}"/></span>
+                </div>
+
+                <div class="mb-2 connexionBtn">
+                    <form:button class="btn btn-primary" >Connexion</form:button>
                 </div>
             </form:form>
 

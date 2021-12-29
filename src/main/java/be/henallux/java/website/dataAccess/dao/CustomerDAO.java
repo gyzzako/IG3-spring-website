@@ -18,24 +18,6 @@ public class CustomerDAO implements CustomerDataAccess{
         this.providerConverter = providerConverter;
     }
 
-    /*public Customer getCustomer(String email, String password){
-        CustomerEntity customerEntity = customerRepository.findByEmailAndPassword(email, password);
-        return providerConverter.customerEntityToCustomerModel(customerEntity);
-    }*/
-
-    public Customer save(Customer customer){
-        CustomerEntity customerEntity = providerConverter.customerModelToCustomerEntity(customer);
-        customerEntity = customerRepository.save(customerEntity);
-        return providerConverter.customerEntityToCustomerModel(customerEntity);
-    }
-
-   /* @Override
-    public Customer findByEmail(String email) {
-        CustomerEntity customerEntity = customerRepository.findByEmail(email);
-        if (customerEntity == null)
-            System.out.println("je suis null");
-        return providerConverter.customerEntityToCustomerModel(customerEntity);
-    }*/
 
     @Override
     public Customer findByUsername(String username) {
@@ -45,6 +27,13 @@ public class CustomerDAO implements CustomerDataAccess{
         // juste pour tester qu'on renvoie bien les identifiants de l'utilisateur de la bd.
         System.out.println(customerEntity.getUsername());
         System.out.println(customerEntity.getPassword());
+        return providerConverter.customerEntityToCustomerModel(customerEntity);
+    }
+
+    @Override
+    public Customer save(Customer customer) {
+        CustomerEntity customerEntity = providerConverter.customerModelToCustomerEntity(customer);
+        customerEntity = customerRepository.save(customerEntity);
         return providerConverter.customerEntityToCustomerModel(customerEntity);
     }
 }

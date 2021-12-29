@@ -16,7 +16,10 @@ public class LoginController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String login(Model model, Locale locale){
+    public String login(Model model, Locale locale,@RequestParam(required = false)String error){
+        if(error != null){
+            model.addAttribute("badCredentials","mot de passe ou email non valide !");
+        }
         model.addAttribute("customerLogin",new Customer());
         return "integrated:login";
     }

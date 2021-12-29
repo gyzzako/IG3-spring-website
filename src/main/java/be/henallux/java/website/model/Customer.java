@@ -20,21 +20,19 @@ public class Customer implements UserDetails {
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String username;
 
-    @NotNull
-    @Size(min = 8, max = 50)
+    @NotNull(message = "le mot de passe est obligatoire !")
+    @Size(min = 5, max = 50)
     private String password;
 
     @NotNull
-    @Size(min = 5, max = 50)
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @Size(min = 2, max = 50)
     private String firstname;
 
     @NotNull
-    @Size(min = 5, max = 50)
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @Size(min = 2, max = 50)
     private String lastname;
 
-    @Max(value = 10)
+    @Size(max = 10)
     private String phone_number;
 
     @NotNull
