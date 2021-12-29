@@ -23,7 +23,7 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1 mb-4 border-bottom">
     <a href="<spring:url value='/'/>"><img class="ms-4" style="height: 100px; width: 150px;" alt="logo" src="<spring:url value='/images/logo.png'/>"/></a>
 
-    <a href="<spring:url value='/'/>"><spring:message code="category"/></a>
+    <a href="<spring:url value='/'/>" class="category"><spring:message code="category"/></a>
 
     <ul style="list-style-type: none; display: flex;">
         <li><a href="${localeFr}"><img class="ms-4" style="height: 40px; width: 40px;" alt="logo" src="<spring:url value='/images/countriesFlag/fr.png'/>"/></a></li>
