@@ -8,32 +8,32 @@ public class Category {
     //region Attributs
     @NotNull
     @Min(value = 1)
-    private Integer category_id;
+    private Integer categoryId;
 
     //endregion
 
 
     //region Constructors
-    public Category(Integer category_id){
-        setCategory_id(category_id);
+    public Category(Integer categoryId){
+        setCategoryId(categoryId);
     }
 
     public Category(){
-        this(null);
+
     }
     //endregion
 
 
     //region GETTERS
-    public Integer getCategory_id() {
-        return this.category_id;
+    public Integer getCategoryId() {
+        return this.categoryId;
     }
     //endregion
 
 
     //region SETTERS
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
     //endregion
 }

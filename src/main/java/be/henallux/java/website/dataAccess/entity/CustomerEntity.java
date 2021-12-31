@@ -9,7 +9,7 @@ public class CustomerEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private Integer customer_id;
+    private Integer customerId;
 
 
     @Column(name = "username")
@@ -37,16 +37,16 @@ public class CustomerEntity {
     private String authorities;
 
     @Column(name = "credentials_non_expired")
-    private Boolean credentials_non_expired;
+    private Boolean credentialsNonExpired;
 
     @Column(name = "account_non_expired")
-    private Boolean account_non_expired;
+    private Boolean accountNonExpired;
 
     @Column(name = "enabled")
     private Boolean enabled;
 
     @Column(name = "non_locked")
-    private Boolean non_locked;
+    private Boolean nonLocked;
     //endregion
 
     public CustomerEntity(){
@@ -54,77 +54,93 @@ public class CustomerEntity {
     }
 
     //region GETTERS
-    public Integer getCustomer_id(){
-        return this.customer_id;
+
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public String getUsername(){
-        return this.username;
+    public String getUsername() {
+        return username;
     }
 
-    public String getPassword(){
-        return this.password;
+    public String getPassword() {
+        return password;
     }
 
-    public String getLastname(){
-        return this.lastname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getFirstname(){
-        return this.firstname;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getPhoneNumber(){
-        return this.phoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
-    public String getAddress(){
-        return  this.address;
+
+    public String getAddress() {
+        return address;
     }
-    public String getGender(){
-        return this.gender;
+
+    public String getGender() {
+        return gender;
     }
 
     public String getAuthorities() {
         return authorities;
     }
 
-    public Boolean getCredentials_non_expired() {
-        return credentials_non_expired;
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
     }
+
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
     public Boolean getEnabled() {
         return enabled;
     }
-    public Boolean getNon_locked() {
-        return non_locked;
-    }
 
+    public Boolean getNonLocked() {
+        return nonLocked;
+    }
     //endregion
 
 
 
     //region SETTERS
-    public void setCustomer_id(Integer customer_id){
-        this.customer_id = customer_id;
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
-    public void setUsername(String username){
+
+    public void setUsername(String username) {
         this.username = username;
     }
-    public void setPassword(String password){
+
+    public void setPassword(String password) {
         this.password = password;
     }
-    public void setLastname(String lastname){
+
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-    public void setFirstname(String firstname){
+
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-    public void setPhoneNumber(String phone_number){
-        this.phoneNumber = phone_number;
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
-    public void setAddress(String address){
+
+    public void setAddress(String address) {
         this.address = address;
     }
-    public void setGender(String gender){
+
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -132,28 +148,21 @@ public class CustomerEntity {
         this.authorities = authorities;
     }
 
-    public void setCredentials_non_expired(Boolean credentials_non_expired) {
-        this.credentials_non_expired = credentials_non_expired;
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
     }
 
-    public Boolean getAccount_non_expired() {
-        return account_non_expired;
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
     }
-
-    public void setAccount_non_expired(Boolean account_non_expired) {
-        this.account_non_expired = account_non_expired;
-    }
-
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
-    public void setNon_locked(Boolean non_locked) {
-        this.non_locked = non_locked;
+    public void setNonLocked(Boolean nonLocked) {
+        this.nonLocked = nonLocked;
     }
+
     //endregion
-
-
-
 }

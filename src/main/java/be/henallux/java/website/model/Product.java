@@ -1,18 +1,24 @@
 package be.henallux.java.website.model;
 
+import org.apache.tomcat.jni.Local;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.util.Date;
 
 public class Product {
     //region Attributs
     @NotNull
     @Min(value = 1)
-    private Integer product_id;
+    private Integer productId;
 
     @NotNull
     @Size(min = 5, max = 50)
-    private String product_name;
+    private String productName;
 
     @NotNull
     @Size(min = 10, max = 200)
@@ -22,10 +28,10 @@ public class Product {
     @Size(min = 5, max = 60)
     private String brand;
 
-    private Discount discount_fk;
+    private Discount discount;
 
     @NotNull
-    private Category category_fk;
+    private Category category;
 
     @NotNull
     @Min(value = 0)
@@ -37,28 +43,27 @@ public class Product {
 
 
     //region Constructors
-    public Product(Integer product_id, String product_name, String description, String brand, Discount discount_fk, Category category_fk, Float price){
-        setProduct_id(product_id);
-        setProduct_name(product_name);
+    public Product(Integer productId, String productName, String description, String brand, Discount discount, Category category, Float price){
+        setProductId(productId);
+        setProductName(productName);
         setDescription(description);
         setBrand(brand);
-        setDiscount_fk(discount_fk);
-        setCategory_fk(category_fk);
+        setDiscount(discount);
+        setCategory(category);
         setPrice(price);
     }
 
     public Product(){
-        this(null, null, null, null, null, null, null);
     }
     //endregion
 
 
     //region GETTERS
-    public Integer getProduct_id(){
-        return this.product_id;
+    public Integer getProductId(){
+        return this.productId;
     }
-    public String getProduct_name(){
-        return this.product_name;
+    public String getProductName(){
+        return this.productName;
     }
     public String getDescription(){
         return this.description;
@@ -66,14 +71,27 @@ public class Product {
     public String getBrand(){
         return this.brand;
     }
-    public Discount getDiscount_fk(){
-        return this.discount_fk;
+    public Discount getDiscount(){
+        return this.discount;
     }
-    public Category getCategory_fk(){
-        return this.category_fk;
+    public Category getCategory(){
+        return this.category;
     }
     public Float getPrice(){
-        return this.price;
+        if(isOnDiscount()){
+            return this.price - (this.price * discount.getPercentageOff()/100);
+        }else {
+            return this.price;
+        }
+    }
+    public boolean isOnDiscount(){ //TODO: calculs des trucs de promotions dans la service -> bouger cette méthode
+        if(this.discount.getDiscountId() != null){
+            Date startDate = discount.getStartDate();
+            Date endDate = discount.getEndDate();
+            Date currentDate = new Date();
+            return currentDate.getTime() >= startDate.getTime() && endDate.getTime() >= currentDate.getTime();
+        }
+        return false;
     }
     public String getImageName() {
         return imageName;
@@ -82,11 +100,11 @@ public class Product {
 
 
     //region SETTERS
-    public void setProduct_id(Integer product_id){
-        this.product_id = product_id;
+    public void setProductId(Integer productId){
+        this.productId = productId;
     }
-    public void setProduct_name(String product_name){
-        this.product_name = product_name;
+    public void setProductName(String productName){
+        this.productName = productName;
     }
     public void setDescription(String description){
         this.description = description;
@@ -94,11 +112,11 @@ public class Product {
     public void setBrand(String brand){
         this.brand = brand;
     }
-    public void setDiscount_fk(Discount discount_fk){
-        this.discount_fk = discount_fk;
+    public void setDiscount(Discount discount){
+        this.discount = discount;
     }
-    public void setCategory_fk(Category category_fk){
-        this.category_fk = category_fk;
+    public void setCategory(Category category){
+        this.category = category;
     }
     public void setPrice(Float price){
         this.price= price;

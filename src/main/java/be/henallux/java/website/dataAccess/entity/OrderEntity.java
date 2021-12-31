@@ -9,20 +9,20 @@ public class OrderEntity {
     //region Attributs
     @Id
     @Column(name = "order_id")
-    private Integer order_id;
+    private Integer orderId;
 
     @Column(name = "order_date")
-    private java.util.Date order_date;
+    private java.util.Date orderDate;
 
     @Column(name = "delivery_date")
-    private java.util.Date delivery_date;
+    private java.util.Date deliveryDate;
 
     @Column(name = "is_order_paid")
-    private Boolean is_order_paid;
+    private Boolean isOrderPaid;
 
     @JoinColumn(name = "customer_fk", referencedColumnName = "customer_id")
     @ManyToOne
-    private CustomerEntity customer_fk;
+    private CustomerEntity customer;
     //endregion
 
     public OrderEntity(){
@@ -31,47 +31,51 @@ public class OrderEntity {
 
 
     //region GETTERS
-    public Integer getOrder_id() {
-        return order_id;
+
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public Date getOrder_date() {
-        return order_date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public Date getDelivery_date() {
-        return delivery_date;
+    public Date getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public Boolean getIs_order_paid() {
-        return is_order_paid;
+    public Boolean getIsOrderPaid() {
+        return isOrderPaid;
     }
 
-    public CustomerEntity getCustomer_fk() {
-        return customer_fk;
+    public CustomerEntity getCustomer() {
+        return customer;
     }
+
     //endregion
 
 
     //region SETTERS
-    public void setOrder_id(Integer order_id) {
-        this.order_id = order_id;
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
-    public void setOrder_date(Date order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public void setDelivery_date(Date delivery_date) {
-        this.delivery_date = delivery_date;
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
-    public void setIs_order_paid(Boolean is_order_paid) {
-        this.is_order_paid = is_order_paid;
+    public void setIsOrderPaid(Boolean orderPaid) {
+        isOrderPaid = orderPaid;
     }
 
-    public void setCustomer_fk(CustomerEntity customer_fk) {
-        this.customer_fk = customer_fk;
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
     }
+
     //endregion
 }

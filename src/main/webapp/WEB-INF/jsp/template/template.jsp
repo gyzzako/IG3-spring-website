@@ -44,7 +44,7 @@
         </div>
 </header>
 
-<div class="d-flex flex-row bd-highlight mb-3" style="height: auto;">
+<div class="d-flex flex-row bd-highlight mb-3">
     <div class="container-fluid mx-4" style="width: 90%;">
         <tiles:insertAttribute name="main-content" />
     </div>

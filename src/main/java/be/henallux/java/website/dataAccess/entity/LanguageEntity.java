@@ -11,7 +11,7 @@ public class LanguageEntity {
     //region Attributs
     @Id
     @Column(name = "language_id")
-    private Integer language_id;
+    private Integer languageId;
 
     @Column(name = "locale")
     private String locale;
@@ -22,12 +22,12 @@ public class LanguageEntity {
     }
 
     //---Getter and setter
-    public Integer getLanguage_id() {
-        return language_id;
+    public Integer getLanguageId() {
+        return languageId;
     }
 
-    public void setLanguage_id(Integer language_id) {
-        this.language_id = language_id;
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
     }
 
     public String getLocale() {

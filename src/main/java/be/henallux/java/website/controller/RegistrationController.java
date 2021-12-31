@@ -1,12 +1,10 @@
 package be.henallux.java.website.controller;
 
 import be.henallux.java.website.Constants;
-import be.henallux.java.website.dataAccess.dao.CustomerDAO;
-import be.henallux.java.website.dataAccess.dao.CustomerDataAccess;
 import be.henallux.java.website.model.Customer;
+import be.henallux.java.website.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.MessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,12 +21,12 @@ import java.util.Locale;
 @SessionAttributes({Constants.CURRENT_USER})
 public class RegistrationController {
 
-    private CustomerDataAccess customerDAO;
+    private CustomerService customerService;
     private MessageSource messageSource;
 
     @Autowired
-    public RegistrationController(CustomerDAO customerDAO, MessageSource messageSource){
-        this.customerDAO = customerDAO;
+    public RegistrationController(CustomerService customerService, MessageSource messageSource){
+        this.customerService = customerService;
         this.messageSource = messageSource;
     }
 
@@ -44,26 +42,21 @@ public class RegistrationController {
         return "integrated:registration";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String getUserFormData(Model model, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors, Locale locale){
-
-        //checker si l'utilisateur qu'on veut inscrire existe dejà dans la bd, si oui alors on renvoie une erreur/message.
-        Customer customerExistsCheck = customerDAO.findByUsername(customer.getUsername());
-        if(customerExistsCheck != null){
-            model.addAttribute("customerExists", messageSource.getMessage("userAlreadyExist", new Object[0], locale));
-            return "integrated:registration";
-        }
-        customer.setAuthorities("ROLE_USER");
-        customer.setCredentials_non_expired(true);
-        customer.setEnabled(true);
-        customer.setAccount_non_locked(true);
-        customer.setAccount_non_expired(true);
-
-        // l'inscription ne se fait que s'il n'y a aucune erreur.
+    @RequestMapping(value="/send", method = RequestMethod.POST) //TODO: crash quand on change de langue quand on est dans ce controller -> pq?????
+    public String getUserFormData(Model model,Locale locale, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors){
         if(!errors.hasErrors()){
-            customerDAO.save(customer);
-            return "redirect:/";
+            System.out.println("pas error");
+            boolean isRegistered = customerService.saveCustomer(customer);
+            if(isRegistered){
+                System.out.println("isRegistered");
+                return "redirect:/";
+            }else{
+                System.out.println("pasRegistered");
+                model.addAttribute("customerExists", messageSource.getMessage("userAlreadyExist", new Object[0], locale));
+                return "integrated:registration";
+            }
         }
+        System.out.println("autre");
         model.addAttribute("errors",errors);
         return "integrated:registration";
     }

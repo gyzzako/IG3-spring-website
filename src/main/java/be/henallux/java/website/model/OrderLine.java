@@ -7,11 +7,11 @@ public class OrderLine {
     //region Attribut
     @NotNull
     @Min(value = 1)
-    private Integer order_line_id;
+    private Integer orderLineId;
 
     @NotNull
     @Min(value = 1)
-    private Float real_price;
+    private Float realPrice;
 
     @NotNull
     @Min(value = 1)
@@ -24,28 +24,28 @@ public class OrderLine {
 
 
     //region Constructors
-    public OrderLine(Integer order_line_id,Float real_price,Integer quantity,Order order,Product product){
+    public OrderLine(Integer orderLineId,Float realPrice,Integer quantity,Order order,Product product){
         setOrder(order);
-        setOrder_line_id(order_line_id);
-        setReal_price(real_price);
+        setOrderLineId(orderLineId);
+        setRealPrice(realPrice);
         setProduct(product);
         setQuantity(quantity);
     }
 
     public OrderLine(){
-        this(null, null, null, null, null);
+
     }
     //endregion
 
 
 
     //region GETTERS
-    public Integer getOrder_line_id() {
-        return order_line_id;
+    public Integer getOrderLineId() {
+        return orderLineId;
     }
 
-    public Float getReal_price() {
-        return real_price;
+    public Float getRealPrice() {
+        return realPrice;
     }
 
     public Integer getQuantity() {
@@ -63,12 +63,12 @@ public class OrderLine {
 
 
     //region SETTERS
-    public void setOrder_line_id(Integer order_line_id) {
-        this.order_line_id = order_line_id;
+    public void setOrderLineId(Integer orderLineId) {
+        this.orderLineId = orderLineId;
     }
 
-    public void setReal_price(Float real_price) {
-        this.real_price = real_price;
+    public void setRealPrice(Float realPrice) {
+        this.realPrice = realPrice;
     }
 
     public void setQuantity(Integer quantity) {

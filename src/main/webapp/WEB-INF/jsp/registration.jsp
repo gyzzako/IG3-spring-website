@@ -16,7 +16,7 @@
         <%--@elvariable id="currentUser" type="java"--%>
         <form:form id="registration"
                    method="post"
-                   action="/registration"
+                   action="/registration/send"
                    modelAttribute="currentUser">
 
             <div class="form-group row textInput">
@@ -53,12 +53,12 @@
             <form:errors path="lastname" class="connexionError" />
             <br>
             <div class="form-group row textInput">
-                <form:label path="phone_number" class="col-sm-4 col-form-label"><spring:message code="phoneNumber"/></form:label>
+                <form:label path="phoneNumber" class="col-sm-4 col-form-label"><spring:message code="phoneNumber"/></form:label>
                 <div class="col-sm-8">
-                    <form:input path="phone_number" class="form-control"></form:input>
+                    <form:input path="phoneNumber" class="form-control"></form:input>
                 </div>
             </div>
-            <form:errors path="phone_number" class="connexionError" />
+            <form:errors path="phoneNumber" class="connexionError" />
             <br>
             <div class="form-group row textInput">
                 <form:label path="address" class="col-sm-4 col-form-label"><spring:message code="address"/></form:label>

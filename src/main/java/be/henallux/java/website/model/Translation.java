@@ -8,7 +8,7 @@ public class Translation {
     //region Attributs
     @NotNull
     @Min(value = 1)
-    private Integer translation_id;
+    private Integer translationId;
 
     @NotNull
     @Size(min = 5, max = 50)
@@ -23,22 +23,22 @@ public class Translation {
 
 
     //region Constructors
-    public Translation(Integer translation_id, String label, Language language, Category category){
+    public Translation(Integer translationId, String label, Language language, Category category){
         setCategory(category);
         setLabel(label);
-        setTranslation_id(translation_id);
+        setTranslationId(translationId);
         setLanguage(language);
     }
 
     public Translation(){
-        this(null, null, null, null);
+
     }
     //endregion
 
 
     //region GETTERS
-    public Integer getTranslation_id() {
-        return translation_id;
+    public Integer getTranslationId() {
+        return translationId;
     }
 
     public String getLabel() {
@@ -56,8 +56,8 @@ public class Translation {
 
 
     //region SETTERS
-    public void setTranslation_id(Integer translation_id) {
-        this.translation_id = translation_id;
+    public void setTranslationId(Integer translationId) {
+        this.translationId = translationId;
     }
 
     public void setLabel(String label) {

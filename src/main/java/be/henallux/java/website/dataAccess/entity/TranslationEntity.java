@@ -8,18 +8,18 @@ public class TranslationEntity {
     //region Attributs
     @Id
     @Column(name = "translation_id")
-    private Integer translation_id;
+    private Integer translationId;
 
     @Column(name = "label")
     private String label;
 
     @JoinColumn(name = "language_fk", referencedColumnName = "language_id")
     @ManyToOne
-    private LanguageEntity language_fk; //TODO: j'ai entendu la prof dire qu'il faut juste mettre language et non language_fk comme nom de variable. pareil pour les autres
+    private LanguageEntity language; //TODO: j'ai entendu la prof dire qu'il faut juste mettre language et non language_fk comme nom de variable. pareil pour les autres
 
     @JoinColumn(name = "category_fk", referencedColumnName = "category_id")
     @ManyToOne
-    private CategoryEntity category_fk;
+    private CategoryEntity category;
     //endregion
 
     public TranslationEntity(){
@@ -27,38 +27,42 @@ public class TranslationEntity {
     }
 
     //region GETTERS
-    public Integer getTranslation_id() {
-        return translation_id;
+
+    public Integer getTranslationId() {
+        return translationId;
     }
 
     public String getLabel() {
         return label;
     }
 
-    public LanguageEntity getLanguage_fk() {
-        return language_fk;
+    public LanguageEntity getLanguage() {
+        return language;
     }
 
-    public CategoryEntity getCategory_fk() {
-        return category_fk;
+    public CategoryEntity getCategory() {
+        return category;
     }
+
     //endregion
 
     //region SETTERS
-    public void setTranslation_id(Integer translation_id) {
-        this.translation_id = translation_id;
+
+    public void setTranslationId(Integer translationId) {
+        this.translationId = translationId;
     }
 
     public void setLabel(String label) {
         this.label = label;
     }
 
-    public void setLanguage_fk(LanguageEntity language_fk) {
-        this.language_fk = language_fk;
+    public void setLanguage(LanguageEntity language) {
+        this.language = language;
     }
 
-    public void setCategory_fk(CategoryEntity category_fk) {
-        this.category_fk = category_fk;
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
+
     //endregion
 }

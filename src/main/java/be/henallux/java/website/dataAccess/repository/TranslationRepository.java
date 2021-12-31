@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.ArrayList;
 
 public interface TranslationRepository extends JpaRepository<TranslationEntity, Integer> {
-    @Query("SELECT translation from TranslationEntity translation WHERE translation.language_fk.locale = ?1")
+    @Query("SELECT translation from TranslationEntity translation WHERE translation.language.locale = ?1")
     ArrayList<TranslationEntity> findByLocale(String locale);
 }

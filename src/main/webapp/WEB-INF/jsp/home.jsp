@@ -16,7 +16,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
                 <c:forEach items="${ categories }" var="category">
                     <li class="nav-item">
-                        <a href="<spring:url value="/category/${category.getCategory().getCategory_id()}"/>" class="nav-link link-dark">
+                        <a href="<spring:url value="/category/${category.getCategory().getCategoryId()}"/>" class="nav-link link-dark">
                             <svg class="bi me-2" width="16" height="16"></svg>
                                 ${category.getLabel()}
                         </a>

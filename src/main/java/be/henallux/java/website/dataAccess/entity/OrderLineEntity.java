@@ -8,21 +8,21 @@ public class OrderLineEntity {
     //region Attributs
     @Id
     @Column(name = "order_line_id")
-    private Integer order_line_id;
+    private Integer orderLineId;
 
     @Column(name = "real_price")
-    private Float real_price;
+    private Float realPrice;
 
     @Column(name = "quantity")
     private Integer quantity;
 
     @JoinColumn(name = "order_fk", referencedColumnName = "order_id")
     @ManyToOne
-    private OrderEntity order_fk;
+    private OrderEntity order;
 
     @JoinColumn(name = "product_fk", referencedColumnName = "product_id")
     @ManyToOne
-    private ProductEntity product_fk;
+    private ProductEntity product;
     //endregion
 
     public OrderLineEntity(){
@@ -30,48 +30,52 @@ public class OrderLineEntity {
     }
 
     //region GETTERS
-    public Integer getOrder_line_id() {
-        return order_line_id;
+
+    public Integer getOrderLineId() {
+        return orderLineId;
     }
 
-    public Float getReal_price() {
-        return real_price;
+    public Float getRealPrice() {
+        return realPrice;
     }
 
     public Integer getQuantity() {
         return quantity;
     }
 
-    public OrderEntity getOrder_fk() {
-        return order_fk;
+    public OrderEntity getOrder() {
+        return order;
     }
 
-    public ProductEntity getProduct_fk() {
-        return product_fk;
+    public ProductEntity getProduct() {
+        return product;
     }
+
     //endregion
 
 
 
     //region SETTERS
-    public void setOrder_line_id(Integer order_line_id) {
-        this.order_line_id = order_line_id;
+
+    public void setOrderLineId(Integer orderLineId) {
+        this.orderLineId = orderLineId;
     }
 
-    public void setReal_price(Float real_price) {
-        this.real_price = real_price;
+    public void setRealPrice(Float realPrice) {
+        this.realPrice = realPrice;
     }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public void setOrder_fk(OrderEntity order_fk) {
-        this.order_fk = order_fk;
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 
-    public void setProduct_fk(ProductEntity product_fk) {
-        this.product_fk = product_fk;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
     }
+
     //endregion
 }

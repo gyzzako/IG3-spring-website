@@ -12,12 +12,18 @@
             <div class="row">
                 <c:forEach items="${ products }" var="product">
                     <div class="card p-2 productCard" style="width: 20rem;">
-                        <a style="color: black; text-decoration: none;" href="<spring:url value="/product/${product.getProduct_id()}"/>">
+                        <a style="color: black; text-decoration: none;" href="<spring:url value="/product/${product.getProductId()}"/>">
                             <img class="card-img-top" height="250px" src='<spring:url value="/images/${product.getImageName()}"/>' alt="Card image cap"/>
                             <div class="card-body">
-                                <h5 class="card-title">${ product.getProduct_name()}</h5>
+                                <h5 class="card-title">${ product.getProductName()}</h5>
                                 <p class="card-text">${ product.getDescription()}</p>
-                                <p class="card-text">${ product.getPrice()}€</p>
+                                <c:if test = "${product.isOnDiscount()}">
+                                <p style="color: red;">
+                                        <spring:message code="discount"/>
+                                        ${product.getDiscount().getPercentageOff()}%
+                                <p>
+                                </c:if>
+                                <p class="card-text">${product.getPrice()}€</p>
                             </div>
                         </a>
                     </div>

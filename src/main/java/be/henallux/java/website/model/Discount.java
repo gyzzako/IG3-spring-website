@@ -8,59 +8,59 @@ public class Discount {
     //region Attributs
     @NotNull
     @Min(value = 1)
-    private Integer discount_id;
+    private Integer discountId;
 
     @NotNull
     @Min(value = 1)
-    private Float percentage_off;
+    private Float percentageOff;
 
-    private Date start_date;
-    private Date end_date;
+    private Date startDate;
+    private Date endDate;
     //endregion
 
 
     //region Constructors
-    public Discount(Integer discount_id,Float percentage_off,Date start_date, Date end_date){
-        setDiscount_id(discount_id);
-        setEnd_date(end_date);
-        setStart_date(start_date);
-        setPercentage_off(percentage_off);
+    public Discount(Integer discountId,Float percentageOff,Date startDate, Date endDate){
+        setDiscountId(discountId);
+        setEndDate(endDate);
+        setStartDate(startDate);
+        setPercentageOff(percentageOff);
     }
     public Discount(){
-        this(null, null, null, null);
+
     }
     //endregion
 
 
     //region GETTERS
-    public Integer getDiscount_id(){
-        return this.discount_id;
+    public Integer getDiscountId(){
+        return this.discountId;
     }
 
-    public Float getPercentage_off(){
-        return this.percentage_off;
+    public Float getPercentageOff(){
+        return this.percentageOff;
     }
-    public Date getStart_date(){
-        return this.start_date;
+    public Date getStartDate(){
+        return this.startDate;
     }
-    public Date getEnd_date(){
-        return this.end_date;
+    public Date getEndDate(){
+        return this.endDate;
     }
     //endregion
 
 
     //region SETTERS
-    public void setDiscount_id(Integer discount_id){
-        this.discount_id = discount_id;
+    public void setDiscountId(Integer discountId){
+        this.discountId = discountId;
     }
-    public void setPercentage_off(Float percentage_off){
-        this.percentage_off = percentage_off;
+    public void setPercentageOff(Float percentageOff){
+        this.percentageOff = percentageOff;
     }
-    public void setStart_date(Date start_date){
-        this.start_date = start_date;
+    public void setStartDate(Date startDate){
+        this.startDate = startDate;
     }
-    public void setEnd_date(Date end_date){
-        this.end_date = end_date;
+    public void setEndDate(Date endDate){
+        this.endDate = endDate;
     }
     //endregion
 }

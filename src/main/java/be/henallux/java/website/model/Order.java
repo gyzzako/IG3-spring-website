@@ -8,52 +8,52 @@ public class Order {
     //region Attributs
     @NotNull
     @Min(value = 1)
-    private Integer order_id;
+    private Integer orderId;
 
     @NotNull
-    private Date order_date;
+    private Date orderDate;
 
     @NotNull
-    private Date delivery_date;
+    private Date deliveryDate;
 
     @NotNull
-    private Boolean is_order_paid;
+    private Boolean isOrderPaid;
 
     private Customer customer;
     //endregion
 
 
     //region Constructors
-    public Order(Integer order_id,Date order_date,Date delivery_date,Boolean is_order_paid,Customer customer){
+    public Order(Integer orderId,Date orderDate,Date deliveryDate,Boolean isOrderPaid,Customer customer){
         setCustomer(customer);
-        setDelivery_date(delivery_date);
-        setIs_order_paid(is_order_paid);
-        setOrder_date(order_date);
-        setOrder_id(order_id);
+        setDeliveryDate(deliveryDate);
+        setIsOrderPaid(isOrderPaid);
+        setOrderDate(orderDate);
+        setOrderId(orderId);
     }
 
     public Order(){
-        this(null, null, null, null, null);
+
     }
     //endregion
 
 
 
     //region GETTERS
-    public Integer getOrder_id() {
-        return order_id;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public Date getOrder_date() {
-        return order_date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public Date getDelivery_date() {
-        return delivery_date;
+    public Date getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public Boolean getIs_order_paid() {
-        return is_order_paid;
+    public Boolean getIsOrderPaid() {
+        return isOrderPaid;
     }
 
     public Customer getCustomer() {
@@ -63,20 +63,20 @@ public class Order {
 
 
     //region SETTERS
-    public void setOrder_id(Integer order_id) {
-        this.order_id = order_id;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
-    public void setOrder_date(Date order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public void setDelivery_date(Date delivery_date) {
-        this.delivery_date = delivery_date;
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
-    public void setIs_order_paid(Boolean is_order_paid) {
-        this.is_order_paid = is_order_paid;
+    public void setIsOrderPaid(Boolean isOrderPaid) {
+        this.isOrderPaid = isOrderPaid;
     }
 
     public void setCustomer(Customer customer) {

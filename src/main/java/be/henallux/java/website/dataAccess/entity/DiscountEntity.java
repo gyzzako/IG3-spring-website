@@ -12,16 +12,16 @@ public class DiscountEntity {
     //region Attributs
     @Id
     @Column(name = "discount_id")
-    private Integer discount_id;
+    private Integer discountId;
 
     @Column(name = "percentage_off")
-    private Float percentage_off;
+    private Float percentageOff;
 
     @Column(name = "start_date")
-    private Date start_date;
+    private Date startDate;
 
     @Column(name = "end_date")
-    private Date end_date;
+    private Date endDate;
     //endregion
 
 
@@ -31,41 +31,45 @@ public class DiscountEntity {
 
 
     //region GETTERS
-    public Integer getDiscount_id() {
-        return discount_id;
+
+    public Integer getDiscountId() {
+        return discountId;
     }
 
-    public Float getPercentage_off() {
-        return percentage_off;
+    public Float getPercentageOff() {
+        return percentageOff;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getEndDate() {
+        return endDate;
     }
+
     //endregion
 
 
 
     //region SETTERS
-    public void setDiscount_id(Integer discount_id) {
-        this.discount_id = discount_id;
+
+    public void setDiscountId(Integer discountId) {
+        this.discountId = discountId;
     }
 
-    public void setPercentage_off(Float percentage_off) {
-        this.percentage_off = percentage_off;
+    public void setPercentageOff(Float percentageOff) {
+        this.percentageOff = percentageOff;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
+
     //endregion
 
 }

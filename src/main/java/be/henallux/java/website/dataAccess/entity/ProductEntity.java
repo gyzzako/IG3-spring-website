@@ -8,10 +8,10 @@ public class ProductEntity {
     //region Attributs
     @Id
     @Column(name = "product_id")
-    private Integer product_id;
+    private Integer productId;
 
     @Column(name = "product_name")
-    private String product_name;
+    private String productName;
 
     @Column(name = "description")
     private String description;
@@ -21,11 +21,11 @@ public class ProductEntity {
 
     @JoinColumn(name = "discount_fk", referencedColumnName = "discount_id")
     @ManyToOne
-    private DiscountEntity discount_fk;
+    private DiscountEntity discount;
 
     @JoinColumn(name = "category_fk", referencedColumnName = "category_id")
     @ManyToOne
-    private CategoryEntity category_fk;
+    private CategoryEntity category;
 
     @Column(name = "price")
     private Float price;
@@ -39,12 +39,13 @@ public class ProductEntity {
     }
 
     //region GETTERS
-    public Integer getProduct_id() {
-        return product_id;
+
+    public Integer getProductId() {
+        return productId;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
     public String getDescription() {
@@ -55,12 +56,12 @@ public class ProductEntity {
         return brand;
     }
 
-    public DiscountEntity getDiscount_fk() {
-        return discount_fk;
+    public DiscountEntity getDiscount() {
+        return discount;
     }
 
-    public CategoryEntity getCategory_fk() {
-        return category_fk;
+    public CategoryEntity getCategory() {
+        return category;
     }
 
     public Float getPrice() {
@@ -70,16 +71,18 @@ public class ProductEntity {
     public String getImageName() {
         return imageName;
     }
+
     //endregion
 
 
     //region SETTERS
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public void setDescription(String description) {
@@ -90,12 +93,12 @@ public class ProductEntity {
         this.brand = brand;
     }
 
-    public void setDiscount_fk(DiscountEntity discount_fk) {
-        this.discount_fk = discount_fk;
+    public void setDiscount(DiscountEntity discount) {
+        this.discount = discount;
     }
 
-    public void setCategory_fk(CategoryEntity category_fk) {
-        this.category_fk = category_fk;
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 
     public void setPrice(Float price) {
@@ -105,5 +108,6 @@ public class ProductEntity {
     public void setImageName(String imageName) {
         this.imageName = imageName;
     }
+
     //endregion
 }
