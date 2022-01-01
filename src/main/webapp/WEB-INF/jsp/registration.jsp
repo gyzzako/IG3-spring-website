@@ -85,7 +85,7 @@
                     <br>
                     <form:errors path="gender" class="connexionError" />
                     <br>
-                    <p>${customerExists}</p>
+                    <p class="connexionError">${customerExists}</p>
                     <form:button class="btn btn-primary text-center connexionBtn"><spring:message code="signup"/></></form:button>
                 </form:form>
             </div>
