@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class Order {
     //region Attributs
-    @NotNull
     @Min(value = 1)
     private Integer orderId;
 

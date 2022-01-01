@@ -153,10 +153,14 @@ public class CustomerEntity {
     }
 
     public void setGender(String gender) {
-        if(gender.equals("")){ // car gender peut être vide depuis le formulaire car champs optionnel
-            this.gender = null;
+        if(gender != null) {
+            if (gender.equals("")) { // car gender peut être vide depuis le formulaire car champs optionnel
+                this.gender = null;
+            } else {
+                this.gender = gender;
+            }
         }else{
-            this.gender = gender;
+            this.gender = null;
         }
     }
 

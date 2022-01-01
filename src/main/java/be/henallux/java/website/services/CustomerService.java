@@ -1,6 +1,7 @@
 package be.henallux.java.website.services;
 
 import be.henallux.java.website.dataAccess.dao.CustomerDataAccess;
+import be.henallux.java.website.dataAccess.utils.PasswordEncryption;
 import be.henallux.java.website.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,8 @@ public class CustomerService {
         if(customerExistsCheck != null){
             return false;
         }
-        /*if(customer.getGender().equals("")){
-            customer.setGender(null);
-        }*/
+        PasswordEncryption passwordEncryption = new PasswordEncryption();
+        customer.setPassword(passwordEncryption.cryptPassword(customer.getPassword()));
         customer.setAuthorities("ROLE_USER");
         customer.setCredentialsNonExpired(true);
         customer.setEnabled(true);

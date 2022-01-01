@@ -1,13 +1,10 @@
 package be.henallux.java.website.model;
 
-import org.apache.tomcat.jni.Local;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.text.DecimalFormat;
-import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
+
 import java.util.Date;
 
 public class Product {

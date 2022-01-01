@@ -24,10 +24,8 @@ public class ProviderConverter {
 
     //region Customer converter
     public CustomerEntity customerModelToCustomerEntity(Customer customer){
-        PasswordEncryption passwordEncryption = new PasswordEncryption();
-
         CustomerEntity customerEntity = new CustomerEntity();
-        customerEntity.setPassword(passwordEncryption.cryptPassword(customer.getPassword()));
+        customerEntity.setPassword(customer.getPassword());
         customerEntity.setCustomerId(customer.getCustomerId());
         customerEntity.setUsername(customer.getUsername());
         customerEntity.setEmail(customer.getEmail());
@@ -108,9 +106,9 @@ public class ProviderConverter {
         OrderEntity orderEntity = new OrderEntity();
         orderEntity.setOrderId(order.getOrderId());
         orderEntity.setOrderDate(order.getOrderDate());
+        orderEntity.setDeliveryDate(order.getDeliveryDate());
         orderEntity.setIsOrderPaid(order.getIsOrderPaid());
         orderEntity.setCustomer(customerModelToCustomerEntity(order.getCustomer()));
-        orderEntity.setOrderDate(order.getOrderDate());
         return orderEntity;
     }
 
@@ -118,9 +116,9 @@ public class ProviderConverter {
         Order order = new Order();
         order.setOrderId(orderEntity.getOrderId());
         order.setOrderDate(orderEntity.getOrderDate());
+        order.setDeliveryDate(orderEntity.getDeliveryDate());
         order.setIsOrderPaid(orderEntity.getIsOrderPaid());
         order.setCustomer(customerEntityToCustomerModel(orderEntity.getCustomer()));
-        order.setDeliveryDate(orderEntity.getDeliveryDate());
         return order;
     }
     //endregion

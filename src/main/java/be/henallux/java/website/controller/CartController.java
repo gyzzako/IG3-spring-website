@@ -3,8 +3,13 @@ package be.henallux.java.website.controller;
 import be.henallux.java.website.Constants;
 import be.henallux.java.website.model.Cart;
 import be.henallux.java.website.model.CartItem;
+import be.henallux.java.website.model.Customer;
+import be.henallux.java.website.model.Order;
+import be.henallux.java.website.services.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.Locale;
 
 @Controller
@@ -19,16 +25,19 @@ import java.util.Locale;
 @SessionAttributes({Constants.CURRENT_CART})
 public class CartController {
     private MessageSource messageSource;
+    private PurchaseService purchaseService;
 
     @Autowired
-    public CartController(MessageSource messageSource){
+    public CartController(MessageSource messageSource, PurchaseService purchaseService){
         this.messageSource = messageSource;
+        this.purchaseService = purchaseService;
     }
 
     @ModelAttribute(Constants.CURRENT_CART)
     public Cart cartLine(){
         return new Cart();
     }
+
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(Model model, Locale locale, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
@@ -62,14 +71,37 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    @RequestMapping(value="/saveCart", method=RequestMethod.POST)
+    public String saveCart(@ModelAttribute(value=Constants.CURRENT_CART) Cart cart, HttpSession session){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Customer customer = (Customer) auth.getPrincipal();
+
+        Order order = purchaseService.savePurchase(cart.getProducts(), customer);
+
+        Order orderFromSession = (Order) session.getAttribute("currentOrder");
+        if(orderFromSession == null){
+            session.setAttribute("currentOrder", order);
+        }else{
+            if(!orderFromSession.getOrderId().equals(order.getOrderId())){
+                session.removeAttribute("currentOrder");
+                session.setAttribute("currentOrder", order);
+            }
+        }
+        return "redirect:/paypalFormData";
+    }
+
     @RequestMapping(value="/paymentSuccess", method=RequestMethod.GET)
-    public String paymentSuccess(@ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
+    public String paymentSuccess(@ModelAttribute(value=Constants.CURRENT_CART) Cart cart, HttpSession session){
         cart.getProducts().clear();
+        Order order = (Order) session.getAttribute("currentOrder");
+        if(order != null){
+            purchaseService.modifyOrderToPaid(order.getOrderId()); //pas sécurisé avec ce système car l'utilisateur peut revenir sur ce lien sans payer et sa commande sera marquée comme payée
+        }
         return "redirect:/";
     }
 
     @RequestMapping(value="/paymentFailed", method=RequestMethod.GET)
-    public String paymentFailed(@ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
+    public String paymentFailed(HttpSession session){
         return "redirect:/cart";
     }
 }

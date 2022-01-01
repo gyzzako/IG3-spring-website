@@ -5,7 +5,6 @@ import javax.validation.constraints.NotNull;
 
 public class OrderLine {
     //region Attribut
-    @NotNull
     @Min(value = 1)
     private Integer orderLineId;
 

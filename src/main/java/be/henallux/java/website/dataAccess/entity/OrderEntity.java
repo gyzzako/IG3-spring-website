@@ -4,18 +4,19 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 public class OrderEntity {
     //region Attributs
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Integer orderId;
 
     @Column(name = "order_date")
-    private java.util.Date orderDate;
+    private Date orderDate;
 
     @Column(name = "delivery_date")
-    private java.util.Date deliveryDate;
+    private Date deliveryDate;
 
     @Column(name = "is_order_paid")
     private Boolean isOrderPaid;

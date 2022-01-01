@@ -19,7 +19,7 @@
                             </a>
                             <p>${cart.value.getPrice()} €</p>
                             <div class="d-flex flex-wrap align-items-center">
-                                <form:form style="margin-right: 5px" id="addToCartForm"
+                                <form:form style="margin-right: 5px" id="quantityUpdateForm"
                                            method="POST"
                                            action="/cart/quantityUpdate"
                                            modelAttribute="cartItem">
@@ -29,7 +29,7 @@
                                     <form:input type="hidden"  value="${cart.key}" path="productId"></form:input>
                                     <form:button class="btn btn-primary" ><spring:message code="update"/></form:button>
                                 </form:form>
-                                <form:form id="addToCartForm"
+                                <form:form id="removeItemForm"
                                            method="POST"
                                            action="/cart/removeItem"
                                            modelAttribute="cartItem">
@@ -44,26 +44,20 @@
                 </ul>
             </div>
             <div style="position:relative; top: 100px;">
+                <script>
+                    const message = "<spring:message code="continueToBuy"/>";
+                    function confirmPurchase(e){
+                        if(!confirm(message)) {
+                            e.preventDefault()
+                        }
+                    }
+                </script>
                 <p><spring:message code="totalPrice"/>: ${cart.getTotalPrice()} €</p>
-                <form:form id="addToCartForm"
+                <form:form id="buyForm"
                            method="POST"
-                           action="https://www.sandbox.paypal.com/cgi-bin/webscr"
+                           action="/cart/saveCart"
+                           onsubmit="confirmPurchase(event)"
                            modelAttribute="cartItem">
-
-                    <input type="hidden" name="business" value="sb-1xdo810831003@business.example.com" />
-                    <input type="hidden" name="cert_id" value="ASzoCHK6gQfnjbqKzsOMbgvUR3aJpmtvM5UvdeooCDBKpesD0W5SG_ZJ41MTJndTOfqQRVCX0w-jeK1k" />
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="upload" value="1" />
-                    <c:forEach items="${ cart.getProducts() }" var="cart" varStatus="status">
-                        <input type="hidden" name="quantity_${status.count}" value="${cart.value.getQuantity()}" />
-                        <input type="hidden" name="amount_${status.count}" value="${cart.value.getPrice()}" />
-                        <input type="hidden" name="item_name_${status.count}" value="${cart.value.getName()}" />
-                    </c:forEach>
-                    <input type="hidden" name="return" value="http://localhost:8082/cart/paymentSuccess" />
-                    <input type="hidden" name="cancel_return" value="http://localhost:8082/cart/paymentFailed" />
-                    <input type="hidden" name="currency_code" value="EUR" />
-                    <input type="hidden" name="lc" value="${locale.getLanguage()}-${locale.getCountry()}" />
-
                     <c:if test="${cart.getTotalPrice() > 0}">
                         <form:button class="btn btn-primary" ><spring:message code="buy"/></form:button>
                     </c:if>

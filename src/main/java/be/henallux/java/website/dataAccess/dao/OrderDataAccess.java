@@ -4,4 +4,5 @@ import be.henallux.java.website.model.Order;
 
 public interface OrderDataAccess {
     Order save(Order order);
+    void setOrderPaid(Integer orderId);
 }

@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class OrderLineEntity {
     //region Attributs
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "order_line_id")
     private Integer orderLineId;
 
