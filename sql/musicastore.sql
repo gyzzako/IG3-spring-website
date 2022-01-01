@@ -14,12 +14,13 @@ CREATE SCHEMA `musicastore`;
 CREATE TABLE `musicastore`.`customer`(
                                          `customer_id` int NOT NULL AUTO_INCREMENT,
                                          `username` varchar(50) NOT NULL,
+                                         `email` varchar(50) NOT NULL,
                                          `password` varchar(100) NOT NULL,
                                          `lastname` varchar(50) NOT NULL,
                                          `firstname` varchar(50) NOT NULL,
-                                         `phone_number` varchar(10) DEFAULT NULL,
+                                         `phone_number` varchar(10) NOT NULL,
                                          `address` varchar(50) NOT NULL,
-                                         `gender` varchar(10) NOT NULL,
+                                         `gender` varchar(10) DEFAULT NULL,
                                          `authorities` varchar(10) default 'ROLE_USER',
                                          `credentials_non_expired` tinyint default 1,
                                          `enabled` tinyint default 1,
@@ -27,6 +28,7 @@ CREATE TABLE `musicastore`.`customer`(
                                          `account_non_expired` tinyint default 1,
                                          PRIMARY KEY(`customer_id`),
                                          UNIQUE KEY(`username`),
+                                         UNIQUE KEY(`email`),
                                          CONSTRAINT phone_number_check CHECK(phone_number !='')
     )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,37 +104,37 @@ CREATE TABLE `musicastore`.`translation`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `musicastore`.`category` VALUES (1),(2),(3),(4),(5);
-INSERT INTO `musicastore`.`discount` VALUES (1,20,STR_TO_DATE('27,11,2021','%d,%m,%Y'),STR_TO_DATE('30,11,2021','%d,%m,%Y'));
+INSERT INTO `musicastore`.`discount` VALUES (1,20,STR_TO_DATE('31,12,2021','%d,%m,%Y'),STR_TO_DATE('01,12,2022','%d,%m,%Y'));
 INSERT INTO `musicastore`.`language` VALUES (1, 'fr'), (2,'en');
 
-INSERT INTO `musicastore`.`product` VALUES (1,'Ibanez PF1512 NT 12 Natural', 'Guitare acoustique, dreadnought, cutaway à 12 cordes, corps laminé et finition brillante', 'Ibanez',1,1,239.88,'products/guitares/guitare-7.jpg'),
+INSERT INTO `musicastore`.`product` VALUES (1,'Ibanez PF1512 NT 12 Natural', 'Guitare acoustique, dreadnought, cutaway à 12 cordes, corps laminé et finition brillante', 'Ibanez',null,1,239.88,'products/guitares/guitare-7.jpg'),
                                            (2,'Sigma Guitars DM12E', 'Avec le DM12E+, Sigma est une guitare acoustique à 12 cordes peu couteuse qui offre un son etonnamment puissant', 'Ibanez',1,1,304.00,'products/guitares/guitare-6.jpg'),
                                            (3,'Red Hill AF-8', 'Magnifique guitare à 12 cordes, finition brillante, corps en sapin laminé et touches en laurier', 'Ibanez',1,1,131.20,'products/guitares/guitare-5.jpg'),
                                            (4,'Fender CD-140SCE-12', 'Cuirassé electro-acoustique à 12 cordes, étui inclu, idéal pour les auteurs-compositeurs & interpretes', 'Ibanez',1,1,385.99,'products/guitares/guitare-4.jpg'),
                                            (5,'YAMAHA U3 – NOIR POLI', 'Le summum de la série U, haut de ses 131cm, le U3 permet une palette de sons plus large qui donnera plus de profondeur et de puissance.', 'Yamaha',1,2,12800,'products/pianos/piano-1.jpg'),
                                            (6,'Violon', 'Violon en bois', 'Stentor',1,3,250,'products/violons/violon-1.jpg'),
                                            (7,'YAMAHA CLP 725 BLANC SATINÉ','Ce modèle CLP-725 possède déjà toutes les qualités minimales requises pour un premier piano.','Yamaha',1,2,1500.99,'products/pianos/piano-scene-2.jpg'),
-                                           (8,'YAMAHA B1 – BLANC POLI','ce modèle au rapport qualité/prix exceptionnel convient parfaitement pour l apprentissage du piano','Yamaha',1,2,580.99,'products/pianos/piano-scene-3.jpg'),
+                                           (8,'YAMAHA B1 – BLANC POLI','ce modèle au rapport qualité/prix exceptionnel convient parfaitement pour l apprentissage du piano','Yamaha',null,2,580.99,'products/pianos/piano-scene-3.jpg'),
                                            (9,'YAMAHA YDP 164 NOIR SATINÉ PACK','Toute l authenticité d un piano acoustique avec ce clavier GH3, agrémentée des avantages du numérique.','Yamaha',1,2,1210.00,'products/pianos/piano-numerique-2.jpg'),
                                            (10,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d\’un superbe piano à queue et propose en plus d\’incomparables fonctions','Yamaha',1,2,100.99,'products/pianos/piano-numerique-3.jpg'),
                                            (11,'YAMAHA GB1 SILENT SC2 – NOIR POLI','Ce modèle est très populaire grâce à sa taille compacte associée à une excellente qualité et un prix très attractif. Egalement disponible en location-achat. Ici avec système Silent','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-2.jpg'),
                                            (12,'YAMAHA GC1','Ce modèle est très populaire grâce à sa taille compacte associée à une excellente qualité et un prix très attractif. Egalement disponible en location-achat','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-3.jpg'),
                                            (13,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d’un superbe piano à queue et propose en plus d’incomparables fonctions','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-1.jpg'),
                                            (14,'Violon Gliga Gems 2 Gloria ', 'Ce violon Gliga Gems 2 Gloria de très bonne qualité conviendra parfaitement aux musiciens de plus de 12 ans, en cours d apprentissage ou débutant en école de musique ou conservatoire.', 'Stentor',1,3,650,'products/violons/violon-2.jpg'),
-                                           (15,'Violoncelle Gliga Genial 1 ', 'Fait à la main, le violoncelle Genial 1 est idéal pour débuter l apprentissage de cet instrument. Fabriqué à partir de bois sélectionnés, sa table est en épicéa massif des Carpates.', 'Stentor',1,3,1650,'products/violons/violoncelle.jpg');
+                                           (15,'Violoncelle Gliga Genial 1 ', 'Fait à la main, le violoncelle Genial 1 est idéal pour débuter l apprentissage de cet instrument. Fabriqué à partir de bois sélectionnés, sa table est en épicéa massif des Carpates.', 'Stentor',null,3,1650,'products/violons/violoncelle.jpg');
 
 
 INSERT INTO `musicastore`.`translation` VALUES (1,'Guitare',1,1), (2,'Guitar',2,1), (3,'Piano',1,2), (4,'Piano',2,2),(5,'Violon',1,3),(6,'Violin',2,3);
 
 /*-- INSERTION CUSTOMER--*/
 INSERT INTO `musicastore`.`customer`
-VALUES (1,'arnaud','$2a$10$c/MdR9VXxqo2dAM/1j/A6eMsIkIJe49Q5Wz90cuB130.KFo1QQc/y','arnaud','berg','049999999','Namur henallux','homme','ROLE_ADMIN',1,1,1,1),
-       (2,'donnydsm','$2a$10$GPwfRGxMnm1oKOd7fm/vdOlT41htlEfatFUdanTxDGUFNH0s3MG8m','mboma','donny','047878798','Flandre occidentale','homme','ROLE_ADMIN',1,1,1,1),
-       (3,'richarg',' $2a$10$SmqG1AsNgF2Z8QGyWjdSOe.rLxzBwt8FIq4wwZKGk7Y7u017dnUW6','fontaine','richard','048969665','Namur namen','homme','ROLE_USER',1,1,1,1),
-       (4,'louis_hermant','$2a$10$RA1J6qNuAZiyLqE/yE4hD.x9Bj.zPA0pqFg1Rf.Ei/HCWvOjvRLWm','hermant','louis','0465656565','Bruxelles Schumann','homme','ROLE_USER',1,1,1,1),
-       (5,'armel_vially','$2a$10$D2YnEChTmJIC/Ta4mXFDHeDwWAmyB4ldV7kNG2GCtIikx7ekG02ia','vially','armel','0444444444','Namur','homme','ROLE_USER',1,1,1,1),
-       (6,'cycyzush','$2a$10$5KO/Esqjrfn5ZrFy.3hhVOM9obVROgYtqn0W61LuZJ4SedBb8Ocoi','zush','cynthia',null,'Wemmel','femme','ROLE_USER',1,1,1,1),
-       (7,'dubisy','$2a$10$u0RE67ioREeOvWsLwAfmiOGzpbek0sDzZPYtoEpecr0AWnBkRsYV6','dubisy','francoise',null,'Namur-Liège','femme','ROLE_ADMIN',1,1,1,1);
+VALUES (1,'arnaud', 'arnaud@gmail.com','$2a$10$c/MdR9VXxqo2dAM/1j/A6eMsIkIJe49Q5Wz90cuB130.KFo1QQc/y','arnaud','berg','049999999','Namur henallux','homme','ROLE_ADMIN',1,1,1,1),
+       (2,'donnydsm','donnydsm@gmail.com','$2a$10$GPwfRGxMnm1oKOd7fm/vdOlT41htlEfatFUdanTxDGUFNH0s3MG8m','mboma','donny','047878798','Flandre occidentale','homme','ROLE_ADMIN',1,1,1,1),
+       (3,'richarg','richarg@gmail.com',' $2a$10$SmqG1AsNgF2Z8QGyWjdSOe.rLxzBwt8FIq4wwZKGk7Y7u017dnUW6','fontaine','richard','048969665','Namur namen','homme','ROLE_USER',1,1,1,1),
+       (4,'louis_hermant','louis_hermant@gmail.com','$2a$10$RA1J6qNuAZiyLqE/yE4hD.x9Bj.zPA0pqFg1Rf.Ei/HCWvOjvRLWm','hermant','louis','0465656565','Bruxelles Schumann','homme','ROLE_USER',1,1,1,1),
+       (5,'armel_vially','armel_vially@gmail.com','$2a$10$D2YnEChTmJIC/Ta4mXFDHeDwWAmyB4ldV7kNG2GCtIikx7ekG02ia','vially','armel','0444444444','Namur','homme','ROLE_USER',1,1,1,1),
+       (6,'cycyzush','cycyzush@gmail.com','$2a$10$5KO/Esqjrfn5ZrFy.3hhVOM9obVROgYtqn0W61LuZJ4SedBb8Ocoi','zush','cynthia','0444444444','Wemmel','femme','ROLE_USER',1,1,1,1),
+       (7,'dubisy','dubisy@gmail.com','$2a$10$u0RE67ioREeOvWsLwAfmiOGzpbek0sDzZPYtoEpecr0AWnBkRsYV6','dubisy','francoise','047878798','Namur-Liège','femme','ROLE_ADMIN',1,1,1,1);
 
 
 set @@global.time_zone = '+00:00';

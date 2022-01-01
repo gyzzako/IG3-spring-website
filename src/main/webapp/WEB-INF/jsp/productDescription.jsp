@@ -33,10 +33,10 @@
                         <form:label path="quantity"><spring:message code="Quantity"/>:</form:label>
                         <form:input type="number" min="1" max="99" value="1" path="quantity"></form:input>
 
-                        <input type="hidden" name="price" value="${product.getPrice()}" />
-                        <input type="hidden" name="productId" value="${product.getProductId()}" />
-                        <input type="hidden" name="name" value="${product.getProductName()}" />
-                        <input type="hidden" name="imageName" value="${product.getImageName()}" />
+                        <form:input type="hidden" value="${product.getPrice()}" path="price"></form:input>
+                        <form:input type="hidden" value="${product.getProductId()}" path="productId"></form:input>
+                        <form:input type="hidden" value="${product.getProductName()}" path="name"></form:input>
+                        <form:input type="hidden" value="${product.getImageName()}" path="imageName"></form:input>
 
                         <form:button class="btn btn-primary" ><spring:message code="addToCart"/></form:button>
                     </form:form>

@@ -35,6 +35,7 @@ public class CartController {
         model.addAttribute("title", messageSource.getMessage("cart", new Object[0], locale));
         model.addAttribute("cartItem",new CartItem());
         model.addAttribute("cart", cart);
+        model.addAttribute("locale", locale);
         return "integrated:cart";
     }
 
@@ -52,6 +53,23 @@ public class CartController {
     @RequestMapping(value="/quantityUpdate", method=RequestMethod.POST)
     public String updateProductQuantity(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
         cart.getProducts().get(cartItem.getProductId()).setQuantity(cartItem.getQuantity());
+        return "redirect:/cart";
+    }
+
+    @RequestMapping(value="/removeItem", method=RequestMethod.POST)
+    public String removeItem(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
+        cart.getProducts().remove(cartItem.getProductId());
+        return "redirect:/cart";
+    }
+
+    @RequestMapping(value="/paymentSuccess", method=RequestMethod.GET)
+    public String paymentSuccess(@ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
+        cart.getProducts().clear();
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/paymentFailed", method=RequestMethod.GET)
+    public String paymentFailed(@ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
         return "redirect:/cart";
     }
 }

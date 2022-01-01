@@ -15,10 +15,13 @@ public class CustomerService {
         this.customerDAO = customerDAO;
     }
     public boolean saveCustomer(Customer customer){
-        Customer customerExistsCheck = customerDAO.findByUsername(customer.getUsername());
+        Customer customerExistsCheck = customerDAO.findByUsernameOrEmail(customer.getUsername(), customer.getEmail());
         if(customerExistsCheck != null){
             return false;
         }
+        /*if(customer.getGender().equals("")){
+            customer.setGender(null);
+        }*/
         customer.setAuthorities("ROLE_USER");
         customer.setCredentialsNonExpired(true);
         customer.setEnabled(true);

@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/", "/registration/**", "/product/{id}", "/css/**", "/images/**", "/category/{id}"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/", "/about", "/login", "/registration/**", "/product/{id}", "/css/**", "/images/**", "/category/{id}"}; // la page login est ici car sinon on ne sait pas changer de langue depuis la page login
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 
     private UserDetailsService userDetailsServiceImpl;

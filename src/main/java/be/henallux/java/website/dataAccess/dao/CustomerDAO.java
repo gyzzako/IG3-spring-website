@@ -24,16 +24,19 @@ public class CustomerDAO implements CustomerDataAccess{
         CustomerEntity customerEntity = customerRepository.findByUsername(username);
         if(customerEntity == null)
             return null;
-        // juste pour tester qu'on renvoie bien les identifiants de l'utilisateur de la bd.
-        System.out.println(customerEntity.getUsername());
-        System.out.println(customerEntity.getPassword());
+        return providerConverter.customerEntityToCustomerModel(customerEntity);
+    }
+
+    public Customer findByUsernameOrEmail(String username, String email){
+        CustomerEntity customerEntity = customerRepository.findByUsernameOrEmail(username, email);
+        if(customerEntity == null)
+            return null;
         return providerConverter.customerEntityToCustomerModel(customerEntity);
     }
 
     public Customer save(Customer customer) {
         CustomerEntity customerEntity = providerConverter.customerModelToCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
-        System.out.println("Client bien ajouté dans la bd");
         return providerConverter.customerEntityToCustomerModel(customerEntity);
     }
 }

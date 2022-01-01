@@ -1,6 +1,7 @@
 package be.henallux.java.website.dataAccess.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "customer")
@@ -14,6 +15,9 @@ public class CustomerEntity {
 
     @Column(name = "username")
     private String username;
+
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "password")
     private String password;
@@ -61,6 +65,10 @@ public class CustomerEntity {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getEmail(){
+        return email;
     }
 
     public String getPassword() {
@@ -120,6 +128,10 @@ public class CustomerEntity {
         this.username = username;
     }
 
+    public void setEmail(String email){
+        this.email = email;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -141,7 +153,11 @@ public class CustomerEntity {
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        if(gender.equals("")){ // car gender peut être vide depuis le formulaire car champs optionnel
+            this.gender = null;
+        }else{
+            this.gender = gender;
+        }
     }
 
     public void setAuthorities(String authorities) {

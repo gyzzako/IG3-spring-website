@@ -13,7 +13,6 @@
 }
 
 /** Section  connexionForm **/
-
 .connexionForm{
     margin: 3rem auto;
     width: 95%;
@@ -86,10 +85,26 @@
     text-decoration: none;
 }
 
+
+
+/**Home**/
+.category{
+    text-decoration: none;
+}
+
+/**Template**/
+.languageImage{
+    height: 40px;
+    width: 40px;
+}
 .buttons{
     padding: 20px;
 }
-
-.category{
-    text-decoration: none;
+.templateFooter{
+    position:relative;
+    bottom:0;
+    left:0;
+    right:0;
+    height:50px;
+    margin-bottom:0;
 }

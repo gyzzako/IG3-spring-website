@@ -30,6 +30,7 @@ public class ProviderConverter {
         customerEntity.setPassword(passwordEncryption.cryptPassword(customer.getPassword()));
         customerEntity.setCustomerId(customer.getCustomerId());
         customerEntity.setUsername(customer.getUsername());
+        customerEntity.setEmail(customer.getEmail());
         customerEntity.setFirstname(customer.getFirstname());
         customerEntity.setLastname(customer.getLastname());
         customerEntity.setPhoneNumber(customer.getPhoneNumber());
@@ -46,7 +47,7 @@ public class ProviderConverter {
     public Customer customerEntityToCustomerModel(CustomerEntity customerEntity){
         Customer customer = new Customer();
         customer.setCustomerId(customerEntity.getCustomerId());
-        //customer.setEmail(customerEntity.getEmail());
+        customer.setEmail(customerEntity.getEmail());
         customer.setUsername(customerEntity.getUsername());
         customer.setFirstname(customerEntity.getFirstname());
         customer.setLastname(customerEntity.getLastname());

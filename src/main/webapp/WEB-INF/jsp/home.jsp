@@ -7,17 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="include/importTags.jsp"%>
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; height: auto;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"></svg>
-                <span class="fs-4"><spring:message code="category"/></span>
-            </a>
+        <div class="d-flex flex-column align-items-center justify-content-center bg-light">
+            <u><h3><spring:message code="category"/></h3></u>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+            <ul class="flex-column">
                 <c:forEach items="${ categories }" var="category">
-                    <li class="nav-item">
-                        <a href="<spring:url value="/category/${category.getCategory().getCategoryId()}"/>" class="nav-link link-dark">
-                            <svg class="bi me-2" width="16" height="16"></svg>
+                    <li style="color: inherit; list-style-type: none; margin: 10px 0">
+                        <a style="color: inherit; text-decoration: none;" href="<spring:url value="/category/${category.getCategory().getCategoryId()}"/>" >
                                 ${category.getLabel()}
                         </a>
                     </li>

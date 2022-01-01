@@ -45,18 +45,14 @@ public class RegistrationController {
     @RequestMapping(value="/send", method = RequestMethod.POST) //TODO: crash quand on change de langue quand on est dans ce controller -> pq?????
     public String getUserFormData(Model model,Locale locale, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors){
         if(!errors.hasErrors()){
-            System.out.println("pas error");
             boolean isRegistered = customerService.saveCustomer(customer);
             if(isRegistered){
-                System.out.println("isRegistered");
                 return "redirect:/";
             }else{
-                System.out.println("pasRegistered");
                 model.addAttribute("customerExists", messageSource.getMessage("userAlreadyExist", new Object[0], locale));
                 return "integrated:registration";
             }
         }
-        System.out.println("autre");
         model.addAttribute("errors",errors);
         return "integrated:registration";
     }

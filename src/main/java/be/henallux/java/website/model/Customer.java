@@ -8,6 +8,7 @@ import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class Customer implements UserDetails {
     //region Attributs
@@ -18,7 +19,12 @@ public class Customer implements UserDetails {
     @Size(min = 5, max = 50)
     private String username;
 
-    @NotNull(message = "le mot de passe est obligatoire !")
+    @NotNull
+    @Size(min = 5, max = 50)
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    private String email;
+
+    @NotNull
     @Size(min = 5, max = 50)
     private String password;
 
@@ -30,6 +36,7 @@ public class Customer implements UserDetails {
     @Size(min = 2, max = 50)
     private String lastname;
 
+    @NotNull
     @Size(max = 10)
     private String phoneNumber;
 
@@ -37,8 +44,7 @@ public class Customer implements UserDetails {
     @Size(min = 5, max = 50)
     private String address;
 
-    @NotNull
-    @Size(min = 4, max = 10)
+    @Size(max = 10)
     private String gender;
 
     private String authorities;
@@ -50,7 +56,7 @@ public class Customer implements UserDetails {
 
 
     //region Constructors
-    public Customer(Integer customerId, String username, String password, String lastname, String firstname, String phoneNumber, String address, String gender,String authorities,
+    public Customer(Integer customerId, String username, String email, String password, String lastname, String firstname, String phoneNumber, String address, String gender,String authorities,
                     Boolean credentialsNonExpired,Boolean enabled,Boolean accountNonExpired,Boolean accountNonLocked){
         setCustomerId(customerId);
         setFirstname(firstname);
@@ -60,6 +66,7 @@ public class Customer implements UserDetails {
         setPassword(password);
         setGender(gender);
         setUsername(username);
+        this.email = email;
         this.enabled = enabled;
         this.authorities = authorities;
         this.accountNonExpired = accountNonExpired;
@@ -107,6 +114,9 @@ public class Customer implements UserDetails {
             }
         }
         return grantedAuthorities;
+    }
+    public String getEmail(){
+        return this.email;
     }
 
     public String getAuthoritiesInString(){
@@ -170,6 +180,8 @@ public class Customer implements UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public void setEmail(String email){this.email = email;}
 
     public void setAuthorities(String authorities) {
         this.authorities = authorities;
