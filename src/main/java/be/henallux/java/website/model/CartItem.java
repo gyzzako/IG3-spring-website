@@ -12,13 +12,6 @@ public class CartItem {
     @NotNull
     @Min(value = 1)
     private Integer productId;
-
-    @Min(value = 1)
-    private Float price;
-
-    private String name;
-
-    private String imageName;
     //endregion
 
     public CartItem() {
@@ -33,18 +26,6 @@ public class CartItem {
         return productId;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getImageName() {
-        return imageName;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
     //endregion
 
     //region GETTERS
@@ -56,20 +37,5 @@ public class CartItem {
         this.productId = productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    public float getSubTotalPrice(){
-        return this.price * this.quantity;
-    }
     //endregion
 }

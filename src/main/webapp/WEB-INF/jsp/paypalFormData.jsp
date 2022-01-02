@@ -21,8 +21,8 @@
                 <input type="hidden" name="upload" value="1" />
                 <c:forEach items="${ cart.getProducts() }" var="cart" varStatus="status">
                     <input type="hidden" name="quantity_${status.count}" value="${cart.value.getQuantity()}" />
-                    <input type="hidden" name="amount_${status.count}" value="${cart.value.getPrice()}" />
-                    <input type="hidden" name="item_name_${status.count}" value="${cart.value.getName()}" />
+                    <input type="hidden" name="amount_${status.count}" value="${cart.value.getRealPrice()}" />
+                    <input type="hidden" name="item_name_${status.count}" value="${cart.value.getProduct().getProductName()}" />
                 </c:forEach>
                 <input type="hidden" name="return" value="http://localhost:8082/cart/paymentSuccess" />
                 <input type="hidden" name="cancel_return" value="http://localhost:8082/cart/paymentFailed" />

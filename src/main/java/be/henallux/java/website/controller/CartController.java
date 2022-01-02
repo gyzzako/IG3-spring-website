@@ -1,10 +1,9 @@
 package be.henallux.java.website.controller;
 
 import be.henallux.java.website.Constants;
-import be.henallux.java.website.model.Cart;
-import be.henallux.java.website.model.CartItem;
-import be.henallux.java.website.model.Customer;
-import be.henallux.java.website.model.Order;
+import be.henallux.java.website.model.*;
+import be.henallux.java.website.services.DiscountService;
+import be.henallux.java.website.services.ProductService;
 import be.henallux.java.website.services.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -26,11 +25,15 @@ import java.util.Locale;
 public class CartController {
     private MessageSource messageSource;
     private PurchaseService purchaseService;
+    private DiscountService discountService;
+    private ProductService productService;
 
     @Autowired
-    public CartController(MessageSource messageSource, PurchaseService purchaseService){
+    public CartController(MessageSource messageSource, PurchaseService purchaseService, DiscountService discountService,ProductService productService){
         this.messageSource = messageSource;
         this.purchaseService = purchaseService;
+        this.discountService = discountService;
+        this.productService = productService;
     }
 
     @ModelAttribute(Constants.CURRENT_CART)
@@ -50,11 +53,15 @@ public class CartController {
 
     @RequestMapping(value="/send", method=RequestMethod.POST)
     public String getFormData(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
-        if(cart.getProducts().containsKey(cartItem.getProductId())){
-            Integer oldQuantity = cart.getProducts().get(cartItem.getProductId()).getQuantity();
-            cart.getProducts().get(cartItem.getProductId()).setQuantity(cartItem.getQuantity()+oldQuantity); //ajoute la nouvelle quantité à l'ancienne
+        Product product = productService.getProductById(cartItem.getProductId());
+        Float priceAfterDiscount = discountService.getPriceOnDiscount(product);
+        OrderLine orderLine = new OrderLine(null, priceAfterDiscount, cartItem.getQuantity(), null, product);
+
+        if(cart.getProducts().containsKey(product.getProductId())){
+            Integer oldQuantity = cart.getProducts().get(product.getProductId()).getQuantity();
+            cart.getProducts().get(product.getProductId()).setQuantity(cartItem.getQuantity()+oldQuantity); //ajoute la nouvelle quantité à l'ancienne
         }else{
-            cart.addProduct(cartItem.getProductId(), cartItem);
+            cart.addProduct(product.getProductId(), orderLine);
         }
         return "redirect:/cart";
     }

@@ -2,8 +2,9 @@ package be.henallux.java.website.services;
 
 import be.henallux.java.website.dataAccess.dao.OrderDataAccess;
 import be.henallux.java.website.dataAccess.dao.OrderLineDataAccess;
-import be.henallux.java.website.dataAccess.dao.ProductDataAccess;
-import be.henallux.java.website.model.*;
+import be.henallux.java.website.model.Customer;
+import be.henallux.java.website.model.Order;
+import be.henallux.java.website.model.OrderLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,14 @@ public class PurchaseService {
     private final Integer deliveryDayTime = 5;
     private OrderLineDataAccess orderLineDAO;
     private OrderDataAccess orderDAO;
-    private ProductDataAccess productDAO;
 
     @Autowired
-    public PurchaseService(OrderLineDataAccess orderLineDAO, OrderDataAccess orderDAO, ProductDataAccess productDAO){
+    public PurchaseService(OrderLineDataAccess orderLineDAO, OrderDataAccess orderDAO){
         this.orderDAO = orderDAO;
         this.orderLineDAO = orderLineDAO;
-        this.productDAO = productDAO;
     }
 
-    public Order savePurchase(HashMap<Integer, CartItem> products, Customer customer){
+    public Order savePurchase(HashMap<Integer, OrderLine> products, Customer customer){
         Instant now = Instant.now(); //current date
         Instant deliveryDate = now.plus(Duration.ofDays(deliveryDayTime));
 
@@ -35,9 +34,8 @@ public class PurchaseService {
         Order orderFromDB = orderDAO.save(order);
 
         ArrayList<OrderLine> orderLines = new ArrayList<>();
-        for(CartItem cartItem : products.values()){
-            Product product = productDAO.getProductById(cartItem.getProductId());
-            OrderLine orderLine = new OrderLine(null, cartItem.getPrice(), cartItem.getQuantity(), orderFromDB, product);
+        for(OrderLine orderLine : products.values()){
+            orderLine.setOrder(orderFromDB);
             orderLines.add(orderLine);
         }
         orderLineDAO.saveAll(orderLines);

@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Product {
     //region Attributs
@@ -32,7 +33,9 @@ public class Product {
 
     @NotNull
     @Min(value = 0)
-    private Float price;
+    private Float price; //TODO: limiter le prix à 2 décimales. ex: 15.50 €
+
+    private Float priceAfterDiscountCalculation;
 
     @NotNull
     private String imageName;
@@ -40,7 +43,7 @@ public class Product {
 
 
     //region Constructors
-    public Product(Integer productId, String productName, String description, String brand, Discount discount, Category category, Float price){
+    public Product(Integer productId, String productName, String description, String brand, Discount discount, Category category, Float price, Float priceAfterDiscountCalculation){
         setProductId(productId);
         setProductName(productName);
         setDescription(description);
@@ -48,6 +51,7 @@ public class Product {
         setDiscount(discount);
         setCategory(category);
         setPrice(price);
+        setPriceAfterDiscountCalculation(priceAfterDiscountCalculation);
     }
 
     public Product(){
@@ -75,20 +79,13 @@ public class Product {
         return this.category;
     }
     public Float getPrice(){
-        if(isOnDiscount()){
-            return this.price - (this.price * discount.getPercentageOff()/100);
-        }else {
-            return this.price;
-        }
+        return this.price;
     }
-    public boolean isOnDiscount(){ //TODO: calculs des trucs de promotions dans la service -> bouger cette méthode
-        if(this.discount.getDiscountId() != null){
-            Date startDate = discount.getStartDate();
-            Date endDate = discount.getEndDate();
-            Date currentDate = new Date();
-            return currentDate.getTime() >= startDate.getTime() && endDate.getTime() >= currentDate.getTime();
-        }
-        return false;
+    public Float getPriceAfterDiscountCalculation(){
+        return this.priceAfterDiscountCalculation;
+    }
+    public boolean isOnDiscount(){
+        return !Objects.equals(this.priceAfterDiscountCalculation, this.price);
     }
     public String getImageName() {
         return imageName;
@@ -117,6 +114,9 @@ public class Product {
     }
     public void setPrice(Float price){
         this.price= price;
+    }
+    public void setPriceAfterDiscountCalculation(Float priceAfterDiscountCalculation){
+        this.priceAfterDiscountCalculation = priceAfterDiscountCalculation;
     }
     public void setImageName(String imageName) {
         this.imageName = imageName;

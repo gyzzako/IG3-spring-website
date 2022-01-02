@@ -19,12 +19,16 @@
             </div>
             <div class="productDetails">
                 <c:if test = "${product.isOnDiscount()}">
+                    <s><h2>${product.getPrice()}€</h2></s>
+                    <h2 style="color: red;">${product.getPriceAfterDiscountCalculation()}€</h2>
                     <p style="color: red;">
                         <spring:message code="discount"/>
-                        ${product.getDiscount().getPercentageOff()}%
-                    <p>
+                            ${product.getDiscount().getPercentageOff()}%
+                    </p>
                 </c:if>
-                <h2>${product.getPrice()} €</h2>
+                <c:if test = "${!product.isOnDiscount()}">
+                    <h2>${product.getPrice()}€</h2>
+                </c:if>
                 <div style="margin-top: 25px">
                     <form:form id="addToCartForm"
                                method="POST"
@@ -33,10 +37,7 @@
                         <form:label path="quantity"><spring:message code="Quantity"/>:</form:label>
                         <form:input type="number" min="1" max="99" value="1" path="quantity"></form:input>
 
-                        <form:input type="hidden" value="${product.getPrice()}" path="price"></form:input>
                         <form:input type="hidden" value="${product.getProductId()}" path="productId"></form:input>
-                        <form:input type="hidden" value="${product.getProductName()}" path="name"></form:input>
-                        <form:input type="hidden" value="${product.getImageName()}" path="imageName"></form:input>
 
                         <form:button class="btn btn-primary" ><spring:message code="addToCart"/></form:button>
                     </form:form>

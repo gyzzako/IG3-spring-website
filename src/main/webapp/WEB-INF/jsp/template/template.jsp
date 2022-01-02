@@ -54,7 +54,7 @@
 </header>
 
 <div class="d-flex flex-row bd-highlight mb-3">
-    <div class="container-fluid mx-4" style="width: 90%;  min-height: 70vh">
+    <div class="container-fluid" style="width: 90%; min-height: 70vh">
         <tiles:insertAttribute name="main-content" />
     </div>
 </div>

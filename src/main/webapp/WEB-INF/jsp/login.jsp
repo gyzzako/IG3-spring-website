@@ -21,14 +21,14 @@
                         <div class="form-group textInput">
                             <form:label path="username"><spring:message code="username"/></form:label>
                             <form:input path="username" class="form-control"></form:input>
+                            <form:errors path="username"  class="connexionError"/>
                         </div>
-                        <form:errors path="username"  class="connexionError"/>
                         <br>
                         <div class="form-group textInput">
                             <form:label path="password"><spring:message code="password"/></form:label>
                             <form:input path="password" type="password" class="form-control"></form:input>
-                            <br>
                             <form:errors path="password"  class="connexionError"/>
+                            <br>
                         </div>
                         <br>
                         <div class="connexionError">

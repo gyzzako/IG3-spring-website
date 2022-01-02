@@ -21,7 +21,7 @@ public class Customer implements UserDetails {
 
     @NotNull
     @Size(min = 5, max = 50)
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "You must enter an email") //TODO: faire en sorte que msg soient traduits
     private String email;
 
     @NotNull
@@ -38,6 +38,7 @@ public class Customer implements UserDetails {
 
     @NotNull
     @Size(max = 10)
+    @Pattern(regexp = "^\\d+$", message = "You must enter numbers")//TODO: faire en sorte que msg soient traduits
     private String phoneNumber;
 
     @NotNull
@@ -66,13 +67,12 @@ public class Customer implements UserDetails {
         setPassword(password);
         setGender(gender);
         setUsername(username);
-        this.email = email;
-        this.enabled = enabled;
-        this.authorities = authorities;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-
+        setEmail(email);
+        setEnabled(enabled);
+        setAuthorities(authorities);
+        setAccountNonExpired(accountNonExpired);
+        setAccountNonLocked(accountNonLocked);
+        setCredentialsNonExpired(credentialsNonExpired);
     }
 
     public Customer(){
@@ -168,7 +168,9 @@ public class Customer implements UserDetails {
         this.firstname = firstname;
     }
     public void setPhoneNumber(String phoneNumber){
-        this.phoneNumber = phoneNumber;
+        if(phoneNumber.length() > 0 && phoneNumber.length() < 12){
+            this.phoneNumber = phoneNumber;
+        }
     }
     public void setAddress(String address){
         this.address = address;

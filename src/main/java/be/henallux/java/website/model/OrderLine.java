@@ -58,6 +58,10 @@ public class OrderLine {
     public Product getProduct() {
         return product;
     }
+
+    public float getSubTotalPrice(){
+        return this.realPrice * this.quantity;
+    }
     //endregion
 
 

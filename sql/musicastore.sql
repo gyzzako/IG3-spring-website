@@ -42,9 +42,10 @@ CREATE TABLE `musicastore`.`category`(
 CREATE TABLE `musicastore`.`discount`(
                                          `discount_id` int NOT NULL AUTO_INCREMENT,
                                          `percentage_off` float NOT NULL,
-                                         `start_date` date NOT NULL,
-                                         `end_date` date NOT NULL,
-                                         PRIMARY KEY(`discount_id`)
+                                         `start_date` DATETIME NOT NULL,
+                                         `end_date` DATETIME NOT NULL,
+                                         PRIMARY KEY(`discount_id`),
+                                         CONSTRAINT discount_date_check CHECK(`start_date` < `end_date`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -72,7 +73,7 @@ CREATE TABLE `musicastore`.`order`(
                                       `customer_fk` int DEFAULT NULL,
                                       PRIMARY KEY(`order_id`),
                                       FOREIGN KEY(`customer_fk`) REFERENCES `customer`(`customer_id`) ON DELETE SET NULL,
-                                      CONSTRAINT date_check CHECK(`order_date` < `delivery_date`)
+                                      CONSTRAINT order_date_check CHECK(`order_date` < `delivery_date`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `musicastore`.`order_line`(
@@ -104,13 +105,14 @@ CREATE TABLE `musicastore`.`translation`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `musicastore`.`category` VALUES (1),(2),(3),(4),(5);
-INSERT INTO `musicastore`.`discount` VALUES (1,20,STR_TO_DATE('31,12,2021','%d,%m,%Y'),STR_TO_DATE('01,12,2022','%d,%m,%Y'));
+INSERT INTO `musicastore`.`discount` VALUES (1,20,STR_TO_DATE('31,12,2021,00,00,01','%d,%m,%Y,%H,%i,%s'),STR_TO_DATE('02,01,2022,23,59,59','%d,%m,%Y,%H,%i,%s')),
+                                            (2,50,STR_TO_DATE('02,01,2021,00,00,01','%d,%m,%Y,%H,%i,%s'),STR_TO_DATE('12,01,2022,23,59,59','%d,%m,%Y,%H,%i,%s'));
 INSERT INTO `musicastore`.`language` VALUES (1, 'fr'), (2,'en');
 
 INSERT INTO `musicastore`.`product` VALUES (1,'Ibanez PF1512 NT 12 Natural', 'Guitare acoustique, dreadnought, cutaway à 12 cordes, corps laminé et finition brillante', 'Ibanez',null,1,239.88,'products/guitares/guitare-7.jpg'),
-                                           (2,'Sigma Guitars DM12E', 'Avec le DM12E+, Sigma est une guitare acoustique à 12 cordes peu couteuse qui offre un son etonnamment puissant', 'Ibanez',1,1,304.00,'products/guitares/guitare-6.jpg'),
+                                           (2,'Sigma Guitars DM12E', 'Avec le DM12E+, Sigma est une guitare acoustique à 12 cordes peu couteuse qui offre un son etonnamment puissant', 'Ibanez',2,1,304.00,'products/guitares/guitare-6.jpg'),
                                            (3,'Red Hill AF-8', 'Magnifique guitare à 12 cordes, finition brillante, corps en sapin laminé et touches en laurier', 'Ibanez',1,1,131.20,'products/guitares/guitare-5.jpg'),
-                                           (4,'Fender CD-140SCE-12', 'Cuirassé electro-acoustique à 12 cordes, étui inclu, idéal pour les auteurs-compositeurs & interpretes', 'Ibanez',1,1,385.99,'products/guitares/guitare-4.jpg'),
+                                           (4,'Fender CD-140SCE-12', 'Cuirassé electro-acoustique à 12 cordes, étui inclu, idéal pour les auteurs-compositeurs & interpretes', 'Ibanez',2,1,385.99,'products/guitares/guitare-4.jpg'),
                                            (5,'YAMAHA U3 – NOIR POLI', 'Le summum de la série U, haut de ses 131cm, le U3 permet une palette de sons plus large qui donnera plus de profondeur et de puissance.', 'Yamaha',1,2,12800,'products/pianos/piano-1.jpg'),
                                            (6,'Violon', 'Violon en bois', 'Stentor',1,3,250,'products/violons/violon-1.jpg'),
                                            (7,'YAMAHA CLP 725 BLANC SATINÉ','Ce modèle CLP-725 possède déjà toutes les qualités minimales requises pour un premier piano.','Yamaha',1,2,1500.99,'products/pianos/piano-scene-2.jpg'),
@@ -119,12 +121,13 @@ INSERT INTO `musicastore`.`product` VALUES (1,'Ibanez PF1512 NT 12 Natural', 'Gu
                                            (10,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d\’un superbe piano à queue et propose en plus d\’incomparables fonctions','Yamaha',1,2,100.99,'products/pianos/piano-numerique-3.jpg'),
                                            (11,'YAMAHA GB1 SILENT SC2 – NOIR POLI','Ce modèle est très populaire grâce à sa taille compacte associée à une excellente qualité et un prix très attractif. Egalement disponible en location-achat. Ici avec système Silent','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-2.jpg'),
                                            (12,'YAMAHA GC1','Ce modèle est très populaire grâce à sa taille compacte associée à une excellente qualité et un prix très attractif. Egalement disponible en location-achat','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-3.jpg'),
-                                           (13,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d’un superbe piano à queue et propose en plus d’incomparables fonctions','Yamaha',1,2,1500.99,'products/pianos/piano-acoustique-1.jpg'),
-                                           (14,'Violon Gliga Gems 2 Gloria ', 'Ce violon Gliga Gems 2 Gloria de très bonne qualité conviendra parfaitement aux musiciens de plus de 12 ans, en cours d apprentissage ou débutant en école de musique ou conservatoire.', 'Stentor',1,3,650,'products/violons/violon-2.jpg'),
+                                           (13,'ROLAND FP-30X FULL PACK','Compact et abordable, le FP-30X délivre les sonorités d’un superbe piano à queue et propose en plus d’incomparables fonctions','Yamaha',2,2,1500.99,'products/pianos/piano-acoustique-1.jpg'),
+                                           (14,'Violon Gliga Gems 2 Gloria ', 'Ce violon Gliga Gems 2 Gloria de très bonne qualité conviendra parfaitement aux musiciens de plus de 12 ans, en cours d apprentissage ou débutant en école de musique ou conservatoire.', 'Stentor',2,3,650,'products/violons/violon-2.jpg'),
                                            (15,'Violoncelle Gliga Genial 1 ', 'Fait à la main, le violoncelle Genial 1 est idéal pour débuter l apprentissage de cet instrument. Fabriqué à partir de bois sélectionnés, sa table est en épicéa massif des Carpates.', 'Stentor',null,3,1650,'products/violons/violoncelle.jpg');
 
 
-INSERT INTO `musicastore`.`translation` VALUES (1,'Guitare',1,1), (2,'Guitar',2,1), (3,'Piano',1,2), (4,'Piano',2,2),(5,'Violon',1,3),(6,'Violin',2,3);
+INSERT INTO `musicastore`.`translation` VALUES (1,'Guitare',1,1), (2,'Guitar',2,1), (3,'Piano',1,2), (4,'Piano',2,2),(5,'Violon',1,3),(6,'Violin',2,3),
+                                               (7,'Batteries',1,4),(8,'Drums',2,4),(9,'Flute',1,5), (10,'Flute', 2,5);
 
 /*-- INSERTION CUSTOMER--*/
 INSERT INTO `musicastore`.`customer`

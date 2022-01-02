@@ -4,23 +4,23 @@ import java.util.HashMap;
 
 public class Cart {
     //region Attribut
-    private HashMap<Integer, CartItem> products = new HashMap<>(); //key: productId | value: CartItem
+    private HashMap<Integer, OrderLine> products = new HashMap<>(); //key: productId | value: OrderLine
     //endregion
 
     public Cart(){
 
     }
 
-    public void addProduct(Integer key, CartItem cartItem){
-        this.products.put(key, cartItem);
+    public void addProduct(Integer key, OrderLine orderLine){
+        this.products.put(key, orderLine);
     }
-    public HashMap<Integer, CartItem> getProducts(){
+    public HashMap<Integer, OrderLine> getProducts(){
         return products;
     }
     public float getTotalPrice(){
         float totalPrice = 0;
-        for(CartItem cartItem : this.products.values()){
-            totalPrice += cartItem.getSubTotalPrice();
+        for(OrderLine orderLine : this.products.values()){
+            totalPrice += orderLine.getSubTotalPrice();
         }
         return totalPrice;
     }

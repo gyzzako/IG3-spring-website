@@ -10,6 +10,9 @@
 
         <div class="container text-center">
             <div class="row">
+                <c:if test = "${products.size() <= 0}">
+                    <p><spring:message code="noProducts"/></p>
+                </c:if>
                 <c:forEach items="${ products }" var="product">
                     <div class="card p-2 productCard" style="width: 20rem;">
                         <a style="color: black; text-decoration: none;" href="<spring:url value="/product/${product.getProductId()}"/>">
@@ -18,12 +21,17 @@
                                 <h5 class="card-title">${ product.getProductName()}</h5>
                                 <p class="card-text">${ product.getDescription()}</p>
                                 <c:if test = "${product.isOnDiscount()}">
-                                <p style="color: red;">
+                                    <s><p>${product.getPrice()}€<p></s>
+                                    <p style="color: red;">${product.getPriceAfterDiscountCalculation()}€<p>
+                                    <p style="color: red;">
                                         <spring:message code="discount"/>
                                         ${product.getDiscount().getPercentageOff()}%
-                                <p>
+                                    </p>
                                 </c:if>
-                                <p class="card-text">${product.getPrice()}€</p>
+
+                                <c:if test = "${!product.isOnDiscount()}">
+                                    <p>${product.getPrice()}€<p>
+                                </c:if>
                             </div>
                         </a>
                     </div>

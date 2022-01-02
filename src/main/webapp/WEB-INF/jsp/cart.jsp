@@ -13,11 +13,21 @@
                     <c:forEach items="${ cart.getProducts() }" var="cart">
                         <li style="list-style: none; border-bottom: 2px solid black; padding-bottom: 10px" class="nav-item">
                             <a href="<spring:url value="/product/${cart.key}"/>" class="nav-link link-dark">
-                                    ${cart.value.getQuantity()}
-                                    ${cart.value.getName()}
-                                    <img src='<spring:url value="/images/${cart.value.getImageName()}"/>' width="200px" height="200px" alt="music instrument">
+                                ${cart.value.getQuantity()}
+                                ${cart.value.getProduct().getProductName()}
+                                <img src='<spring:url value="/images/${cart.value.getProduct().getImageName()}"/>' width="200px" height="200px" alt="music instrument">
                             </a>
-                            <p>${cart.value.getPrice()} €</p>
+                            <c:if test = "${cart.value.getProduct().isOnDiscount()}">
+                                <s><p>${cart.value.getProduct().getPrice()}€<p></s>
+                                <p style="color: red;">${cart.value.getRealPrice()}€<p>
+                                <p style="color: red;">
+                                    <spring:message code="discount"/>
+                                        ${cart.value.getProduct().getDiscount().getPercentageOff()}%
+                                </p>
+                            </c:if>
+                            <c:if test = "${!cart.value.getProduct().isOnDiscount()}">
+                            <p>${cart.value.getProduct().getPrice()}€<p>
+                            </c:if>
                             <div class="d-flex flex-wrap align-items-center">
                                 <form:form style="margin-right: 5px" id="quantityUpdateForm"
                                            method="POST"
@@ -59,7 +69,14 @@
                            onsubmit="confirmPurchase(event)"
                            modelAttribute="cartItem">
                     <c:if test="${cart.getTotalPrice() > 0}">
-                        <form:button class="btn btn-primary" ><spring:message code="buy"/></form:button>
+                        <sec:authorize access="isAuthenticated()">
+                            <form:button class="btn btn-primary" ><spring:message code="buy"/></form:button>
+                        </sec:authorize>
+                        <sec:authorize access="!isAuthenticated()">
+                            <c:if test="${cart.getTotalPrice() > 0}">
+                                <p><spring:message code="mustBeConnected"/></p>
+                            </c:if>
+                        </sec:authorize>
                     </c:if>
                     <c:if test="${cart.getTotalPrice() <= 0}">
                         <form:button class="btn btn-primary" disabled="true"><spring:message code="buy"/></form:button>
