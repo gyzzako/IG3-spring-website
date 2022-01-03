@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Locale;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value="/cart")
@@ -52,24 +54,34 @@ public class CartController {
     }
 
     @RequestMapping(value="/send", method=RequestMethod.POST)
-    public String getFormData(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
-        Product product = productService.getProductById(cartItem.getProductId());
-        Float priceAfterDiscount = discountService.getPriceOnDiscount(product);
-        OrderLine orderLine = new OrderLine(null, priceAfterDiscount, cartItem.getQuantity(), null, product);
+    public String getFormData(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart, HttpServletRequest request){
+        if(cartItem.getQuantity() > 0){
+            Product product = productService.getProductById(cartItem.getProductId());
+            Float priceAfterDiscount = discountService.getPriceOnDiscount(product);
+            product.setPriceAfterDiscountCalculation(priceAfterDiscount);
+            OrderLine orderLine = new OrderLine(null, priceAfterDiscount, cartItem.getQuantity(), null, product);
 
-        if(cart.getProducts().containsKey(product.getProductId())){
-            Integer oldQuantity = cart.getProducts().get(product.getProductId()).getQuantity();
-            cart.getProducts().get(product.getProductId()).setQuantity(cartItem.getQuantity()+oldQuantity); //ajoute la nouvelle quantité à l'ancienne
+            if(cart.getProducts().containsKey(product.getProductId())){
+                Integer oldQuantity = cart.getProducts().get(product.getProductId()).getQuantity();
+                cart.getProducts().get(product.getProductId()).setQuantity(cartItem.getQuantity()+oldQuantity); //ajoute la nouvelle quantité à l'ancienne
+            }else{
+                cart.addProduct(product.getProductId(), orderLine);
+            }
+            return "redirect:/cart";
         }else{
-            cart.addProduct(product.getProductId(), orderLine);
+            return Optional.ofNullable(request.getHeader("Referer")).map(requestUrl -> "redirect:" + requestUrl).orElse("/"); //redirige vers la page si possible sinon vers l'accueil
         }
-        return "redirect:/cart";
+
     }
 
     @RequestMapping(value="/quantityUpdate", method=RequestMethod.POST)
-    public String updateProductQuantity(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
-        cart.getProducts().get(cartItem.getProductId()).setQuantity(cartItem.getQuantity());
-        return "redirect:/cart";
+    public String updateProductQuantity(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart, HttpServletRequest request){
+        if(cartItem.getQuantity() > 0){
+            cart.getProducts().get(cartItem.getProductId()).setQuantity(cartItem.getQuantity());
+            return "redirect:/cart";
+        }else{
+            return Optional.ofNullable(request.getHeader("Referer")).map(requestUrl -> "redirect:" + requestUrl).orElse("/"); //redirige vers la page si possible sinon vers l'accueil
+        }
     }
 
     @RequestMapping(value="/removeItem", method=RequestMethod.POST)

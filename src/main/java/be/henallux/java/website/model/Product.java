@@ -85,7 +85,7 @@ public class Product {
         return this.priceAfterDiscountCalculation;
     }
     public boolean isOnDiscount(){
-        return !Objects.equals(this.priceAfterDiscountCalculation, this.price);
+        return !this.price.equals(this.priceAfterDiscountCalculation);
     }
     public String getImageName() {
         return imageName;
