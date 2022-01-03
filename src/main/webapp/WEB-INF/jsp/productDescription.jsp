@@ -35,7 +35,7 @@
                                action="/cart/send"
                                modelAttribute="cartItem">
                         <form:label path="quantity"><spring:message code="Quantity"/>:</form:label>
-                        <form:input type="number" min="1" max="99" value="1" path="quantity"></form:input>
+                        <form:input type="number" max="99" value="1" path="quantity"></form:input>
 
                         <form:input type="hidden" value="${product.getProductId()}" path="productId"></form:input>
 

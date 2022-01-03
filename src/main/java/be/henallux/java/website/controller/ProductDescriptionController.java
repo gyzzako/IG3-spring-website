@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Locale;
-
 @Controller
-@RequestMapping(value = "/product/{id}")
+@RequestMapping(value = "/product/")
 public class ProductDescriptionController {
     private ProductService productService;
     private MessageSource messageSource;
@@ -29,14 +27,18 @@ public class ProductDescriptionController {
         this.discountService = discountService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String userRegistration(Model model, Locale locale, @PathVariable Integer id){
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public String productDescription(Model model, @PathVariable Integer id){
         Product product = productService.getProductById(id);
-        product.setPriceAfterDiscountCalculation(discountService.getPriceOnDiscount(product));
-        model.addAttribute("product", product);
-        model.addAttribute("title", product.getProductName());
         model.addAttribute("cartItem",new CartItem());
-        return "integrated:productDescription";
+        if(product != null){
+            model.addAttribute("title", product.getProductName());
+            product.setPriceAfterDiscountCalculation(discountService.getPriceOnDiscount(product));
+            model.addAttribute("product", product);
+            return "integrated:productDescription";
+        }else{
+            return "redirect:/";
+        }
     }
 
 }

@@ -27,7 +27,7 @@ public class paypalFormDataController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model, @ModelAttribute(value= Constants.CURRENT_CART) Cart cart){
+    public String paypalForm(Model model, @ModelAttribute(value= Constants.CURRENT_CART) Cart cart){
         model.addAttribute("cart", cart);
         model.addAttribute("cartItem",new CartItem());
         return "integrated:paypalFormData";

@@ -45,7 +45,7 @@ public class CartController {
 
 
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model, Locale locale, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
+    public String cart(Model model, Locale locale, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart){
         model.addAttribute("title", messageSource.getMessage("cart", new Object[0], locale));
         model.addAttribute("cartItem",new CartItem());
         model.addAttribute("cart", cart);

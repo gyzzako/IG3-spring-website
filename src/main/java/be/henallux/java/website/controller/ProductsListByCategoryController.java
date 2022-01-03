@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 @Controller
-@RequestMapping(value="/category/{id}")
+@RequestMapping(value="/category/")
 public class ProductsListByCategoryController {
     private ProductService productService;
     private MessageSource messageSource;
@@ -28,8 +28,8 @@ public class ProductsListByCategoryController {
         this.discountService = discountService;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
-    public String home(Model model, Locale locale, @PathVariable Integer id){
+    @RequestMapping(value = "{id}", method=RequestMethod.GET)
+    public String productsList(Model model, Locale locale, @PathVariable Integer id){
         model.addAttribute("title", messageSource.getMessage("home", new Object[0], locale));
         ArrayList<Product> products = productService.getAllProductByCategoryId(id);
         products.forEach(product -> product.setPriceAfterDiscountCalculation(discountService.getPriceOnDiscount(product)));
