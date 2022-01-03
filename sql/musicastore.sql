@@ -45,7 +45,8 @@ CREATE TABLE `musicastore`.`discount`(
                                          `start_date` DATETIME NOT NULL,
                                          `end_date` DATETIME NOT NULL,
                                          PRIMARY KEY(`discount_id`),
-                                         CONSTRAINT discount_date_check CHECK(`start_date` < `end_date`)
+                                         CONSTRAINT discount_date_check CHECK(`start_date` < `end_date`),
+                                         CONSTRAINT discount_percentage_check CHECK(`percentage_off` > 0 AND `percentage_off` <= 100)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
