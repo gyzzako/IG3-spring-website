@@ -42,10 +42,11 @@ public class RegistrationController {
     public String userRegistration(Model model, Locale locale){
         model.addAttribute("registrationForm",new Customer());
         model.addAttribute("title", messageSource.getMessage("signup", new Object[0], locale));
+        model.addAttribute("mandatory",messageSource.getMessage("mandatoryMessage",new Object[0],locale));
         return "integrated:registration";
     }
 
-    @RequestMapping(value="/send", method = RequestMethod.POST) //TODO: crash quand on change de langue quand on est dans ce controller -> pq?????
+    @RequestMapping( method = RequestMethod.POST)
     public String getUserFormData(Model model,Locale locale, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors){
         if(!errors.hasErrors()){
             boolean isRegistered = customerService.saveCustomer(customer);
