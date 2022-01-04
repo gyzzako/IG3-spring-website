@@ -21,7 +21,7 @@ public class Customer implements UserDetails {
 
     @NotNull
     @Size(min = 5, max = 50)
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "You must enter an email") //TODO: faire en sorte que msg soient traduits
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
 
     @NotNull

@@ -1,6 +1,7 @@
 package be.henallux.java.website.model;
 
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,7 +34,8 @@ public class Product {
 
     @NotNull
     @Min(value = 0)
-    private Float price; //TODO: limiter le prix à 2 décimales. ex: 15.50 €
+    @Digits(integer = 5,fraction = 2) //5 valeurs max avant la virgule et 2 valeurs max après mais ca ne marche pas.
+    private Float price;
 
     private Float priceAfterDiscountCalculation;
 

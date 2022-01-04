@@ -9,6 +9,7 @@
 <%@ include file="include/importTags.jsp"%>
         <div>
             <p style="text-align: center"><spring:message code="redirecting"/></p>
+            <%--@elvariable id="cartItem" type="java"--%>
             <form:form id="paypalFormData"
                        method="POST"
                        name="paypalFormData"
