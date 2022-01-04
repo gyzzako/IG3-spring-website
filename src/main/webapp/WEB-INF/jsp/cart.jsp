@@ -29,12 +29,13 @@
                             <p>${cart.value.getProduct().getPrice()}€<p>
                             </c:if>
                             <div class="d-flex flex-wrap align-items-center">
+                                <%--@elvariable id="cartItem" type="java"--%>
                                 <form:form style="margin-right: 5px" id="quantityUpdateForm"
                                            method="POST"
                                            action="/cart/quantityUpdate"
                                            modelAttribute="cartItem">
                                     <form:label path="quantity"><spring:message code="Quantity"/>:</form:label>
-                                    <form:input type="number" max="99" value="${cart.value.getQuantity()}" path="quantity"></form:input>
+                                    <form:input type="number" min="1" max="99" value="${cart.value.getQuantity()}" path="quantity"></form:input>
 
                                     <form:input type="hidden"  value="${cart.key}" path="productId"></form:input>
                                     <form:button class="btn btn-primary" ><spring:message code="update"/></form:button>
@@ -63,11 +64,13 @@
                     }
                 </script>
                 <p><spring:message code="totalPrice"/>: ${cart.getTotalPrice()} €</p>
+                <%--@elvariable id="cartItem" type="java"--%>
                 <form:form id="buyForm"
                            method="POST"
                            action="/cart/saveCart"
                            onsubmit="confirmPurchase(event)"
                            modelAttribute="cartItem">
+                    
                     <c:if test="${cart.getTotalPrice() > 0}">
                         <sec:authorize access="isAuthenticated()">
                             <form:button class="btn btn-primary" ><spring:message code="buy"/></form:button>

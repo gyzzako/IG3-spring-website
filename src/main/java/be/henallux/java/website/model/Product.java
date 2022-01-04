@@ -6,10 +6,13 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Objects;
 
 public class Product {
+
+    //private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
     //region Attributs
     @NotNull
     @Min(value = 1)
@@ -115,6 +118,8 @@ public class Product {
         this.category = category;
     }
     public void setPrice(Float price){
+        //String priceFormated = decimalFormat.format(this.price);
+        //price = Float.parseFloat(priceFormated);
         this.price= price;
     }
     public void setPriceAfterDiscountCalculation(Float priceAfterDiscountCalculation){

@@ -30,12 +30,13 @@
                     <h2>${product.getPrice()}€</h2>
                 </c:if>
                 <div style="margin-top: 25px">
+                    <%--@elvariable id="cartItem" type="java"--%>
                     <form:form id="addToCartForm"
                                method="POST"
                                action="/cart/send"
                                modelAttribute="cartItem">
                         <form:label path="quantity"><spring:message code="Quantity"/>:</form:label>
-                        <form:input type="number" max="99" value="1" path="quantity"></form:input>
+                        <form:input type="number" min="1" max="99" value="1" path="quantity"></form:input>
 
                         <form:input type="hidden" value="${product.getProductId()}" path="productId"></form:input>
 
