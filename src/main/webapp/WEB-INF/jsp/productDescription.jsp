@@ -19,8 +19,9 @@
             </div>
             <div class="productDetails">
                 <c:if test = "${product.isOnDiscount()}">
-                    <s><h2>${product.getPrice()}€</h2></s>
-                    <h2 style="color: red;">${product.getPriceAfterDiscountCalculation()}€</h2>
+                    <s><h2><fmt:formatNumber type="number" maxFractionDigits="2" value="${product.getPrice()}"/>€</h2></s>
+
+                    <h2 style="color: red;"><fmt:formatNumber type="number" maxFractionDigits="2" value="${product.getPriceAfterDiscountCalculation()}"/>€</h2>
                     <p style="color: red;">
                         <spring:message code="discount"/>
                             ${product.getDiscount().getPercentageOff()}%
