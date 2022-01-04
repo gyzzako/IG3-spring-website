@@ -26,9 +26,10 @@
                         <spring:message code="discount"/>
                             ${product.getDiscount().getPercentageOff()}%
                     </p>
+
                 </c:if>
                 <c:if test = "${!product.isOnDiscount()}">
-                    <h2>${product.getPrice()}€</h2>
+                    <h2><fmt:formatNumber type="number" maxFractionDigits="2" value="${product.getPrice()}"/>€</h2>
                 </c:if>
                 <div style="margin-top: 25px">
                     <%--@elvariable id="cartItem" type="java"--%>
