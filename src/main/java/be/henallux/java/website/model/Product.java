@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class Product {
 
-    //private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
     //region Attributs
     @NotNull
     @Min(value = 1)
@@ -37,7 +37,6 @@ public class Product {
 
     @NotNull
     @Min(value = 0)
-    @Digits(integer = 5,fraction = 2) //5 valeurs max avant la virgule et 2 valeurs max après mais ca ne marche pas.
     private Float price;
 
     private Float priceAfterDiscountCalculation;

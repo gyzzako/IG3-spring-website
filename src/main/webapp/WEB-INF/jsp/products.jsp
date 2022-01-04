@@ -21,8 +21,8 @@
                                 <h5 class="card-title">${ product.getProductName()}</h5>
                                 <p class="card-text">${ product.getDescription()}</p>
                                 <c:if test = "${product.isOnDiscount()}">
-                                    <s><p>${product.getPrice()}€<p></s>
-                                    <p style="color: red;">${product.getPriceAfterDiscountCalculation()}€<p>
+                                    <s><p><fmt:formatNumber type="number" maxFractionDigits="2" value="${product.getPrice()}"/>€<p></s>
+                                    <p style="color: red;"><fmt:formatNumber type="number" maxFractionDigits="2" value="${product.getPriceAfterDiscountCalculation()}"/>€<p>
                                     <p style="color: red;">
                                         <spring:message code="discount"/>
                                         ${product.getDiscount().getPercentageOff()}%
@@ -30,7 +30,7 @@
                                 </c:if>
 
                                 <c:if test = "${!product.isOnDiscount()}">
-                                    <p>${product.getPrice()}€<p>
+                                    <p><fmt:formatNumber type="number" maxFractionDigits="2" value="${product.getPrice()}"/>€<p>
                                 </c:if>
                             </div>
                         </a>
