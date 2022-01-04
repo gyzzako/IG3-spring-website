@@ -38,7 +38,7 @@ public class Customer implements UserDetails {
 
     @NotNull
     @Size(max = 10)
-    @Pattern(regexp = "^\\d+$", message = "You must enter numbers")//TODO: faire en sorte que msg soient traduits
+    @Pattern(regexp = "^\\d+$")
     private String phoneNumber;
 
     @NotNull
