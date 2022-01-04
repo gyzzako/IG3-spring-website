@@ -17,16 +17,17 @@
                                 ${cart.value.getProduct().getProductName()}
                                 <img src='<spring:url value="/images/${cart.value.getProduct().getImageName()}"/>' width="200px" height="200px" alt="music instrument">
                             </a>
+
                             <c:if test = "${cart.value.getProduct().isOnDiscount()}">
-                                <s><p>${cart.value.getProduct().getPrice()}€<p></s>
-                                <p style="color: red;">${cart.value.getRealPrice()}€<p>
+                                <s><p><fmt:formatNumber type="number" maxFractionDigits="2" value="${cart.value.getProduct().getPrice()}"/>€<p></s>
+                                <p style="color: red;"><fmt:formatNumber type="number" maxFractionDigits="2" value="${cart.value.getRealPrice()}"/>€<p>
                                 <p style="color: red;">
                                     <spring:message code="discount"/>
                                         ${cart.value.getProduct().getDiscount().getPercentageOff()}%
                                 </p>
                             </c:if>
                             <c:if test = "${!cart.value.getProduct().isOnDiscount()}">
-                            <p>${cart.value.getProduct().getPrice()}€<p>
+                            <p><fmt:formatNumber type="number" maxFractionDigits="2" value="${cart.value.getProduct().getPrice()}"/>€<p>
                             </c:if>
                             <div class="d-flex flex-wrap align-items-center">
                                 <%--@elvariable id="cartItem" type="java"--%>
@@ -63,7 +64,7 @@
                         }
                     }
                 </script>
-                <p><spring:message code="totalPrice"/>: ${cart.getTotalPrice()} €</p>
+                <p><spring:message code="totalPrice"/>: <fmt:formatNumber type="number" maxFractionDigits="2" value="${cart.getTotalPrice()}"/>€</p>
                 <%--@elvariable id="cartItem" type="java"--%>
                 <form:form id="buyForm"
                            method="POST"
