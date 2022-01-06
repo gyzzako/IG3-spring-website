@@ -8,7 +8,6 @@ import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 public class Customer implements UserDetails {
     //region Attributs
@@ -30,7 +29,7 @@ public class Customer implements UserDetails {
 
     @NotNull
     @Size(min = 5, max = 50)
-    private String matchingPassword;
+    private String confirmPassword;
 
     @NotNull
     @Size(min = 2, max = 50)
@@ -61,8 +60,8 @@ public class Customer implements UserDetails {
 
 
     //region Constructors
-    public Customer(Integer customerId, String username, String email, String password,String matchingPassword, String lastname, String firstname, String phoneNumber, String address, String gender,String authorities,
-                    Boolean credentialsNonExpired,Boolean enabled,Boolean accountNonExpired,Boolean accountNonLocked){
+    public Customer(Integer customerId, String username, String email, String password, String confirmPassword, String lastname, String firstname, String phoneNumber, String address, String gender, String authorities,
+                    Boolean credentialsNonExpired, Boolean enabled, Boolean accountNonExpired, Boolean accountNonLocked){
         setCustomerId(customerId);
         setFirstname(firstname);
         setLastname(lastname);
@@ -77,7 +76,7 @@ public class Customer implements UserDetails {
         setAccountNonExpired(accountNonExpired);
         setAccountNonLocked(accountNonLocked);
         setCredentialsNonExpired(credentialsNonExpired);
-        setMatchingPassword(matchingPassword);
+        setConfirmPassword(confirmPassword);
     }
 
     public Customer(){
@@ -104,8 +103,8 @@ public class Customer implements UserDetails {
     public String getGender(){
         return this.gender;
     }
-    public String getMatchingPassword(){
-        return this.matchingPassword;
+    public String getConfirmPassword(){
+        return this.confirmPassword;
     }
 
     // -- session informations
@@ -213,8 +212,8 @@ public class Customer implements UserDetails {
         this.accountNonExpired = accountNonExpired;
     }
 
-    public void setMatchingPassword(String matchingPassword){
-        this.matchingPassword = matchingPassword;
+    public void setConfirmPassword(String confirmPassword){
+        this.confirmPassword = confirmPassword;
     }
 
     //endregion

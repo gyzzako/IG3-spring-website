@@ -8,14 +8,11 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Locale;
 
@@ -50,7 +47,7 @@ public class RegistrationController {
     public String getUserFormData(Model model,Locale locale, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors){
 
         //vérifie si les deux mots de passes sont les identiques
-        if(!customer.getMatchingPassword().equals(customer.getPassword())) {
+        if(!customer.getConfirmPassword().equals(customer.getPassword())) {
             model.addAttribute("passwordDontMatch", messageSource.getMessage("passwordDontMatch",new Object[0],locale));
         }
 

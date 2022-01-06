@@ -47,10 +47,10 @@
                     <br>
 
                     <div class="form-group row textInput">
-                    <form:label path="matchingPassword" class="col-sm-4 col-form-label"><spring:message code="password"/>*</form:label>
+                    <form:label path="confirmPassword" class="col-sm-4 col-form-label"><spring:message code="confirmPassword"/>*</form:label>
                         <div class="col-sm-8">
-                            <form:input type="password" path="matchingPassword" class="form-control"></form:input>
-                            <form:errors path="matchingPassword" class="connexionError" />
+                            <form:input type="password" path="confirmPassword" class="form-control"></form:input>
+                            <form:errors path="confirmPassword" class="connexionError" />
                         </div>
                         <span class="connexionError"><spring:message code="${passwordDontMatch}"/></span>
                     </div>
