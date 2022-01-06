@@ -48,7 +48,13 @@ public class RegistrationController {
 
     @RequestMapping( method = RequestMethod.POST)
     public String getUserFormData(Model model,Locale locale, @Valid @ModelAttribute(value =Constants.CURRENT_USER) Customer customer, final BindingResult errors){
-        if(!errors.hasErrors()){
+
+        //vérifie si les deux mots de passes sont les identiques
+        if(!customer.getMatchingPassword().equals(customer.getPassword())) {
+            model.addAttribute("passwordDontMatch", messageSource.getMessage("passwordDontMatch",new Object[0],locale));
+        }
+
+        if(!errors.hasErrors() && !model.containsAttribute("passwordDontMatch")){
             boolean isRegistered = customerService.saveCustomer(customer);
             if(isRegistered){
                 return "redirect:/";

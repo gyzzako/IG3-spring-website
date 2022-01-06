@@ -114,6 +114,7 @@ public class CustomerEntity {
     public Boolean getNonLocked() {
         return nonLocked;
     }
+
     //endregion
 
 
@@ -183,6 +184,7 @@ public class CustomerEntity {
     public void setNonLocked(Boolean nonLocked) {
         this.nonLocked = nonLocked;
     }
+
 
     //endregion
 }

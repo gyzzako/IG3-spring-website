@@ -117,8 +117,6 @@ public class Product {
         this.category = category;
     }
     public void setPrice(Float price){
-        //String priceFormated = decimalFormat.format(this.price);
-        //price = Float.parseFloat(priceFormated);
         this.price= price;
     }
     public void setPriceAfterDiscountCalculation(Float priceAfterDiscountCalculation){

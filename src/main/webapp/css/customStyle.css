@@ -76,6 +76,7 @@
 /** Section erreur dans le formulaire **/
 .connexionError{
     color: red;
+    font-style: italic;
 }
 
 /** section panier**/

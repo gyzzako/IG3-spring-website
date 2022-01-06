@@ -45,6 +45,17 @@
                         </div>
                     </div>
                     <br>
+
+                    <div class="form-group row textInput">
+                    <form:label path="matchingPassword" class="col-sm-4 col-form-label"><spring:message code="password"/>*</form:label>
+                        <div class="col-sm-8">
+                            <form:input type="password" path="matchingPassword" class="form-control"></form:input>
+                            <form:errors path="matchingPassword" class="connexionError" />
+                        </div>
+                        <span class="connexionError"><spring:message code="${passwordDontMatch}"/></span>
+                    </div>
+
+                    <br>
                     <div class="form-group row textInput">
                         <form:label path="firstname" class="col-sm-4 col-form-label"><spring:message code="firstname"/>*</form:label>
                         <div class="col-sm-8">

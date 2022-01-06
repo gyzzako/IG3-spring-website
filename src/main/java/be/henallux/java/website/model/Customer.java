@@ -29,6 +29,10 @@ public class Customer implements UserDetails {
     private String password;
 
     @NotNull
+    @Size(min = 5, max = 50)
+    private String matchingPassword;
+
+    @NotNull
     @Size(min = 2, max = 50)
     private String firstname;
 
@@ -57,7 +61,7 @@ public class Customer implements UserDetails {
 
 
     //region Constructors
-    public Customer(Integer customerId, String username, String email, String password, String lastname, String firstname, String phoneNumber, String address, String gender,String authorities,
+    public Customer(Integer customerId, String username, String email, String password,String matchingPassword, String lastname, String firstname, String phoneNumber, String address, String gender,String authorities,
                     Boolean credentialsNonExpired,Boolean enabled,Boolean accountNonExpired,Boolean accountNonLocked){
         setCustomerId(customerId);
         setFirstname(firstname);
@@ -73,6 +77,7 @@ public class Customer implements UserDetails {
         setAccountNonExpired(accountNonExpired);
         setAccountNonLocked(accountNonLocked);
         setCredentialsNonExpired(credentialsNonExpired);
+        setMatchingPassword(matchingPassword);
     }
 
     public Customer(){
@@ -98,6 +103,9 @@ public class Customer implements UserDetails {
     }
     public String getGender(){
         return this.gender;
+    }
+    public String getMatchingPassword(){
+        return this.matchingPassword;
     }
 
     // -- session informations
@@ -203,6 +211,10 @@ public class Customer implements UserDetails {
 
     public void setAccountNonExpired(Boolean accountNonExpired) {
         this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setMatchingPassword(String matchingPassword){
+        this.matchingPassword = matchingPassword;
     }
 
     //endregion
