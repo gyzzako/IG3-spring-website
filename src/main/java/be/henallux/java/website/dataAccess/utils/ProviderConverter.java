@@ -2,6 +2,7 @@ package be.henallux.java.website.dataAccess.utils;
 
 import be.henallux.java.website.dataAccess.entity.*;
 import be.henallux.java.website.model.*;
+import be.henallux.java.website.model.ProductEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -147,8 +148,8 @@ public class ProviderConverter {
     //endregion
 
     //region Product converter
-    public ProductEntity productModelToProductEntity(Product product){
-        ProductEntity productEntity = new ProductEntity();
+    public be.henallux.java.website.dataAccess.entity.ProductEntity productModelToProductEntity(ProductEntity product){
+        be.henallux.java.website.dataAccess.entity.ProductEntity productEntity = new be.henallux.java.website.dataAccess.entity.ProductEntity();
         productEntity.setProductId(product.getProductId());
         productEntity.setProductName(product.getProductName());
         productEntity.setBrand(product.getBrand());
@@ -160,8 +161,8 @@ public class ProviderConverter {
         return productEntity;
     }
 
-    public Product productEntityToProductModel(ProductEntity productEntity){
-        Product product = new Product();
+    public ProductEntity productEntityToProductModel(be.henallux.java.website.dataAccess.entity.ProductEntity productEntity){
+        ProductEntity product = new ProductEntity();
         product.setProductId(productEntity.getProductId());
         product.setProductName(productEntity.getProductName());
         product.setBrand(productEntity.getBrand());

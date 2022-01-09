@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class Product {
+public class ProductEntity {
 
 
     //region Attributs
@@ -47,7 +47,7 @@ public class Product {
 
 
     //region Constructors
-    public Product(Integer productId, String productName, String description, String brand, Discount discount, Category category, Float price, Float priceAfterDiscountCalculation){
+    public ProductEntity(Integer productId, String productName, String description, String brand, Discount discount, Category category, Float price, Float priceAfterDiscountCalculation){
         setProductId(productId);
         setProductName(productName);
         setDescription(description);
@@ -58,7 +58,7 @@ public class Product {
         setPriceAfterDiscountCalculation(priceAfterDiscountCalculation);
     }
 
-    public Product(){
+    public ProductEntity(){
     }
     //endregion
 

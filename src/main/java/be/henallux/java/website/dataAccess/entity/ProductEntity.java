@@ -38,6 +38,8 @@ public class ProductEntity {
 
     }
 
+
+
     //region GETTERS
 
     public Integer getProductId() {

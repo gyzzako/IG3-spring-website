@@ -1,7 +1,7 @@
 package be.henallux.java.website.services;
 
 import be.henallux.java.website.dataAccess.dao.ProductDataAccess;
-import be.henallux.java.website.model.Product;
+import be.henallux.java.website.model.ProductEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +17,11 @@ public class ProductService {
         this.productDAO = productDAO;
     }
 
-    public Product getProductById(Integer id){
+    public ProductEntity getProductById(Integer id){
         return productDAO.getProductById(id);
     }
 
-    public ArrayList<Product> getAllProductByCategoryId(Integer id){
+    public ArrayList<ProductEntity> getAllProductByCategoryId(Integer id){
         return productDAO.getAllProductByCategoryId(id);
     }
 }

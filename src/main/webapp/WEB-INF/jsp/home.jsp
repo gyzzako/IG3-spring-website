@@ -12,11 +12,11 @@
             <hr>
             <ul class="flex-column">
                 <c:forEach items="${ categories }" var="category">
-                    <li style="color: inherit; list-style-type: none; margin: 10px 0">
+                    <div style="color: inherit; list-style-type: none; margin: 10px 0">
                         <a style="color: inherit; text-decoration: none;" href="<spring:url value="/category/${category.getCategory().getCategoryId()}"/>" >
                                 ${category.getLabel()}
                         </a>
-                    </li>
+                    </div>
                 </c:forEach>
             </ul>
             <hr>

@@ -9,5 +9,4 @@ class WebsiteApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
