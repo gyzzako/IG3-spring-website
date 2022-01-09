@@ -2,7 +2,7 @@ package be.henallux.java.website.dataAccess.dao;
 
 import be.henallux.java.website.dataAccess.repository.ProductRepository;
 import be.henallux.java.website.dataAccess.utils.ProviderConverter;
-import be.henallux.java.website.model.ProductEntity;
+import be.henallux.java.website.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,30 +20,30 @@ public class ProductDAO implements ProductDataAccess{
         this.providerConverter = providerConverter;
     }
 
-    public ArrayList<ProductEntity> getAllProducts() {
+    public ArrayList<Product> getAllProducts() {
         List<be.henallux.java.website.dataAccess.entity.ProductEntity> productEntities = productRepository.findAll();
-        ArrayList<ProductEntity> products = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
         for (be.henallux.java.website.dataAccess.entity.ProductEntity entity : productEntities) {
-            ProductEntity product = providerConverter.productEntityToProductModel(entity);
+            Product product = providerConverter.productEntityToProductModel(entity);
             products.add(product);
         }
         return products;
     }
 
-    public ArrayList<ProductEntity> getAllProductByCategoryId(Integer categoryId){
+    public ArrayList<Product> getAllProductByCategoryId(Integer categoryId){
         List<be.henallux.java.website.dataAccess.entity.ProductEntity> productEntities = productRepository.findByCategoryCategoryId(categoryId);
-        ArrayList<ProductEntity> products = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
         for (be.henallux.java.website.dataAccess.entity.ProductEntity entity : productEntities) {
-            ProductEntity product = providerConverter.productEntityToProductModel(entity);
+            Product product = providerConverter.productEntityToProductModel(entity);
             products.add(product);
         }
         return products;
     }
 
-    public ProductEntity getProductById(Integer id){
+    public Product getProductById(Integer id){
         be.henallux.java.website.dataAccess.entity.ProductEntity productEntity = productRepository.findById(id).orElse(null);
         if(productEntity != null){
-            ProductEntity product = providerConverter.productEntityToProductModel(productEntity);
+            Product product = providerConverter.productEntityToProductModel(productEntity);
             return product;
         }
         return null;

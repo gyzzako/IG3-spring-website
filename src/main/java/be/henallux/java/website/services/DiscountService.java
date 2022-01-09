@@ -1,7 +1,7 @@
 package be.henallux.java.website.services;
 
 import be.henallux.java.website.model.Discount;
-import be.henallux.java.website.model.ProductEntity;
+import be.henallux.java.website.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class DiscountService {
     public DiscountService(){
     }
 
-    public Float getPriceOnDiscount(ProductEntity product){
+    public Float getPriceOnDiscount(Product product){
         if(isDiscountAvailable(product.getDiscount())){
             return product.getPrice() - (product.getPrice() * product.getDiscount().getPercentageOff()/100);
         }else {

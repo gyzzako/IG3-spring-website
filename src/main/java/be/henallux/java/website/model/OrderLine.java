@@ -17,13 +17,13 @@ public class OrderLine {
     private Integer quantity;
 
     private Order order;
-    private ProductEntity product;
+    private Product product;
     //endregion
 
 
 
     //region Constructors
-    public OrderLine(Integer orderLineId, Float realPrice, Integer quantity, Order order, ProductEntity product){
+    public OrderLine(Integer orderLineId, Float realPrice, Integer quantity, Order order, Product product){
         setOrder(order);
         setOrderLineId(orderLineId);
         setRealPrice(realPrice);
@@ -55,7 +55,7 @@ public class OrderLine {
         return order;
     }
 
-    public ProductEntity getProduct() {
+    public Product getProduct() {
         return product;
     }
 
@@ -82,7 +82,7 @@ public class OrderLine {
         this.order = order;
     }
 
-    public void setProduct(ProductEntity product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
     //endregion

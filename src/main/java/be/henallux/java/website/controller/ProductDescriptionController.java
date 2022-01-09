@@ -1,7 +1,7 @@
 package be.henallux.java.website.controller;
 
 import be.henallux.java.website.model.CartItem;
-import be.henallux.java.website.model.ProductEntity;
+import be.henallux.java.website.model.Product;
 import be.henallux.java.website.services.DiscountService;
 import be.henallux.java.website.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class ProductDescriptionController {
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public String productDescription(Model model, @PathVariable Integer id){
-        ProductEntity product = productService.getProductById(id);
+        Product product = productService.getProductById(id);
         model.addAttribute("cartItem",new CartItem());
         if(product != null){
             model.addAttribute("title", product.getProductName());

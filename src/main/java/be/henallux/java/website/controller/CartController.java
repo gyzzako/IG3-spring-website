@@ -56,7 +56,7 @@ public class CartController {
     @RequestMapping(value="/send", method=RequestMethod.POST)
     public String getFormData(@ModelAttribute(value="cartItem") CartItem cartItem, @ModelAttribute(value=Constants.CURRENT_CART) Cart cart, HttpServletRequest request){
         if(cartItem.getQuantity() > 0){
-            ProductEntity product = productService.getProductById(cartItem.getProductId());
+            Product product = productService.getProductById(cartItem.getProductId());
             Float priceAfterDiscount = discountService.getPriceOnDiscount(product);
             product.setPriceAfterDiscountCalculation(priceAfterDiscount);
             OrderLine orderLine = new OrderLine(null, priceAfterDiscount, cartItem.getQuantity(), null, product);

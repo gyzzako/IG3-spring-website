@@ -1,6 +1,6 @@
 package be.henallux.java.website.controller;
 
-import be.henallux.java.website.model.ProductEntity;
+import be.henallux.java.website.model.Product;
 import be.henallux.java.website.services.DiscountService;
 import be.henallux.java.website.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class ProductsListByCategoryController {
     @RequestMapping(value = "{id}", method=RequestMethod.GET)
     public String productsList(Model model, Locale locale, @PathVariable Integer id){
         model.addAttribute("title", messageSource.getMessage("home", new Object[0], locale));
-        ArrayList<ProductEntity> products = productService.getAllProductByCategoryId(id);
+        ArrayList<Product> products = productService.getAllProductByCategoryId(id);
         products.forEach(product -> product.setPriceAfterDiscountCalculation(discountService.getPriceOnDiscount(product)));
         model.addAttribute("products", products);
         return "integrated:products";

@@ -7,10 +7,12 @@ import be.henallux.java.website.dataAccess.repository.TranslationRepository;
 import be.henallux.java.website.dataAccess.utils.ProviderConverter;
 import be.henallux.java.website.model.Language;
 import be.henallux.java.website.model.Translation;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,11 +35,11 @@ public class CategoriesTranslationTest {
     @Mock
     private ProviderConverter providerConverter;
 
-    /*
-    @Before en faisant ceci, on a des erreurs comme quoi translationDAO est null.
+
+    @Before
     public void setUp() throws Exception{
-        translationDAO = new TranslationDAO(translationRepository,providerConverter);
-    }*/
+        translationDAO = new TranslationDAO(translationRepository,new ProviderConverter());
+    }
 
     public ArrayList<TranslationEntity> mockedTranslationEntities(){
         ArrayList<TranslationEntity> mockedEntities = new ArrayList<>();
@@ -146,7 +148,7 @@ public class CategoriesTranslationTest {
 
     @Test
     public void testCategoriesFrench(){
-        translationDAO = new TranslationDAO(translationRepository,providerConverter);
+        //translationDAO = new TranslationDAO(translationRepository,providerConverter);
         String expectedCategory1 = "Guitare";
         String expectedCategory2 = "Piano";
         String expectedCategory3 ="Violon";
@@ -158,7 +160,7 @@ public class CategoriesTranslationTest {
         languageFrench.setLanguageId(1);
 
         //when(providerConverter.languageModelToLanguageEntity(languageFrench)).thenReturn(categoryFr);
-        when(providerConverter.translationEntityToTranslationModel(any())).thenCallRealMethod();
+        //when(providerConverter.translationEntityToTranslationModel(any())).thenCallRealMethod();
         when(translationRepository.findByLocale(categoryFr.getLocale())).thenReturn(mockedCategoriesTranslationFrench());
 
         ArrayList<Translation> translations = translationDAO.getCategoryTranslationByLanguage(languageFrench.getLocale());
@@ -206,7 +208,7 @@ public class CategoriesTranslationTest {
 
     @Test
     public void testCategoryDAO(){
-        translationDAO = new TranslationDAO(translationRepository,new ProviderConverter());
+        //translationDAO = new TranslationDAO(translationRepository,new ProviderConverter());
         String expectedFrTranslation ="Guitare";
         String expectedEnTranslation ="Guitar";
 
