@@ -148,8 +148,8 @@ public class ProviderConverter {
     //endregion
 
     //region Product converter
-    public be.henallux.java.website.dataAccess.entity.ProductEntity productModelToProductEntity(Product product){
-        be.henallux.java.website.dataAccess.entity.ProductEntity productEntity = new be.henallux.java.website.dataAccess.entity.ProductEntity();
+    public ProductEntity productModelToProductEntity(Product product){
+        ProductEntity productEntity = new ProductEntity();
         productEntity.setProductId(product.getProductId());
         productEntity.setProductName(product.getProductName());
         productEntity.setBrand(product.getBrand());
@@ -161,7 +161,7 @@ public class ProviderConverter {
         return productEntity;
     }
 
-    public Product productEntityToProductModel(be.henallux.java.website.dataAccess.entity.ProductEntity productEntity){
+    public Product productEntityToProductModel(ProductEntity productEntity){
         Product product = new Product();
         product.setProductId(productEntity.getProductId());
         product.setProductName(productEntity.getProductName());
